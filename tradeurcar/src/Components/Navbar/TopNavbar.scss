@@ -1,0 +1,33 @@
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  margin-left: 2%;
+  margin-right: auto;
+  h4 {
+    background-color: darkcyan;
+    padding: 5%;
+    border: 0.1rem solid white;
+    border-radius: 10%;
+    font-family: cursive;
+    font-weight: 700;
+    font-style: italic;
+  }
+  p {
+    font-size: large;
+    font-weight: 600;
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+a.logo.navbar-brand {
+  padding: 0%;
+}
