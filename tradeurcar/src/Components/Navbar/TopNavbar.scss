@@ -1,6 +1,6 @@
 .nav-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -24,8 +24,24 @@
   }
 }
 
-.container {
+.nav-container > .container2 {
+  flex: 1;
+}
+
+.container2 {
   display: flex;
+  justify-content: center;
+  margin-left: 30%;
+  #profile {
+    margin-left: auto;
+    margin-right: 5%;
+  }
+  a {
+    font-size: smaller;
+    color: white;
+    font-weight: 600;
+    margin-left: 4%;
+  }
 }
 
 a.logo.navbar-brand {
