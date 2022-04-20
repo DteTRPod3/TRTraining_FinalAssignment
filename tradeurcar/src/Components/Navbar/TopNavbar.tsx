@@ -1,10 +1,10 @@
 import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import "./TopNavbar.scss";
 
 function TopNavbar() {
   return (
-    <Navbar bg="black" variant="dark" className="nav-container">
+    <Navbar bg="black" variant="dark" className="nav-container" fixed="top">
       <Navbar.Brand href="#home" className="logo">
         <h4>TR</h4>
         <p>adeurcar</p>

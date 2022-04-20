@@ -1,12 +1,13 @@
 .searchbar {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 35%;
   width: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 18rem;
+  width: 30%;
   h2 {
     color: white;
     text-align: center;
@@ -16,5 +17,5 @@
 
 .textbox-div {
   display: flex;
-  border: 5% solid black;
+  width: 100%;
 }
