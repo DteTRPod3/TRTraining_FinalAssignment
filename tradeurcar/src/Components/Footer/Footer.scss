@@ -1,0 +1,20 @@
+.footer {
+  position: static;
+  bottom: 0;
+  height: 10rem;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  div {
+    width: 20%;
+    h6 {
+      font-weight: bold;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    }
+    p {
+      font-size: small;
+    }
+  }
+}
