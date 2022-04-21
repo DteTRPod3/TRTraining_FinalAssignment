@@ -7,17 +7,19 @@ import { getCars } from "../../Redux/Store/Cars/actions";
 import CarCard from "../CarCard/CarCard";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 function FeatureCars() {
   const dispatch = useDispatch();
-  // const [featuredCars, SetFeaturedCars] = useState<CarDetails[]>([]);
+
   const cars: CarDetails[] = useSelector(
     (state: RootState) => JSON.parse(JSON.stringify(state.cars)).cars
   );
+
   useEffect(() => {
-    dispatch(getCars());
-    console.log("dispatch");
+    dispatch(getCars(""));
   }, [dispatch]);
+
   const featuredCars = cars
     ?.sort(() => Math.random() - Math.random())
     .slice(0, 4);
@@ -33,10 +35,10 @@ function FeatureCars() {
         <Button variant="dark" disabled>
           Upcoming
         </Button>
-        <a className="viewLink" href="/">
+        <Link className="viewLink nav-link" to="/cars">
           View All
           <ArrowRight />
-        </a>
+        </Link>
       </ButtonGroup>
       <div className="cardslist">
         {featuredCars?.map((car) => (

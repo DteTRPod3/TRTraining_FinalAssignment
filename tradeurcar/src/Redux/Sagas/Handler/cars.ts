@@ -4,7 +4,7 @@ import { setCars } from "../../Store/Cars/actions";
 
 export function* handleGetCars(action: any): any {
   try {
-    const response = yield call(requestGetCars);
+    const response = yield call(() => requestGetCars(action.carType));
     const { data } = response;
     yield put(setCars(data));
   } catch (error) {

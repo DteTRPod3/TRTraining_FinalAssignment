@@ -1,7 +1,8 @@
 .footer {
-  position: static;
+  position: sticky;
   bottom: 0;
   height: 10rem;
+  width: 100%;
   background-color: black;
   color: white;
   display: flex;
