@@ -1,0 +1,25 @@
+.maindiv {
+  padding-left: 2rem;
+  h6 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+  }
+  button {
+    width: 10rem;
+  }
+}
+
+.cardslist {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mb-2.btn-group {
+  display: block;
+}
+
+.viewLink {
+  float: right;
+  margin-right: 5%;
+}
