@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CarDetails } from "../../Models/CarDetails";
 import { RootState } from "../../Redux/configureStore";
@@ -6,32 +6,49 @@ import { getCars } from "../../Redux/Store/Cars/actions";
 import CarCard from "../CarCard/CarCard";
 import "./CarsList.scss";
 import { Button, ButtonGroup, Container } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 function CarsList() {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const [searchtext] = useState<string>(
+    location.state === null ? "" : (location.state as string)
+  );
 
+  const [carType, SetCarType] = useState<string>(
+    ["sedan", "SUV", "hatchback", "coupe"].includes(
+      JSON.parse(JSON.stringify(searchtext)).searchtext as string
+    )
+      ? (JSON.parse(JSON.stringify(searchtext)).searchtext as string)
+      : ""
+  );
   const cars: CarDetails[] = useSelector(
     (state: RootState) => JSON.parse(JSON.stringify(state.cars)).cars
   );
 
   useEffect(() => {
-    dispatch(getCars(""));
-  }, [dispatch]);
+    dispatch(getCars(carType));
+  }, [dispatch, carType]);
 
   const handleViewAll = () => {
-    dispatch(getCars(""));
+    SetCarType("");
+    // dispatch(getCars(carType));
   };
   const handleSedanClick = () => {
-    dispatch(getCars("sedan"));
+    SetCarType("sedan");
+    // dispatch(getCars(carType));
   };
   const handleSUVClick = () => {
-    dispatch(getCars("suv"));
+    SetCarType("SUV");
+    // dispatch(getCars(carType));
   };
   const handleHatchbackClick = () => {
-    dispatch(getCars("hatchback"));
+    SetCarType("hatchback");
+    // dispatch(getCars(carType));
   };
   const handleCoupeClick = () => {
-    dispatch(getCars("coupe"));
+    SetCarType("coupe");
+    // dispatch(getCars(carType));
   };
 
   return (

@@ -4,9 +4,8 @@ import { useParams } from "react-router-dom";
 import { CarFullDetails } from "../../Models/CarFullDetails";
 import { RootState } from "../../Redux/configureStore";
 import { getCarDetails } from "../../Redux/Store/CarDetails/actions";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import "./CarDetails.scss";
-import { Color } from "react-bootstrap/esm/types";
 
 function CarDetails() {
   let { id } = useParams();
@@ -94,7 +93,8 @@ function CarDetails() {
         <hr />
         <Row>
           <Col>
-            <Image src={car?.interior.image1} alt="No Image Available" />{" "}
+            <Image src={car?.interior.image1} alt="No Image Available" />
+            <br />
             <Image src={car?.interior.image2} alt="No Image Available" />{" "}
           </Col>
           <Col>
@@ -116,7 +116,13 @@ function CarDetails() {
                 ))}
               </ul>
             </p>
+            <h6>Cost {car?.cost}</h6>
           </Col>
+        </Row>
+        <Row className="justify-content-end">
+          <Button id="btn_booknow" variant="info">
+            Book Now
+          </Button>
         </Row>
       </Container>
     </div>
