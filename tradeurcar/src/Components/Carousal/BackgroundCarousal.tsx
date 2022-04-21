@@ -9,7 +9,7 @@ import "./BackgroundCarousal.scss";
 function BackgroundCarousal() {
   return (
     <div className="main-div">
-      <div className="inside-div"></div>
+      {/* <div className="inside-div"></div> */}
       <Carousel>
         <Carousel.Item className="content">
           <Image className="c-image" src={SEDAN} alt="First slide" />

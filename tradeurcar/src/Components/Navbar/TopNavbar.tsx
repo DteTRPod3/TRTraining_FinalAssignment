@@ -13,7 +13,7 @@ function TopNavbar() {
       {/* <div className="container2"> */}
       <Nav className="container2">
         <Link to="/cars" className="nav-link">
-          New Cars{" "}
+          New Cars
         </Link>
 
         <Nav.Link>Used Cars</Nav.Link>
