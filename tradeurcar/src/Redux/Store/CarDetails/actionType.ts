@@ -1,0 +1,2 @@
+export const GET_CAR_DETAILS = "GET_CAR_DETAILS";
+export const SET_CAR_DETAILS = "SET_CAR_DETAILS";
