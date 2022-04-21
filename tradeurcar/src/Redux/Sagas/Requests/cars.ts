@@ -11,3 +11,14 @@ export function requestGetCars(carType: string) {
     },
   });
 }
+
+export function requestGetCarDetails(carid: string) {
+  return axios.request({
+    method: "get",
+    url: API_URL + "/details/" + carid,
+    auth: {
+      username: "Hasher",
+      password: "L#(qc{f}TaJu4%4k",
+    },
+  });
+}
