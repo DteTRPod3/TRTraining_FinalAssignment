@@ -30,43 +30,22 @@ function CarsList() {
     dispatch(getCars(carType));
   }, [dispatch, carType]);
 
-  const handleViewAll = () => {
-    SetCarType("");
-    // dispatch(getCars(carType));
-  };
-  const handleSedanClick = () => {
-    SetCarType("sedan");
-    // dispatch(getCars(carType));
-  };
-  const handleSUVClick = () => {
-    SetCarType("SUV");
-    // dispatch(getCars(carType));
-  };
-  const handleHatchbackClick = () => {
-    SetCarType("hatchback");
-    // dispatch(getCars(carType));
-  };
-  const handleCoupeClick = () => {
-    SetCarType("coupe");
-    // dispatch(getCars(carType));
-  };
-
   return (
     <React.Fragment>
       <ButtonGroup className="mb-2">
-        <Button variant="secondary" onClick={handleViewAll}>
+        <Button variant="secondary" onClick={() => SetCarType("")}>
           View All
         </Button>
-        <Button variant="secondary" onClick={handleSedanClick}>
+        <Button variant="secondary" onClick={() => SetCarType("sedan")}>
           Sedan
         </Button>
-        <Button variant="secondary" onClick={handleSUVClick}>
+        <Button variant="secondary" onClick={() => SetCarType("SUV")}>
           SUV
         </Button>
-        <Button variant="secondary" onClick={handleHatchbackClick}>
+        <Button variant="secondary" onClick={() => SetCarType("hatchback")}>
           Hatchback
         </Button>
-        <Button variant="secondary" onClick={handleCoupeClick}>
+        <Button variant="secondary" onClick={() => SetCarType("coupe")}>
           Coupe
         </Button>
       </ButtonGroup>
