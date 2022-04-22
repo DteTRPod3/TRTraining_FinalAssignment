@@ -11,7 +11,7 @@ function Searchbar() {
 
   return (
     <div className="searchbar">
-      <h2>FIND YOUR DREAM CAR</h2>
+      <h1>FIND YOUR DREAM CAR</h1>
       <div className="textbox-div">
         <Form.Control
           id="searchTextBox"
