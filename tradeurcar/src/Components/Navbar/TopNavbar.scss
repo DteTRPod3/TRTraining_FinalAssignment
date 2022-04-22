@@ -8,7 +8,7 @@
   align-items: baseline;
   margin-left: 2%;
   margin-right: auto;
-  h4 {
+  h5 {
     background-color: darkcyan;
     padding: 5%;
     border: 0.1rem solid white;
@@ -18,6 +18,7 @@
     font-style: italic;
   }
   p {
+    align-items: baseline;
     font-size: large;
     font-weight: 600;
     font-family: "Courier New", Courier, monospace;
