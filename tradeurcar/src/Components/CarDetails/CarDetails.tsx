@@ -5,6 +5,7 @@ import { CarFullDetails } from "../../Models/CarFullDetails";
 import { RootState } from "../../Redux/configureStore";
 import { getCarDetails } from "../../Redux/Store/CarDetails/actions";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./CarDetails.scss";
 
 function CarDetails() {
@@ -15,6 +16,7 @@ function CarDetails() {
   ) as CarFullDetails;
 
   const [carid] = useState(id!);
+  const bookingLink = "/booking/" + carid;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function CarDetails() {
           <Col>
             <Image src={car?.specifications.image} alt="No Image Available" />
           </Col>
-          <Col>
+          <Col className="col2">
             <h6>Car Specifications</h6>
             <p>
               <text>Fuel type</text>
@@ -70,7 +72,7 @@ function CarDetails() {
           <Col>
             <Image src={car?.exterior.image} alt="No Image Available" />
           </Col>
-          <Col>
+          <Col className="col2">
             <h6>Exteriors</h6>
             <text>color</text>
             <div
@@ -97,7 +99,7 @@ function CarDetails() {
             <br />
             <Image src={car?.interior.image2} alt="No Image Available" />{" "}
           </Col>
-          <Col>
+          <Col className="col2">
             <h6>Interior finishes</h6>
             <text>color</text>
             <div
@@ -121,7 +123,9 @@ function CarDetails() {
         </Row>
         <Row className="justify-content-end">
           <Button id="btn_booknow" variant="info">
-            Book Now
+            <Link to={bookingLink} state={{ car: car }}>
+              Book Now
+            </Link>
           </Button>
         </Row>
       </Container>

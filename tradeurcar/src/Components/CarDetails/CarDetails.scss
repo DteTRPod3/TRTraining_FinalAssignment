@@ -22,9 +22,16 @@
   #btn_booknow {
     margin-right: 5%;
     width: fit-content;
+    a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 }
-
+.col2 {
+  margin-left: 10%;
+}
 h5 {
   font-style: oblique;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
