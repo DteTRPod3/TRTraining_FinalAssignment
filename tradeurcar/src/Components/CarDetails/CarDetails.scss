@@ -10,7 +10,7 @@
     font-weight: bold;
     font-size: small;
   }
-  text {
+  span {
     color: grey;
     font-size: x-small;
   }
@@ -37,3 +37,8 @@ h5 {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
+// .vertical {
+//   display: inline-block;
+//   transform: rotate(-90deg);
+// }
