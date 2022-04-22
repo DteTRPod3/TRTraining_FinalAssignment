@@ -6,7 +6,7 @@ import "./NotFound.scss";
 function NotFound() {
   return (
     <Container className="notfoundContainer">
-      <h4>Route Not Found</h4>
+      <h4>Page Not Found</h4>
       <br />
       <Link to="/home">
         <h6>Go Home</h6>
