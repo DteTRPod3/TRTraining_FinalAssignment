@@ -8,27 +8,29 @@ function Footer() {
       <div id="div1">
         <h6>Contact</h6>
         <p>
-          Request a Test Drive
+          <a href="#"> Request a Test Drive</a>
           <br />
-          Book Car
+          <a href="#"> Book Car</a>
           <br />
-          Career
+          <a href="#"> Career</a>
           <br />
-          Contact Us
+          <a href="#"> Contact Us</a>
         </p>
       </div>
       <div id="div2">
         <h6>Tradeurcars:</h6>
         <p>
           Xtremecars: 12th Floor, Vishwaroop IT Park, Sector 32, Vashi, Navi
-          Mumbai - 400705. Maharashtra, India. Phone: +91 (22) 612 800000
+          Mumbai - 400705. Maharashtra, India. <br /> Phone: +91 (22) 612 800000
         </p>
       </div>
       <div id="div3">
         <h6>Legal</h6>
         <p>
-          Legal Legal Disclaimer/Imprint <br /> Privacy Policy <br />
-          Cookie Policy
+          <a href="#"> Legal Legal Disclaimer/Imprint</a> <br />
+          <a href="#"> Privacy Policy </a>
+          <br />
+          <a href="#"> Cookie Policy</a>
         </p>
       </div>
       <div id="div4">

@@ -10,6 +10,7 @@ import "./CarDetails.scss";
 
 function CarDetails() {
   let { id } = useParams();
+  let key = 0;
 
   const car = useSelector<RootState>(
     (state) => JSON.parse(JSON.stringify(state.carDetails)).cardetails
@@ -34,35 +35,35 @@ function CarDetails() {
           <Col className="col2">
             <h6>Car Specifications</h6>
             <p>
-              <text>Fuel type</text>
+              <span>Fuel type</span>
               <br />
               {car?.specifications.fuel_type}
             </p>
             <p>
-              <text>Engine</text>
+              <span>Engine</span>
               <br />
               {car?.specifications.engine_cc}
             </p>
             <p>
-              <text>Torque</text>
+              <span>Torque</span>
               <br />
               {car?.specifications.torque}
             </p>
             <p>
-              <text>Acceleration</text>
+              <span>Acceleration</span>
               <br />
               {car?.specifications.acceleration}
             </p>
             <p>
-              <text>Top Speed</text>
+              <span>Top Speed</span>
               <br />
               {car?.specifications.top_speed}
             </p>
             <p>
-              <text>Variants</text>
+              <span>Variants</span>
               <br />
               {car?.specifications.variant.map((v) => (
-                <span>{v}, </span>
+                <li key={++key}>{v}, </li>
               ))}
             </p>
           </Col>
@@ -74,7 +75,7 @@ function CarDetails() {
           </Col>
           <Col className="col2">
             <h6>Exteriors</h6>
-            <text>color</text>
+            <span>color</span>
             <div
               style={{
                 height: "3rem",
@@ -85,7 +86,7 @@ function CarDetails() {
               }}
             />
             <p>
-              <text>Dimension</text>
+              <span>Dimension</span>
               <br />
               This car measures {car?.exterior.length} <br />
               in length and has a {car?.exterior.width} wheelbase .
@@ -101,7 +102,7 @@ function CarDetails() {
           </Col>
           <Col className="col2">
             <h6>Interior finishes</h6>
-            <text>color</text>
+            <span>color</span>
             <div
               style={{
                 height: "3rem",
@@ -111,13 +112,13 @@ function CarDetails() {
                 border: "0.1rem solid black",
               }}
             />
-            <p>
-              <ul>
-                {car?.interior.text.map((c) => (
-                  <li>{c}</li>
-                ))}
-              </ul>
-            </p>
+
+            <ul>
+              {car?.interior.text.map((c) => (
+                <li key={++key}>{<p>{c} </p>}</li>
+              ))}
+            </ul>
+
             <h6>Cost {car?.cost}</h6>
           </Col>
         </Row>
