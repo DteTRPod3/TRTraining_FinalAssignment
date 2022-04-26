@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { CarFullDetails } from "../../models/CarFullDetails";
 import { RootState } from "../../redux/configureStore";
-import { getCarDetails } from "../../redux/Store/CarDetails/actions";
+import { getCarDetails } from "../../redux/store/CarDetails/actions";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./CarDetails.scss";

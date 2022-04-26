@@ -3,7 +3,7 @@ import "./FeaturedCars.scss";
 import { RootState } from "../../redux/configureStore";
 import { useDispatch, useSelector } from "react-redux";
 import { CarDetails } from "../../models/CarDetails";
-import { getCars } from "../../redux/Store/Cars/actions";
+import { getCars } from "../../redux/store/Cars/actions";
 import CarCard from "../CarCard/CarCard";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
