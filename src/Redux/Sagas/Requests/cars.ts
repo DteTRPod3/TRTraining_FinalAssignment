@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_URL } from "../../../models/Constants";
+import { API_URL } from "../../../constants";
 
 export function requestGetCars(carType: string) {
   return axios.request({
