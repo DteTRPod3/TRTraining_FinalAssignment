@@ -35,7 +35,7 @@ function HomePage() {
         />
         <Searchbar />
       </div>
-      <FeatureCars featuredCars={cars} />
+      <FeatureCars carTypeIndex={carTypeIndex} />
     </>
   );
 }

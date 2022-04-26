@@ -1,5 +1,7 @@
 .maindiv {
   padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
   h6 {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -16,11 +18,28 @@
   flex-wrap: wrap;
 }
 
-.mb-2.btn-group {
-  display: block;
-}
+// .mb-2.btn-group {
+//   display: block;
+// }
 
 .viewLink {
+  // display: block;
   float: right;
   margin-right: 5%;
+  margin-bottom: 1%;
+  color: #000;
+  font-size: large;
+  text-decoration: none;
+}
+
+.pagination_div {
+  float: right;
+  margin-left: auto;
+  margin-right: 3%;
+  a {
+    font-weight: bold;
+    color: black;
+    background-color: orange;
+    border-color: black;
+  }
 }
