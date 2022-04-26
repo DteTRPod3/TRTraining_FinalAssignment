@@ -1,9 +1,9 @@
 import React from "react";
 import { Carousel, Image } from "react-bootstrap";
-import SEDAN from "../../Assets/SEDAN.jpg";
-import SUV from "../../Assets/SUV.jpg";
-import HATCHBACK from "../../Assets/HATCHBACK.jpg";
-import COUPE from "../../Assets/COUPE.jpg";
+import SEDAN from "../../assets/SEDAN.jpg";
+import SUV from "../../assets/SUV.jpg";
+import HATCHBACK from "../../assets/HATCHBACK.jpg";
+import COUPE from "../../assets/COUPE.jpg";
 import "./BackgroundCarousal.scss";
 
 function BackgroundCarousal() {

@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./TopNavbar.scss";
 import { Link } from "react-router-dom";
-// import carlogo from "../../Assets/car-logo.jpeg";
+// import carlogo from "../../assets/car-logo.jpeg";
 
 function TopNavbar() {
   return (

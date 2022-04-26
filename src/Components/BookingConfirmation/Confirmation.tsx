@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
-import bmw1 from "../../Assets/bmwontop.jpg";
-import bmw2 from "../../Assets/BMW.jpg";
+import bmw1 from "../../assets/bmwontop.jpg";
+import bmw2 from "../../assets/BMW.jpg";
 import "./Confirmation.scss";
 import { Link } from "react-router-dom";
 
