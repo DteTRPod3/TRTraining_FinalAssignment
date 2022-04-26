@@ -1,32 +1,9 @@
-.footer {
-  position: relative;
-  bottom: 0;
-  height: 10rem;
-  width: 100%;
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-
-  div {
-    width: 20%;
-    h6 {
-      font-weight: bold;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    }
-    p {
-      font-size: small;
-      a {
-        color: white;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-    }
-    svg {
-      cursor: pointer;
-    }
-  }
+.footer--layout {
+	margin-top: 3rem;
+	a.text-white.linkStyling {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
