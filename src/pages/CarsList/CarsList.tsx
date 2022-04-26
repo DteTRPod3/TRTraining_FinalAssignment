@@ -31,7 +31,7 @@ function CarsList() {
   }, [dispatch, carType]);
 
   return (
-    <React.Fragment>
+    <>
       <ButtonGroup className="mb-2">
         <Button variant="secondary" onClick={() => SetCarType("")}>
           View All
@@ -55,7 +55,7 @@ function CarsList() {
           <CarCard key={car.id} car={car} />
         ))}
       </Container>
-    </React.Fragment>
+    </>
   );
 }
 

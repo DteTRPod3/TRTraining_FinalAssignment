@@ -5,11 +5,11 @@ import Searchbar from "../../components/Searchbar/Searchbar";
 
 function HomePage() {
   return (
-    <React.Fragment>
-      <BackgroundCarousal></BackgroundCarousal>
-      <Searchbar></Searchbar>
-      <FeatureCars></FeatureCars>
-    </React.Fragment>
+    <>
+      <BackgroundCarousal/>
+      <Searchbar/>
+      <FeatureCars/>
+    </>
   );
 }
 
