@@ -6,11 +6,11 @@ import TopNavbar from "./components/Navbar/TopNavbar";
 
 function App() {
   return (
-    <React.Fragment>
-      <TopNavbar></TopNavbar>
+    <>
+      <TopNavbar/>
       <RouterComponent />
-      <Footer></Footer>
-    </React.Fragment>
+      <Footer/>
+    </>
   );
 }
 
