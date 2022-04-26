@@ -1,5 +1,5 @@
 import { SET_CARS } from "./actionType";
-import { CarDetails } from "../../../Models/CarDetails";
+import { CarDetails } from "../../../models/CarDetails";
 
 const initialState: CarDetails[] = [];
 

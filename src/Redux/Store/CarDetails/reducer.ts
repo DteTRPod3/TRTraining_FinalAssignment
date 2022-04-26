@@ -1,4 +1,4 @@
-import { CarFullDetails } from "../../../Models/CarFullDetails";
+import { CarFullDetails } from "../../../models/CarFullDetails";
 import { SET_CAR_DETAILS } from "./actionType";
 
 const initialState: CarFullDetails = {

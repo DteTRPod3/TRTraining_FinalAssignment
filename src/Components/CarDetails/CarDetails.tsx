@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { CarFullDetails } from "../../Models/CarFullDetails";
+import { CarFullDetails } from "../../models/CarFullDetails";
 import { RootState } from "../../Redux/configureStore";
 import { getCarDetails } from "../../Redux/Store/CarDetails/actions";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";

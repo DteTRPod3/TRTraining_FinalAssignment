@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Image, Button } from "react-bootstrap";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
-import { CarFullDetails } from "../../Models/CarFullDetails";
+import { CarFullDetails } from "../../models/CarFullDetails";
 import "./Booking.scss";
 
 function Booking() {

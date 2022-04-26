@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CarDetails } from "../../Models/CarDetails";
+import { CarDetails } from "../../models/CarDetails";
 import { RootState } from "../../Redux/configureStore";
 import { getCars } from "../../Redux/Store/Cars/actions";
 import CarCard from "../CarCard/CarCard";

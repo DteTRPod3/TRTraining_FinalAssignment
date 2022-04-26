@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./FeaturedCars.scss";
 import { RootState } from "../../Redux/configureStore";
 import { useDispatch, useSelector } from "react-redux";
-import { CarDetails } from "../../Models/CarDetails";
+import { CarDetails } from "../../models/CarDetails";
 import { getCars } from "../../Redux/Store/Cars/actions";
 import CarCard from "../CarCard/CarCard";
 import { Button, ButtonGroup } from "react-bootstrap";

@@ -1,4 +1,4 @@
-import { CarDetails } from "../../../Models/CarDetails";
+import { CarDetails } from "../../../models/CarDetails";
 import { GET_CARS, SET_CARS } from "./actionType";
 
 export const getCars = (carType: string) => {
