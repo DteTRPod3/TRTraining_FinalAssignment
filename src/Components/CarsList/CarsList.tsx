@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CarDetails } from "../../models/CarDetails";
-import { RootState } from "../../Redux/configureStore";
-import { getCars } from "../../Redux/Store/Cars/actions";
+import { RootState } from "../../redux/configureStore";
+import { getCars } from "../../redux/Store/Cars/actions";
 import CarCard from "../CarCard/CarCard";
 import "./CarsList.scss";
 import { Button, ButtonGroup, Container } from "react-bootstrap";
