@@ -2,12 +2,9 @@ import { Button, Container, Form, Card } from "react-bootstrap";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./TestDrive.scss";
+import { constants } from "../../constants";
 function TestDrive() {
   let navigate = useNavigate();
-  const [mobileValid, setMobileValid] = useState(false);
-  const [emailValid,setEmailValid] = useState(false);
-  var pattern = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-  let emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = (event: any) => {
@@ -20,19 +17,6 @@ function TestDrive() {
     setValidated(true);
   };
 
-  const handleChange = (event: any) => {
-    const {name,value} = event.target
-    if(name==="contact"){
-        if (!(!value || pattern.test(value) === false)) {
-            setMobileValid(value);
-          }
-    }
-    else if(name==="email"){
-        if (!(!value || emailPattern.test(value) === false)) {
-            setEmailValid(true);
-          }
-    }
-  };
 
   return (
     <>
@@ -59,11 +43,10 @@ function TestDrive() {
               <Form.Group className="mb-3" controlId="formGroupName">
                 <Form.Label>Mobile Number</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="tel"
                   placeholder="Enter contact..."
                   required
-                  pattern="[6-9]{1}[0-9]{9}"
-                  onChange={handleChange}
+                  pattern={constants.contactpattern}
                   name="contact"
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -89,12 +72,11 @@ function TestDrive() {
               <Form.Group className="mb-3" controlId="formGroupName">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="email"
                   placeholder="Enter email..."
                   required
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  pattern={constants.emailpattern}
                   name="email"
-                  onChange={handleChange}
                 />
                 <Form.Control.Feedback type="valid">
                   Looks good!

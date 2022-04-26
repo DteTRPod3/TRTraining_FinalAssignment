@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEventHandler } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Booking from "../../pages/Booking/Booking";
 import Confirmation from "../../pages/BookingConfirmation/Confirmation";
@@ -9,9 +9,6 @@ import Contact from "../../pages/Contact/Contact";
 import HomePage from "../../pages/LandingPage/HomePage";
 import NotFound from "../../pages/NotFound/NotFound";
 import TestDrive from "../../pages/TestDrive/TestDrive";
-import CarsList from "../../pages/CarsList/CarsList";
-import HomePage from "../../pages/LandingPage/HomePage";
-import NotFound from "../../pages/NotFound/NotFound";
 
 function RouterComponent() {
   return (
@@ -20,13 +17,12 @@ function RouterComponent() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/cars" element={<CarsList />} />
-        <Route path="/cardetails/:id" element={<CarDetails />} />
+        <Route path="/car_details/:id" element={<CarDetails />} />
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/booking_confirmation" element={<Confirmation />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/testdrive" element={<TestDrive />} />
-        <Route path="/page_notfound" element={<NotFound />} />
+        <Route path="/test_drive" element={<TestDrive />} />
         <Route path="*" element={<Navigate to="/page_notfound" />} />
         DefaultRoute
       </Routes>

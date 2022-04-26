@@ -14,7 +14,7 @@ function Footer() {
                 <h5 data-testid="contact">Contact</h5>
                 <ul className="list-unstyled mb-0">
                   <li>
-                    <Link to="/testdrive" className="text-white linkStyling">
+                    <Link to="/test_drive" className="text-white linkStyling">
                       Request a Test Drive
                     </Link>
                   </li>
@@ -37,11 +37,11 @@ function Footer() {
               </div>
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0 text-left">
                 <h5>Xtremecars</h5>
-                <p>
+                <address>
                   12th Floor, Vishwaroop IT Park, Sector 32, Vashi, Navi Mumbai
                   - 400705. Maharashtra, India.
-                </p>
-                <p>Phone: +91 (22) 612 800000</p>
+                </address>
+                <a href="tel:+13115552368" className="formatLink">Phone :- (311) 555-2368</a>
               </div>
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0 text-left">
                 <h5>Legal</h5>
