@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import RouterComponent from "./Components/RounterComponent/RouterComponent";
-import Footer from "./Components/Footer/Footer";
-import TopNavbar from "./Components/Navbar/TopNavbar";
+import RouterComponent from "./components/RounterComponent/RouterComponent";
+import Footer from "./components/Footer/Footer";
+import TopNavbar from "./components/Navbar/TopNavbar";
 
 function App() {
   return (
