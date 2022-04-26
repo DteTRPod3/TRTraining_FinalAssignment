@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BackgroundCarousal from "../../components/Carousal/BackgroundCarousal";
+import BackgroundCarousel from "../../components/Carousel/BackgroundCarousel";
 import CarTypeBar from "../../components/CarTypeBar/CarTypeBar";
 import FeatureCars from "../../components/FeatureCars/FeaturedCars";
 import Searchbar from "../../components/Searchbar/Searchbar";
 import { CarDetails } from "../../models/CarDetails";
+import { carTypeList } from "../../models/CarType";
 import { RootState } from "../../redux/configureStore";
 import { getCars } from "../../redux/store/cars/actions";
 import "./HomePage.scss"
@@ -12,23 +13,15 @@ import "./HomePage.scss"
 function HomePage() {
   
   const dispatch = useDispatch();
-  const [carType, setCarType] = useState("sedan");
+  const [carTypeIndex, setCarTypeIndex] = useState(0);
 
-  const dispatchCarsByType = (carType: string) => {
-    if (carType === "sedan") {
-      setCarType("sedan");
-    } else if (carType === "SUV") {
-      setCarType("SUV");
-    } else if (carType === "hatchback") {
-      setCarType("hatchback");
-    } else {
-      setCarType("");
-    }
+  const dispatchCarsByType = (carTypeIndex: number) => {
+    setCarTypeIndex(carTypeIndex);
   };
 
   useEffect(() => {
-    dispatch(getCars(carType));
-  }, [carType]);
+    dispatch(getCars(carTypeList[carTypeIndex]));
+  }, [carTypeIndex]);
 
   const cars: CarDetails[] = useSelector(
       (state: RootState) => JSON.parse(JSON.stringify(state.cars)).cars
@@ -36,9 +29,9 @@ function HomePage() {
 
   return (
     <>
-      <CarTypeBar carType={carType} dispatchCarsByType={dispatchCarsByType} />
-      <div className="carasouel">
-        <BackgroundCarousal carType={carType} dispatchCarsByType={dispatchCarsByType} />
+      <CarTypeBar carTypeIndex={carTypeIndex} dispatchCarsByType={dispatchCarsByType} />
+      <div className="carousel">
+        <BackgroundCarousel carTypeIndex={carTypeIndex} dispatchCarsByType={dispatchCarsByType} />
         <Searchbar />
       </div>
       <FeatureCars featuredCars={cars}/>
@@ -47,7 +40,4 @@ function HomePage() {
 }
 
 export default HomePage;
-function dispatch(arg0: { type: string; carType: string; }) {
-  throw new Error("Function not implemented.");
-}
 

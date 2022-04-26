@@ -1,22 +1,22 @@
 import React from "react";
 import "./CarTypeBar.scss";
-const CarTypeBar = ({ carType, dispatchCarsByType }: any) => {
+const CarTypeBar = ({ carTypeIndex, dispatchCarsByType }: any) => {
   return (
     <div className="carTypeBar">
-      <div className={carType === "sedan" ? "activeCarType" : ""}>
+      <div className={carTypeIndex === 0 ? "activeCarType" : ""}>
         <h4
           onClick={() => {
-            dispatchCarsByType("sedan");
+            dispatchCarsByType(0);
           }}
         >
-          Sedan
+          Sedan]
         </h4>
       </div>
 
-      <div className={carType === "SUV" ? "activeCarType" : ""}>
+      <div className={carTypeIndex === 1 ? "activeCarType" : ""}>
         <h4
           onClick={() => {
-            dispatchCarsByType("SUV");
+            dispatchCarsByType(1);
           }}
           className="itemBorder"
         >
@@ -24,10 +24,10 @@ const CarTypeBar = ({ carType, dispatchCarsByType }: any) => {
         </h4>
       </div>
 
-      <div className={carType === "hatchback" ? "activeCarType" : ""}>
+      <div className={carTypeIndex === 2 ? "activeCarType" : ""}>
         <h4
           onClick={() => {
-            dispatchCarsByType("hatchback");
+            dispatchCarsByType(2);
           }}
           className="itemBorder"
         >
