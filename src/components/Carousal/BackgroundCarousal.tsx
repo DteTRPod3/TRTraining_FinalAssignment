@@ -1,13 +1,14 @@
 import React from "react";
 import { Carousel, Image } from "react-bootstrap";
+import HATCHBACK from "../../assets/HATCHBACK.jpg";
+import CAROUSALLEFTICON from "../../assets/left.svg";
+import CAROUSALRIGHTICON from "../../assets/right.svg";
 import SEDAN from "../../assets/SEDAN.jpg";
 import SUV from "../../assets/SUV.jpg";
-import HATCHBACK from "../../assets/HATCHBACK.jpg";
 import "./BackgroundCarousal.scss";
 
 function BackgroundCarousal({ carType, dispatchCarsByType }: any) {
-
-  let index = ((carType === "sedan") ? 0 : ((carType === "SUV") ? 1 : 2)) || 0;
+  let index = (carType === "sedan" ? 0 : carType === "SUV" ? 1 : 2) || 0;
 
   let onSelectHandler = (selectedIndex: number) => {
     switch (selectedIndex) {
@@ -29,7 +30,13 @@ function BackgroundCarousal({ carType, dispatchCarsByType }: any) {
   return (
     <div className="main-div">
       {/* <div className="inside-div"></div> */}
-      <Carousel activeIndex={index} onSelect={onSelectHandler} interval={8000}>
+      <Carousel
+        activeIndex={index}
+        onSelect={onSelectHandler}
+        interval={8000}
+        nextIcon={<img src={CAROUSALRIGHTICON} alt="next" />}
+        prevIcon={<img src={CAROUSALLEFTICON} alt="prev" />}
+      >
         <Carousel.Item className="content">
           <Image className="c-image" src={SEDAN} alt="First slide" />
           {/* <Carousel.Caption></Carousel.Caption> */}
