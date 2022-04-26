@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,OAAO,EAAE,KAAK;EAEd,gBAAgB,EAAE,8BAA8B;EAChD,OAAO,EAAE,qBAAqB;EAC9B,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,QAAQ,CAAC;EACP,cAAc,EAAE,MAAM;CACvB;;AAED,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,IAAI;EACZ,gBAAgB,EAAE,+BAA+B;CAClD;;AACD,AAAA,QAAQ,CAAC;EACP,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "BackgroundCarousal.scss"
+    ],
+    "names": [],
+    "file": "BackgroundCarousal.css"
+}

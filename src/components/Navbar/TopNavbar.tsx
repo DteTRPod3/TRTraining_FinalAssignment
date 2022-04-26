@@ -2,24 +2,36 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./TopNavbar.scss";
 import { Link } from "react-router-dom";
-// import carlogo from "../../assets/car-logo.jpeg";
+import Logo from "../../assets/logo.svg";
 
 function TopNavbar() {
   return (
-    <Navbar bg="black" variant="dark" className="nav-container" sticky="top">
-      <Navbar.Brand href="/" className="logo">
-        {/* <img src={carlogo} height="100%" width="30" alt="" /> */}
-        <h5>TR</h5>
-        <p>adeurcar</p>
-      </Navbar.Brand>
-      <Nav className="container2">
-        <Link to="/cars" className="nav-link">
-          New Cars
+    <div className="layout--header--main--container">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark layout--header">
+        <Link to={"/"} className="navbar-brand layout--header--logo">
+          <img src={Logo} alt="Logo" />
+          XTREME CARS
         </Link>
-        <Nav.Link>Used Cars</Nav.Link>
-        <Nav.Link id="profile">My Profile</Nav.Link>
-      </Nav>
-    </Navbar>
+        <div className="collapse navbar-collapse layout--header--container">
+          <ul className="navbar-nav mr-auto layout--header--lists">
+            <li className="nav-item layout--header--list">
+              <Link to="/cars" className="nav-link layout--header--link">
+                ALL CARS
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="collapse navbar-collapse layout--header--container">
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item layout--header--list">
+              <Link to="" className="nav-link layout--header--link">
+                MY PROFILE
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   );
 }
 

@@ -1,0 +1,35 @@
+.carsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.carsContainer #nocars {
+  height: 19.9rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: x-large;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: bold;
+  font-style: italic;
+  color: blueviolet;
+}
+
+.mb-2.btn-group {
+  display: block;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.mb-2.btn-group button:focus {
+  background-color: black;
+}
+/*# sourceMappingURL=CarsList.css.map */

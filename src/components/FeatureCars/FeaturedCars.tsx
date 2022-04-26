@@ -16,6 +16,18 @@ function FeatureCars() {
     (state: RootState) => JSON.parse(JSON.stringify(state.cars)).cars
   );
 
+  // const [time, settime] = useState<number>(0);
+
+  // const timer = () => {
+  //   setTimeout(() => {
+  //     if (time < cars.length) {
+  //       settime(time + 1);
+  //     } else {
+  //       settime(0);
+  //     }
+  //   }, 1000);
+  // };
+
   useEffect(() => {
     dispatch(getCars(""));
   }, [dispatch]);
@@ -27,7 +39,7 @@ function FeatureCars() {
   return (
     <div className="maindiv">
       <h6>Featured Cars</h6>
-      <ButtonGroup className="mb-2">
+      {/* <ButtonGroup className="mb-2">
         <Button variant="dark">Popular</Button>
         <Button variant="dark" disabled>
           Just Launched
@@ -39,7 +51,15 @@ function FeatureCars() {
           View All
           <ArrowRight />
         </Link>
-      </ButtonGroup>
+      </ButtonGroup> */}
+
+      <div className="viewallbtn">
+        <Link to="/cars">
+          View All
+          <ArrowRight />
+        </Link>
+      </div>
+
       <div className="cardslist">
         {featuredCars?.map((car) => (
           <CarCard key={car.id} car={car} />
