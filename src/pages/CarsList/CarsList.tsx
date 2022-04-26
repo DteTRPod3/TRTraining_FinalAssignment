@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CarDetails } from "../../models/CarDetails";
 import { RootState } from "../../redux/configureStore";
 import { getCars } from "../../redux/store/cars/actions";
-import CarCard from "../CarCard/CarCard";
+import CarCard from "../../components/CarCard/CarCard";
 import "./CarsList.scss";
 import { Button, ButtonGroup, Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";

@@ -1,7 +1,7 @@
 import React from "react";
-import BackgroundCarousal from "../Carousal/BackgroundCarousal";
-import FeatureCars from "../FeatureCars/FeaturedCars";
-import Searchbar from "../Searchbar/Searchbar";
+import BackgroundCarousal from "../../components/Carousal/BackgroundCarousal";
+import FeatureCars from "../../components/FeatureCars/FeaturedCars";
+import Searchbar from "../../components/Searchbar/Searchbar";
 
 function HomePage() {
   return (

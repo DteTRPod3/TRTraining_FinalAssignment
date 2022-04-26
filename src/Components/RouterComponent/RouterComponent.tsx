@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Booking from "../Booking/Booking";
-import Confirmation from "../BookingConfirmation/Confirmation";
-import CarDetails from "../CarDetails/CarDetails";
-import CarsList from "../CarsList/CarsList";
-import HomePage from "../LandingPage/HomePage";
-import NotFound from "../NotFound/NotFound";
+import Booking from "../../pages/Booking/Booking";
+import Confirmation from "../../pages/BookingConfirmation/Confirmation";
+import CarDetails from "../../pages/CarDetails/CarDetails";
+import CarsList from "../../pages/CarsList/CarsList";
+import HomePage from "../../pages/LandingPage/HomePage";
+import NotFound from "../../pages/NotFound/NotFound";
 
 function RouterComponent() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import RouterComponent from "./components/RounterComponent/RouterComponent";
+import RouterComponent from "./components/RouterComponent/RouterComponent";
 import Footer from "./components/Footer/Footer";
 import TopNavbar from "./components/Navbar/TopNavbar";
 
