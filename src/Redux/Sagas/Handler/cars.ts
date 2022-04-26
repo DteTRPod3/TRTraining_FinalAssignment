@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects";
-import { requestGetCarDetails, requestGetCars } from "../Requests/cars";
-import { setCars } from "../../store/Cars/actions";
-import { setCarDetails } from "../../store/CarDetails/actions";
+import { requestGetCarDetails, requestGetCars } from "../requests/cars";
+import { setCars } from "../../store/cars/actions";
+import { setCarDetails } from "../../store/carDetails/actions";
 
 export function* handleGetCars(action: any): any {
   try {

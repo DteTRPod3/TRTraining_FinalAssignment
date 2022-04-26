@@ -1,8 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { watcherSaga } from "./Sagas/rootSaga";
-import CarDetailsReducer from "./store/CarDetails/reducer";
-import CarsReducer from "./store/Cars/reducer";
+import { watcherSaga } from "./sagas/rootSaga";
+import CarDetailsReducer from "./store/carDetails/reducer";
+import CarsReducer from "./store/cars/reducer";
 
 declare global {
   interface Window {
