@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./FeaturedCars.scss";
-import { RootState } from "../../redux/configureStore";
-import { useDispatch, useSelector } from "react-redux";
 import { CarDetails } from "../../models/CarDetails";
-import { getCars } from "../../redux/store/cars/actions";
 import CarCard from "../CarCard/CarCard";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
-function FeatureCars() {
-  const dispatch = useDispatch();
+  interface IProps {
+    featuredCars: CarDetails[];
+  }
 
-  const cars: CarDetails[] = useSelector(
-    (state: RootState) => JSON.parse(JSON.stringify(state.cars)).cars
-  );
+function FeatureCars(props: IProps) {
 
-  useEffect(() => {
-    dispatch(getCars(""));
-  }, [dispatch]);
-
+  const cars = props.featuredCars;
   const featuredCars = cars
     ?.sort(() => Math.random() - Math.random())
     .slice(0, 4);
@@ -41,7 +34,7 @@ function FeatureCars() {
         </Link>
       </ButtonGroup>
       <div className="cardslist">
-        {featuredCars?.map((car) => (
+        {featuredCars?.map((car: CarDetails) => (
           <CarCard key={car.id} car={car} />
         ))}
       </div>
