@@ -15,7 +15,11 @@ function TopNavbar() {
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto layout--header--lists">
             <li className="nav-item layout--header--list">
-              <Link to="/cars" className="nav-link layout--header--link">
+              <Link
+                to="/cars"
+                className="nav-link layout--header--link"
+                data-testid="AllcarsLink"
+              >
                 ALL CARS
               </Link>
             </li>
