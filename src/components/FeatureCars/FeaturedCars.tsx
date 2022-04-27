@@ -9,12 +9,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCars } from "../../redux/store/cars/actions";
 import { carTypeList } from "../../models/CarType";
 
-interface IProps {
-  carTypeIndex: number;
-  // featuredCars: CarDetails[];
-}
+// interface IProps {
+//   carTypeIndex: number;
+// }
 
-function FeatureCars(props: IProps) {
+function FeatureCars(props: any) {
   const { carTypeIndex } = props;
   const dispatch = useDispatch();
   const [currentPage, setCurrrentPage] = useState<number>(0);
