@@ -9,9 +9,6 @@
     margin-bottom: 2rem;
     font-weight: bold;
   }
-  button {
-    width: 10rem;
-  }
 }
 
 .cardslist {
@@ -34,11 +31,7 @@
   float: right;
   margin-left: auto;
   margin-right: 3%;
-  a {
-    font-weight: bold;
-    color: $black;
-    border-color: $black;
-  }
+  margin-top: 2%;
 }
 
 .viewallbtn {
@@ -47,4 +40,19 @@
     margin-bottom: 5rem;
     display: block;
   }
+}
+
+.arrow-btn {
+  width: fit-content;
+  background-color: white;
+  border: 0.1rem solid $black;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+
+.next-arrow {
+  transform: rotate(270deg);
+}
+.prev-arrow {
+  transform: rotate(90deg);
 }
