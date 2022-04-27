@@ -37,7 +37,11 @@ describe("Footer Link Redirection", () => {
     await fireEvent.click(contactLink)
 
     act(()=>{
-        render(<Contact></Contact>)
+        render(
+          <MemoryRouter>
+            <Contact/>
+          </MemoryRouter>
+        )
     })
     
     expect(screen.getByText(/call us/i)).toBeInTheDocument()
@@ -64,7 +68,11 @@ describe("Footer Link Redirection", () => {
     await fireEvent.click(careerLink)
 
     act(()=>{
-        render(<Careers></Careers>)
+        render(
+          <MemoryRouter>
+            <Careers/>
+          </MemoryRouter>
+        )
     })
     
     expect(screen.getByText(/job openings for you/i)).toBeInTheDocument()
@@ -93,7 +101,7 @@ describe("Footer Link Redirection", () => {
     act(()=>{
         render(
         <MemoryRouter>
-        <TestDrive></TestDrive>
+          <TestDrive/>
         </MemoryRouter>)
     })
     
