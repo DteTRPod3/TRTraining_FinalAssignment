@@ -1,9 +1,12 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
-import Contact from "../Contact";
+import React from "react";
 import { MemoryRouter } from "react-router-dom";
-
+import Contact from "../Contact";
+window.scrollTo = jest.fn();
 describe("Contact Page tests", () => {
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
   it("renders the contact page", () => {
     render(
       <MemoryRouter>

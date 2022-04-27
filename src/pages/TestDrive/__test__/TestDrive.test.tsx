@@ -1,11 +1,14 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
-import TestDrive from "../TestDrive";
-import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 import { act } from "react-dom/test-utils";
-
+import { MemoryRouter } from "react-router-dom";
+import TestDrive from "../TestDrive";
+window.scrollTo = jest.fn();
 describe("Test Drive Form", () => {
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
   it("checks for all the input fields present or not", () => {
     render(
       <MemoryRouter>
@@ -90,7 +93,7 @@ describe("Test Drive Form", () => {
   });
 
   it("checks for submit button event", () => {
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest.spyOn(window, "alert").mockImplementation(() => {});
     render(
       <MemoryRouter>
         <TestDrive></TestDrive>
@@ -115,5 +118,5 @@ describe("Test Drive Form", () => {
     act(() => {
       submitButton.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     });
-});
+  });
 });
