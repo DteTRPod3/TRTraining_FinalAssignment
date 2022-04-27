@@ -3,7 +3,7 @@ import "./CarTypeBar.scss";
 const CarTypeBar = ({ carTypeIndex, dispatchCarsByType }: any) => {
   return (
     <div className="car-type-bar">
-      <div className={carTypeIndex === 0 ? "activeCarType" : ""}>
+      <div className={carTypeIndex === 0 ? "active-car-type" : ""}>
         <div className="span-width">
           <span
             onClick={() => {
@@ -15,7 +15,7 @@ const CarTypeBar = ({ carTypeIndex, dispatchCarsByType }: any) => {
         </div>
       </div>
 
-      <div className={carTypeIndex === 1 ? "activeCarType" : ""}>
+      <div className={carTypeIndex === 1 ? "active-car-type" : ""}>
         <div className="span-width">
           <span
             onClick={() => {
@@ -28,7 +28,7 @@ const CarTypeBar = ({ carTypeIndex, dispatchCarsByType }: any) => {
         </div>
       </div>
 
-      <div className={carTypeIndex === 2 ? "activeCarType" : ""}>
+      <div className={carTypeIndex === 2 ? "active-car-type" : ""}>
         <div className="span-width">
           <span
             onClick={() => {
