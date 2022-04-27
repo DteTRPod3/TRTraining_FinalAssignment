@@ -27,6 +27,12 @@
   text-decoration: none;
 }
 
+.viewLink:hover {
+  font-weight: 400;
+  color: $black;
+  text-decoration: none;
+}
+
 .pagination_div {
   float: right;
   margin-left: auto;
@@ -34,13 +40,16 @@
   margin-top: 2%;
 }
 
-.viewallbtn {
-  link {
-    float: right;
-    margin-bottom: 5rem;
-    display: block;
-  }
-}
+// .viewallbtn {
+//   a {
+//     float: right;
+//     margin-bottom: 5rem;
+//     display: block;
+//   }
+//   a:hover {
+//     color: $black;
+//   }
+// }
 
 .arrow-btn {
   width: fit-content;

@@ -9,6 +9,7 @@ import { carTypeList } from "../../models/CarType";
 import { getCars } from "../../redux/store/cars/actions";
 import "./FeaturedCars.scss";
 import Arrow from "../../assets/Arrow Icon.svg";
+import CrossArrow from "../../assets/Arrow.svg";
 
 function FeatureCars(props: any) {
   const { carTypeIndex } = props;
@@ -75,7 +76,7 @@ function FeatureCars(props: any) {
       <div>
         <Link to="/cars" className="viewLink">
           View All{"  "}
-          <ArrowRight />
+          <img src={CrossArrow} alt="cross arrow" />
         </Link>
       </div>
       <div className="cardslist" data-testid="carlist">
