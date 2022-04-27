@@ -42,8 +42,9 @@ function FeatureCars(props: IProps) {
         page = 0;
       }
       if (page < 0) {
-        page = totalPageCount;
+        page = totalPageCount - 1;
       }
+      console.log(page);
       setCurrrentPage(Math.floor(page));
     },
     [currentPage, totalPageCount]
