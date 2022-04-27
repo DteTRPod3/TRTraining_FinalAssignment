@@ -39,7 +39,7 @@ describe("Footer Link Redirection", () => {
     act(()=>{
         render(
           <MemoryRouter>
-            <Contact></Contact>
+            <Contact/>
           </MemoryRouter>
         )
     })
