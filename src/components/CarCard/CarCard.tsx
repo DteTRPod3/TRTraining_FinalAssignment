@@ -17,7 +17,7 @@ function CarCard(car: any) {
   };
 
   return (
-    <div className="transition" onClick={redirect}>
+    <div className="transition" onClick={redirect} data-testid="card">
       <Card className="cardContainer ">
         <Card.Img
           variant="top"

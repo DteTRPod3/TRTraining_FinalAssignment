@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./FeaturedCars.scss";
-import { CarDetails } from "../../models/CarDetails";
 import CarCard from "../CarCard/CarCard";
 import { Pagination } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
@@ -62,7 +61,7 @@ function FeatureCars(props: any) {
   useEffect(() => {
     const timeout = setInterval(() => {
       handlePageChange("Increment");
-    }, 3000);
+    }, 5000);
     return () => {
       clearInterval(timeout);
     };
