@@ -41,7 +41,7 @@ function Careers() {
                 <Card.Body>
                   <Card.Title>E-MAIL</Card.Title>
                   <Card.Text>
-                    <a href="mailto:carrers@xtremecars.com" className="formatLink">
+                    <a href="mailto:carrers@xtremecars.com" className="format-link">
                       carrers@extremecars.com
                     </a>
                   </Card.Text>

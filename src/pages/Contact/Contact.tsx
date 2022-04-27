@@ -18,7 +18,7 @@ function Contact() {
               <Card.Body>
                 <Card.Title className="contact--title">CALL US</Card.Title>
                 <Card.Text className="contact--text">
-                  <a href="tel:18002003000" className="formatLink">
+                  <a href="tel:18002003000" className="format-link">
                     1800&nbsp;200&nbsp;3000 (Mon to Sat 9:30 AM to 6 PM)
                   </a>
                 </Card.Text>
@@ -28,7 +28,7 @@ function Contact() {
               <Card.Body>
                 <Card.Title className="contact--title">E-MAIL</Card.Title>
                 <Card.Text className="contact--text">
-                  <a href="mailto:support@xtremecars.com" className="formatLink">
+                  <a href="mailto:support@xtremecars.com" className="format-link">
                     support@extremecars.com
                   </a>
                 </Card.Text>
