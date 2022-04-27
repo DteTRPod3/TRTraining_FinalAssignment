@@ -1,17 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import "./FeaturedCars.scss";
-import { CarDetails } from "../../models/CarDetails";
-import CarCard from "../CarCard/CarCard";
 import { Pagination } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCars } from "../../redux/store/cars/actions";
+import { Link } from "react-router-dom";
 import { carTypeList } from "../../models/CarType";
-
-// interface IProps {
-//   carTypeIndex: number;
-// }
+import { getCars } from "../../redux/store/cars/actions";
+import CarCard from "../CarCard/CarCard";
+import "./FeaturedCars.scss";
 
 function FeatureCars(props: any) {
   const { carTypeIndex } = props;
