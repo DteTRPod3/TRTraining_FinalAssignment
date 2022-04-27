@@ -1,7 +1,13 @@
+import { useEffect } from "react";
 import { Button, Card, Col, Image, Row } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import BMWImage from "../../assets/BMW.jpg";
 import "./Contact.scss";
 function Contact() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   return (
     <>
       <div className="container">
@@ -23,7 +29,7 @@ function Contact() {
                 <Card.Title className="contact--title">E-MAIL</Card.Title>
                 <Card.Text className="contact--text">
                   <a href="mailto:support@xtremecars.com" className="formatLink">
-                    support@xtremecars.com
+                    support@extremecars.com
                   </a>
                 </Card.Text>
               </Card.Body>

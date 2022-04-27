@@ -19,7 +19,7 @@ function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="#!" className="text-white link-styling">
+                    <Link to="/cars" className="text-white link-styling">
                       Book Car
                     </Link>
                   </li>
