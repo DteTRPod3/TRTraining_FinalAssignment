@@ -33,7 +33,7 @@ function TestDrive() {
         <Modal.Header closeButton>
           <Modal.Title>Success</Modal.Title>
         </Modal.Header>
-        <Modal.Body>You have successfully registered for test drive</Modal.Body>
+        <Modal.Body>Thank you for sharing your details, we will get in touch with you within 24 hours of your request</Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
             Close
