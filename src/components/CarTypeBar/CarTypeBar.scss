@@ -1,0 +1,34 @@
+@import "../../themes/colors.scss";
+.carTypeBar {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  justify-content: center;
+  gap: 0.1rem;
+  background-color: $black;
+  color: $lightGrey;
+  display: flex;
+  span{
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .span-width{
+    width: 10rem;
+    border-bottom: 2px solid $lightGrey;
+  }
+}
+
+.activeCarType {
+  color: $white;
+  margin-top: -0.8rem;
+  span {
+    font-size: 1.5rem;
+  }
+  .span-width{
+    border-bottom: 0.25rem solid $white;
+  }
+}
+
+
+
+

@@ -2,7 +2,7 @@ import { Button, Container, Form, Card, Modal } from "react-bootstrap";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./TestDrive.scss";
-import { constants } from "../../constants";
+import { contactpattern, emailpattern } from "../../constants";
 function TestDrive() {
   let navigate = useNavigate();
   const [validated, setValidated] = useState(false);
@@ -60,7 +60,7 @@ function TestDrive() {
                   type="tel"
                   placeholder="Enter contact..."
                   required
-                  pattern={constants.contactpattern}
+                  pattern={contactpattern}
                   name="contact"
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -89,7 +89,7 @@ function TestDrive() {
                   type="email"
                   placeholder="Enter email..."
                   required
-                  pattern={constants.emailpattern}
+                  pattern={emailpattern}
                   name="email"
                 />
                 <Form.Control.Feedback type="valid">

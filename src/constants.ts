@@ -1,6 +1,5 @@
-export const API_URL = "http://localhost:8080/cars";
-export const constants = {
-    cities: [
+const API_URL = "http://localhost:8080/cars";
+const cities= [
       "Delhi",
       "Mumbai",
       "Kolkata",
@@ -12,7 +11,8 @@ export const constants = {
       "Surat",
       "Lucknow",
       "Jaipur",
-    ],
-    contactpattern:"[6-9]{1}[0-9]{9}",
-    emailpattern:"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-  };
+    ];
+const contactpattern="[6-9]{1}[0-9]{9}";
+const emailpattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+
+export {API_URL,cities,contactpattern,emailpattern}

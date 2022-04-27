@@ -23,7 +23,7 @@ function RouterComponent() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/test_drive" element={<TestDrive />} />
-        <Route path="*" element={<Navigate to="/page_notfound" />} />
+        <Route path="*" element={<NotFound />} />
         DefaultRoute
       </Routes>
     </div>
