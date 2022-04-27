@@ -12,9 +12,9 @@ function TestDrive() {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === true) {
+      setValidated(true);
       handleShow()
     }
-    setValidated(true);
   };
 
   const handleClose = () => setShow(false);
@@ -100,7 +100,7 @@ function TestDrive() {
                 </Form.Control.Feedback>
               </Form.Group>
               <br></br>
-              <Button variant="danger" type="submit" disabled={!validated}>
+              <Button variant="danger" type="submit">
                 Submit
               </Button>
             </Form>
