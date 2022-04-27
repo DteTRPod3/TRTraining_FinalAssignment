@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import crossIcon from "../../assets/crossIcon.svg";
 import BackgroundCarousel from "../../components/Carousel/BackgroundCarousel";
 import CarTypeBar from "../../components/CarTypeBar/CarTypeBar";
 import FeatureCars from "../../components/FeatureCars/FeaturedCars";
@@ -24,6 +25,12 @@ function HomePage() {
           dispatchCarsByType={dispatchCarsByType}
         />
         <Searchbar />
+        <div className="cross-img-left">
+          <img src={crossIcon} alt="cross-icon-right" />
+        </div>
+        <div className="cross-img-right">
+          <img src={crossIcon} alt="cross-icon-right" />
+        </div>
       </div>
       <FeatureCars carTypeIndex={carTypeIndex} />
     </>

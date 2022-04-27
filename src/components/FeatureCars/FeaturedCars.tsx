@@ -3,10 +3,11 @@ import "./FeaturedCars.scss";
 import CarCard from "../CarCard/CarCard";
 import { Pagination } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCars } from "../../redux/store/cars/actions";
+import { Link } from "react-router-dom";
 import { carTypeList } from "../../models/CarType";
+import { getCars } from "../../redux/store/cars/actions";
+import "./FeaturedCars.scss";
 
 function FeatureCars(props: any) {
   const { carTypeIndex } = props;
