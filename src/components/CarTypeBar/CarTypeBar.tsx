@@ -2,7 +2,7 @@ import React from "react";
 import "./CarTypeBar.scss";
 const CarTypeBar = ({ carTypeIndex, dispatchCarsByType }: any) => {
   return (
-    <div className="carTypeBar">
+    <div className="car-type-bar">
       <div className={carTypeIndex === 0 ? "activeCarType" : ""}>
         <div className="span-width">
           <span
