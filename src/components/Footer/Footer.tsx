@@ -41,7 +41,7 @@ function Footer() {
                   12th Floor, Vishwaroop IT Park, Sector 32, Vashi, Navi Mumbai
                   - 400705. Maharashtra, India.
                 </address>
-                <a href="tel:+13115552368" className="formatLink">Phone :- (311) 555-2368</a>
+                <a href="tel:+13115552368" className="format-link">Phone :- (311) 555-2368</a>
               </div>
               <div className="col-lg-3 col-md-6 mb-4 mb-md-0 text-left">
                 <h5>Legal</h5>
