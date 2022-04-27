@@ -44,7 +44,6 @@ function FeatureCars(props: IProps) {
       if (page < 0) {
         page = totalPageCount - 1;
       }
-      console.log(page);
       setCurrrentPage(Math.floor(page));
     },
     [currentPage, totalPageCount]
@@ -76,7 +75,7 @@ function FeatureCars(props: IProps) {
 
   return (
     <div className="maindiv">
-      <h6>Featured Cars</h6>
+      <h5>Featured Cars</h5>
       <div>
         <Link to="/cars" className="viewLink">
           View All{"  "}
