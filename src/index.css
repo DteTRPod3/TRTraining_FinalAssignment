@@ -1,25 +1,13 @@
 *,*::after,*::before{
-
   box-sizing: border-box;
-
   margin: 0;
-
   font-family: 'Roboto', sans-serif;
-
 }
-
 .formatLink{
-
   text-decoration: none;
-
   color: inherit;
-
 }
-
 .formatLink:hover{
-
   color: inherit;
-
   text-decoration: underline;
-
 }
