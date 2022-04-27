@@ -70,7 +70,7 @@ describe("Footer Link Redirection", () => {
     act(()=>{
         render(
           <MemoryRouter>
-            <Careers></Careers>
+            <Careers/>
           </MemoryRouter>
         )
     })
@@ -101,7 +101,7 @@ describe("Footer Link Redirection", () => {
     act(()=>{
         render(
         <MemoryRouter>
-          <TestDrive></TestDrive>
+          <TestDrive/>
         </MemoryRouter>)
     })
     
