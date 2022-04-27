@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./CarCard.scss";
 import { Card } from "react-bootstrap";
-import { ArrowRight } from "react-bootstrap-icons";
 import Arrow from "../../assets/Arrow.svg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function CarCard(car: any) {
   const [carDetails] = useState(JSON.parse(JSON.stringify(car)).car);
   const [id] = useState(carDetails.id);
-  const detailsPageLink = "/cardetails/" + id;
+  const detailsPageLink = "/car_details/" + id;
 
   const navigate = useNavigate();
   const redirect = () => {
