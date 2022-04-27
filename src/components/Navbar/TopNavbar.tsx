@@ -9,13 +9,17 @@ function TopNavbar() {
     <div className="layout--header--main--container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark layout--header">
         <Link to={"/"} className="navbar-brand layout--header--logo">
-          <img src={Logo} alt="Logo" />
+          <img src={Logo} alt="Xtreme cars logo" />
           XTREME CARS
         </Link>
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto layout--header--lists">
             <li className="nav-item layout--header--list">
-              <Link to="/cars" className="nav-link layout--header--link">
+              <Link
+                to="/cars"
+                className="nav-link layout--header--link"
+                data-testid="AllcarsLink"
+              >
                 ALL CARS
               </Link>
             </li>
