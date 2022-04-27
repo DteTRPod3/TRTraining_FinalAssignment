@@ -26,10 +26,10 @@ function HomePage() {
         />
         <Searchbar />
         <div className="cross-img-left">
-          <img src={crossIcon} alt="" />
+          <img src={crossIcon} alt="cross-icon-right" />
         </div>
         <div className="cross-img-right">
-          <img src={crossIcon} alt="" />
+          <img src={crossIcon} alt="cross-icon-right" />
         </div>
       </div>
       <FeatureCars carTypeIndex={carTypeIndex} />
