@@ -88,4 +88,34 @@ describe("Test Drive Form", () => {
       "manas@gmail.com"
     );
   });
+
+  it("checks for submit button event", () => {
+    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    render(
+      <MemoryRouter>
+        <TestDrive></TestDrive>
+      </MemoryRouter>
+    );
+    const inputName = screen.getByPlaceholderText(/enter name\.\.\./i);
+    const inputContact = screen.getByPlaceholderText(/enter contact\.\.\./i);
+    const inputAddress = screen.getByPlaceholderText(/enter address\.\.\./i);
+    const inputEmail = screen.getByPlaceholderText(/enter email\.\.\./i);
+
+    act(() => {
+      userEvent.type(inputName, "Manas");
+      userEvent.type(inputContact, "1111111111");
+      userEvent.type(inputAddress, "India");
+      userEvent.type(inputEmail, "manas@gmail.com");
+    });
+
+    const submitButton = screen.getByRole("button", {
+      name: /submit/i,
+    });
+
+    act(() => {
+      submitButton.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+    });
+    expect(screen.getByText(/you have successfully registered for test drive/i)).toBeInTheDocument()
+    
+});
 });

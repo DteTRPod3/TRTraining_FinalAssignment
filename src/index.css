@@ -3,11 +3,11 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
-.formatLink{
+.format-link{
   text-decoration: none;
   color: inherit;
 }
-.formatLink:hover{
+.format-link:hover{
   color: inherit;
   text-decoration: underline;
 }

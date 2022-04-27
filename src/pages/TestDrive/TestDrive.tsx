@@ -1,10 +1,16 @@
 import { Button, Container, Form, Card, Modal } from "react-bootstrap";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TestDrive.scss";
 import { contactpattern, emailpattern } from "../../constants";
 function TestDrive() {
   let navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
 
@@ -12,12 +18,12 @@ function TestDrive() {
     const form = event.currentTarget;
     event.preventDefault();
     if (form.checkValidity() === true) {
-      setValidated(true);
       handleShow()
     }
+    setValidated(true);
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {setShow(false);navigate("/")}
   const handleShow = () => setShow(true);
 
 
@@ -38,7 +44,7 @@ function TestDrive() {
         <h5>Test Drive Form</h5>
         <Card>
           <Container>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form noValidate validated={validated} onSubmit={handleSubmit} id='testDriveForm'>
               <Form.Group className="mb-3" controlId="formGroupName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
