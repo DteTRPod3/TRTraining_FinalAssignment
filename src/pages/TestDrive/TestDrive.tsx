@@ -1,4 +1,4 @@
-import { Button, Container, Form, Card } from "react-bootstrap";
+import { Button, Container, Form, Card, Modal } from "react-bootstrap";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./TestDrive.scss";
@@ -6,20 +6,34 @@ import { constants } from "../../constants";
 function TestDrive() {
   let navigate = useNavigate();
   const [validated, setValidated] = useState(false);
+  const [show, setShow] = useState(false);
 
   const handleSubmit = (event: any) => {
     const form = event.currentTarget;
     event.preventDefault();
-    event.stopPropagation();
     if (form.checkValidity() === true) {
-      console.log("True")
+      handleShow()
     }
     setValidated(true);
   };
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   return (
     <>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You have successfully registered for test drive</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
       <Container className="testDrive--main--container">
         <h5>Test Drive Form</h5>
         <Card>
@@ -86,7 +100,7 @@ function TestDrive() {
                 </Form.Control.Feedback>
               </Form.Group>
               <br></br>
-              <Button variant="danger" type="submit">
+              <Button variant="danger" type="submit" disabled={!validated}>
                 Submit
               </Button>
             </Form>

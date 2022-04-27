@@ -5,7 +5,7 @@ function Contact() {
   return (
     <>
       <div className="container">
-        <h3>Contact Us</h3>
+        <h3 data-testid="contactus">Contact Us</h3>
         <Card>
           <Row>
             <Col>
@@ -30,7 +30,7 @@ function Contact() {
             </Col>
             <Row>
               <Col>
-                <Image src={BMWImage} fluid></Image>
+                <Image src={BMWImage} fluid alt="Car"></Image>
               </Col>
             </Row>
           </Row>
