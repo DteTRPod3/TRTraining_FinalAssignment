@@ -19,10 +19,15 @@ function CarCard(car: any) {
   return (
     <div className="transition" onClick={redirect}>
       <Card className="cardContainer ">
-        <Card.Img variant="top" src={carDetails.image} height={200} />
+        <Card.Img
+          variant="top"
+          data-testid="carimg"
+          src={carDetails.image}
+          height={200}
+        />
         <Card.Body>
           <Card.Title data-testid="cardetail">{carDetails.name}</Card.Title>
-          <Card.Text className="font-styles">
+          <Card.Text className="font-styles " data-testid="cardprice">
             {carDetails.price}akh onwards
             <Link to={detailsPageLink}>
               <img src={Arrow} alt="rightArrow" />

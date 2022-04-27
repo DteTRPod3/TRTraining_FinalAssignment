@@ -11,7 +11,7 @@ const Mockapp = () => {
   );
 };
 
-test("renders learn react link", () => {
+xtest("renders learn react link", () => {
   render(Mockapp);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).not.toBeInTheDocument();

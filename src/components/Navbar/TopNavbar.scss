@@ -1,10 +1,32 @@
+@import "../../themes/theme.scss";
+@import "../../themes/colors.scss";
+
 .layout--header--main--container .layout--header {
   display: flex;
   padding: 0.5rem 5rem;
+  font-family: $font-family;
 }
 .layout--header--main--container .layout--header .layout--header--container {
   justify-content: flex-end;
 }
 a.navbar-brand.layout--header--logo {
   color: rgba(255, 255, 255, 0.55);
+  font-family: $font-family;
+}
+
+a:hover {
+  transform: scale(1.05);
+  font-weight: $nav-font-weight;
+  color: $white;
+  text-decoration: underline;
+}
+
+#logo-container:hover {
+  transform: scale(1.05);
+  font-weight: 600;
+  color: white;
+}
+
+.collapse.navbar-collapse.layout--header--container {
+  display: block;
 }
