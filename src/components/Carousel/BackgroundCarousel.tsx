@@ -18,8 +18,8 @@ function BackgroundCarousel({ carTypeIndex, dispatchCarsByType }: any) {
       <Carousel
         activeIndex={carTypeIndex}
         onSelect={onSelectHandler}
-        nextIcon={<img src={CAROUSELRIGHTICON} alt="next" />}
-        prevIcon={<img src={CAROUSELLEFTICON} alt="prev" />}
+        nextIcon={<img src={CAROUSELRIGHTICON} alt="nextButton" data-testid="next"/>}
+        prevIcon={<img src={CAROUSELLEFTICON} alt="prevButton" data-testid="prev"/>}
         interval={null}
       >
         <Carousel.Item className="content">
