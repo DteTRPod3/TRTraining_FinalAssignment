@@ -3,21 +3,14 @@ import "./CarCard.scss";
 import { Card } from "react-bootstrap";
 import Arrow from "../../assets/Arrow.svg";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function CarCard(car: any) {
   const [carDetails] = useState(JSON.parse(JSON.stringify(car)).car);
   const [id] = useState(carDetails.id);
   const detailsPageLink = "/car_details/" + id;
-
-  const navigate = useNavigate();
-  const redirect = () => {
-    navigate(detailsPageLink);
-  };
-
   return (
-    <div className="transition" onClick={redirect} data-testid="card">
-      <Card className="cardContainer ">
+    <Link to={detailsPageLink} className="card-container">
+      <Card>
         <Card.Img
           variant="top"
           data-testid="carimg"
@@ -25,16 +18,16 @@ function CarCard(car: any) {
           height={200}
         />
         <Card.Body>
-          <Card.Title data-testid="cardetail">{carDetails.name}</Card.Title>
+          <Card.Title className="card-title" data-testid="cardetail">
+            {carDetails.name}
+          </Card.Title>
           <Card.Text data-testid="cardprice">
             {carDetails.price}akh onwards
-            <Link to={detailsPageLink}>
-              <img src={Arrow} alt="rightArrow" />
-            </Link>
+            <img src={Arrow} alt="arrow icon"></img>
           </Card.Text>
         </Card.Body>
       </Card>
-    </div>
+    </Link>
   );
 }
 
