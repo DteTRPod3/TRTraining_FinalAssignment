@@ -1,66 +1,98 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { CarDetails } from "../../models/CarDetails";
-import { RootState } from "../../redux/configureStore";
-import { getCars } from "../../redux/store/cars/actions";
-import CarCard from "../../components/CarCard/CarCard";
-import "./CarsList.scss";
 import { Button, ButtonGroup, Container } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import CarCard from "../../components/CarCard/CarCard";
+import { useQuery } from "../../hooks/useQuery";
+import { CarDetails } from "../../models/CarDetails";
+import { carTypeList } from "../../models/CarType";
+import { getCars } from "../../redux/store/cars/actions";
+import "./CarsList.scss";
 
 function CarsList() {
   const dispatch = useDispatch();
   const location = useLocation();
-  const [searchtext] = useState<string>(
-    location.state === null ? "" : (location.state as string)
-  );
+  const navigate = useNavigate();
+  const query = useQuery();
+  const [carType, setCarType] = useState<number>(3);
+
+  useEffect(() => {
+    document.title = "Xtreme Cars | All Cars";
+    if (query.get("car-type") === null) navigate("*");
+    let params = query?.get("car-type");
+    switch (params) {
+      case "sedan":
+        setCarType(0);
+        break;
+      case "SUV":
+        setCarType(1);
+        break;
+      case "hatchback":
+        setCarType(2);
+        break;
+      default:
+        setCarType(3);
+        break;
+    }
+  }, []);
+
+  useEffect(() => {
+    if (carType == 3) {
+      navigate("/cars");
+      dispatch(getCars(""));
+    } else {
+      navigate("/cars?car-type=" + carTypeList[carType]);
+      dispatch(getCars(carTypeList[carType]));
+    }
+  }, [dispatch, carType]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
-  const [carType, SetCarType] = useState<string>(
-    ["sedan", "SUV", "hatchback", "coupe"].includes(
-      JSON.parse(JSON.stringify(searchtext)).searchtext as string
-    )
-      ? (JSON.parse(JSON.stringify(searchtext)).searchtext as string)
-      : ""
-  );
-  const cars: CarDetails[] = useSelector(
-    (state: RootState) => JSON.parse(JSON.stringify(state.cars)).cars
-  );
-
-  useEffect(() => {
-    dispatch(getCars(carType));
-  }, [dispatch, carType]);
-
+  const cars: any = useSelector((state: any) => state.cars.cars);
   return (
     <>
       <ButtonGroup className="mb-2">
-        <Button variant="secondary" onClick={() => SetCarType("")}>
+        <Button
+          className={`${carType === 3 ? "active-tab" : ""}`}
+          onClick={() => {
+            setCarType(3);
+          }}
+        >
           View All
         </Button>
-        <Button variant="secondary" onClick={() => SetCarType("sedan")}>
+        <Button
+          className={`${carType === 0 ? "active-tab" : ""}`}
+          onClick={() => {
+            setCarType(0);
+          }}
+        >
           Sedan
         </Button>
-        <Button variant="secondary" onClick={() => SetCarType("SUV")}>
+        <Button
+          className={`${carType === 1 ? "active-tab" : ""}`}
+          onClick={() => {
+            setCarType(1);
+          }}
+        >
           SUV
         </Button>
-        <Button variant="secondary" onClick={() => SetCarType("hatchback")}>
+        <Button
+          className={`${carType === 2 ? "active-tab" : ""}`}
+          onClick={() => {
+            setCarType(2);
+          }}
+        >
           Hatchback
-        </Button>
-        <Button variant="secondary" onClick={() => SetCarType("coupe")}>
-          Coupe
         </Button>
       </ButtonGroup>
       <Container className="carsContainer">
         {cars?.length === 0 && <div id="nocars">No Cars Available</div>}
-        {cars?.map((car) => (
+        {cars?.map((car: CarDetails) => (
           <CarCard key={car.id} car={car} />
         ))}
       </Container>
     </>
   );
 }
-
 export default CarsList;

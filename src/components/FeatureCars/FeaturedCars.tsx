@@ -1,12 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
+import "./FeaturedCars.scss";
+import CarCard from "../CarCard/CarCard";
 import { Pagination } from "react-bootstrap";
-import { ArrowRight } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { carTypeList } from "../../models/CarType";
 import { getCars } from "../../redux/store/cars/actions";
-import CarCard from "../CarCard/CarCard";
 import "./FeaturedCars.scss";
+import Arrow from "../../assets/Arrow Icon.svg";
+import CrossArrow from "../../assets/Arrow.svg";
 
 function FeatureCars(props: any) {
   const { carTypeIndex } = props;
@@ -61,22 +63,22 @@ function FeatureCars(props: any) {
   useEffect(() => {
     const timeout = setInterval(() => {
       handlePageChange("Increment");
-    }, 3000);
+    }, 5000);
     return () => {
       clearInterval(timeout);
     };
   }, [handlePageChange]);
 
   return (
-    <div className="maindiv">
+    <div className="featured-cars-div">
       <h5>Featured Cars</h5>
       <div>
-        <Link to="/cars" className="viewLink">
+        <Link to="/cars" className="view-link">
           View All{"  "}
-          <ArrowRight />
+          <img src={CrossArrow} alt="cross arrow" />
         </Link>
       </div>
-      <div className="cardslist">
+      <div className="cards-list" data-testid="carlist">
         {featuredCars
           ?.slice(
             itemsPerPage * currentPage,
@@ -86,9 +88,21 @@ function FeatureCars(props: any) {
             <CarCard key={car.id} car={car} />
           ))}
       </div>
-      <Pagination className="pagination_div">
-        <Pagination.Prev onClick={() => handlePageChange("Decrement")} />
-        <Pagination.Next onClick={() => handlePageChange("Increment")} />
+      <Pagination className="pagination-div">
+        <button
+          className="arrow-btn"
+          data-testid="prev"
+          onClick={() => handlePageChange("Decrement")}
+        >
+          <img src={Arrow} className="prev-arrow" alt="Arrow icon" />
+        </button>
+        <button
+          className="arrow-btn"
+          data-testid="next"
+          onClick={() => handlePageChange("Increment")}
+        >
+          <img src={Arrow} className="next-arrow" alt="Arrow icon" />
+        </button>
       </Pagination>
     </div>
   );
