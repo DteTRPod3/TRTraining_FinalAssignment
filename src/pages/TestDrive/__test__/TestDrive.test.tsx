@@ -52,7 +52,7 @@ describe("Test Drive Form", () => {
     });
 
     expect(screen.getByPlaceholderText(/enter contact\.\.\./i)).toHaveValue(
-      "1111111111"
+      1111111111
     );
   });
   it("checks for valid value in address input field", () => {

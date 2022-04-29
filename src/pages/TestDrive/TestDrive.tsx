@@ -1,32 +1,27 @@
-import { Button, Container, Form, Card, Modal } from "react-bootstrap";
-import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { Button, Container, Form, Card, Modal, FormGroup } from "react-bootstrap";
+import React from "react";
 import "./TestDrive.scss";
 import { contactpattern, emailpattern } from "../../constants";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 function TestDrive() {
-  let navigate = useNavigate();
-  const location = useLocation();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+  });
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-
-  const [validated, setValidated] = useState(false);
   const [show, setShow] = useState(false);
 
-  const handleSubmit = (event: any) => {
-    const form = event.currentTarget;
-    event.preventDefault();
-    if (form.checkValidity() === true) {
-      handleShow()
-    }
-    setValidated(true);
-  };
-
-  const handleClose = () => {setShow(false);navigate("/")}
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
+  const onSubmit = (formData: any) => {
+    handleShow()
+  };
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -35,82 +30,73 @@ function TestDrive() {
         </Modal.Header>
         <Modal.Body>Thank you for sharing your details, we will get in touch with you within 24 hours of your request</Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
       </Modal>
-      <Container className="testDrive--main--container">
-        <h5>Test Drive Form</h5>
-        <Card>
-          <Container>
-            <Form noValidate validated={validated} onSubmit={handleSubmit} id='testDriveForm'>
-              <Form.Group className="mb-3" controlId="formGroupName">
+      <Container>
+        <h3>Test Drive Form</h3>
+        <Card className="form-content">
+            <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+              <Form.Group className="mb-3 form-group-container" controlId="formGroupName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter name..."
-                  required
-                  name="name"
+                  {...register("name", { required: "Name is required" })}
                 />
-                <Form.Control.Feedback type="valid">
-                  Looks good!
-                </Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Name Required
-                </Form.Control.Feedback>
+                {errors.name && <p className="text-danger">{errors.name.message}</p>}
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupName">
+              <Form.Group className="mb-3 form-group-container" controlId="formGroupContact">
                 <Form.Label>Mobile Number</Form.Label>
                 <Form.Control
-                  type="tel"
+                  type="number"
                   placeholder="Enter contact..."
-                  required
-                  pattern={contactpattern}
-                  name="contact"
+                  {...register("contact", {
+                    required: "Mobile Number is required",
+                    minLength: {
+                      value: 10,
+                      message: "Mobile number cannot be less than 10 digits",
+                    },
+                    maxLength: {
+                      value: 10,
+                      message: "Mobile number cannot be more than 10 digits",
+                    },
+                  })}
                 />
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Invalid phone number
-                </Form.Control.Feedback>
+                {errors.contact && <p className="text-danger">{errors.contact.message}</p>}
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupName">
+              <Form.Group className="mb-3 form-group-container" controlId="formGroupAddress">
                 <Form.Label>Address</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Enter address..."
-                  required
-                  name="address"
+                  {...register("address", { required: "Address is required" })}
                 />
-                <Form.Control.Feedback type="valid">
-                  Looks good!
-                </Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Address Required
-                </Form.Control.Feedback>
+                {errors.address && <p className="text-danger">{errors.address.message}</p>}
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupName">
+              <Form.Group className="mb-3 form-group-container" controlId="formGroupEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
                   type="email"
                   placeholder="Enter email..."
-                  required
-                  pattern={emailpattern}
-                  name="email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: emailpattern,
+                      message: "This is not a valid email",
+                    },
+                  })}
                 />
-                <Form.Control.Feedback type="valid">
-                  Looks good!
-                </Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Email Required
-                </Form.Control.Feedback>
+                {errors.email && <p className="text-danger">{errors.email.message}</p>}
               </Form.Group>
-              <br></br>
+              <FormGroup className="form-group-container">
               <Button variant="danger" type="submit">
                 Submit
               </Button>
+              </FormGroup>
             </Form>
-          </Container>
         </Card>
       </Container>
     </>
