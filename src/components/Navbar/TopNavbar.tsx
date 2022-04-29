@@ -8,7 +8,11 @@ function TopNavbar() {
   return (
     <div className="layout--header--main--container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark layout--header">
-        <Link to={"/"} className="navbar-brand layout--header--logo">
+        <Link
+          to={"/"}
+          data-testid="XtremecarsLink"
+          className="navbar-brand layout--header--logo"
+        >
           <img src={Logo} alt="Xtreme cars logo" />
           XTREME CARS
         </Link>
