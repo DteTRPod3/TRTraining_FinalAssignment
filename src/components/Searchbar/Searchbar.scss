@@ -1,17 +1,21 @@
-.searchbar {
+// @import "../../themes/"
+
+.search-bar {
+  box-sizing: border-box;
   position: absolute;
   top: 20%;
   left: 35%;
-  width: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 18rem;
-  width: 30%;
+  width: 38%;
   h1 {
     color: white;
     text-align: center;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: "Roboto";
+    font-weight: 700;
   }
 }
 
@@ -20,3 +24,45 @@
   width: 100%;
 }
 
+.form-group-div.container {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  // border-radius: 5%;
+  padding-left: 0%;
+  input {
+    border: none;
+    margin: 0%;
+  }
+  input::placeholder {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.btn-search {
+  margin: 5%;
+  width: 7rem;
+  font-family: "Roboto";
+
+  position: static;
+  width: 82px;
+  height: 28px;
+  left: 16px;
+  top: 10px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  // font-size: 24px;
+  // line-height: 28px;
+  text-transform: uppercase;
+  background: #790e22;
+
+  color: #ffffff;
+}
