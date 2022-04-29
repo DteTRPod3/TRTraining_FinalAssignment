@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./FeaturedCars.scss";
 import CarCard from "../CarCard/CarCard";
-import { Button, Pagination } from "react-bootstrap";
-import { ArrowRight } from "react-bootstrap-icons";
+import { Pagination } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { carTypeList } from "../../models/CarType";
