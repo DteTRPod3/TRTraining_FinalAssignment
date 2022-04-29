@@ -70,15 +70,15 @@ function FeatureCars(props: any) {
   }, [handlePageChange]);
 
   return (
-    <div className="maindiv">
+    <div className="featured-cars-div">
       <h5>Featured Cars</h5>
       <div>
-        <Link to="/cars" className="viewLink">
+        <Link to="/cars" className="view-link">
           View All{"  "}
           <img src={CrossArrow} alt="cross arrow" />
         </Link>
       </div>
-      <div className="cardslist" data-testid="carlist">
+      <div className="cards-list" data-testid="carlist">
         {featuredCars
           ?.slice(
             itemsPerPage * currentPage,
@@ -88,7 +88,7 @@ function FeatureCars(props: any) {
             <CarCard key={car.id} car={car} />
           ))}
       </div>
-      <Pagination className="pagination_div">
+      <Pagination className="pagination-div">
         <button
           className="arrow-btn"
           data-testid="prev"

@@ -18,9 +18,7 @@ function CarCard(car: any) {
           height={200}
         />
         <Card.Body>
-          <Card.Title className="card-title" data-testid="cardetail">
-            {carDetails.name}
-          </Card.Title>
+          <Card.Title data-testid="cardetail">{carDetails.name}</Card.Title>
           <Card.Text data-testid="cardprice">
             {carDetails.price}akh onwards
             <img src={Arrow} alt="arrow icon"></img>
