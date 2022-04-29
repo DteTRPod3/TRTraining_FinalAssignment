@@ -34,9 +34,13 @@ function CarsList() {
     }
   }, []);
   useEffect(() => {
-    if (carType == 3) navigate("/cars");
-    else navigate("/cars?car-type=" + carTypeList[carType]);
-    dispatch(getCars(carTypeList[carType]));
+    if (carType == 3) {
+      navigate("/cars");
+      dispatch(getCars(""));
+    } else {
+      navigate("/cars?car-type=" + carTypeList[carType]);
+      dispatch(getCars(carTypeList[carType]));
+    }
   }, [dispatch, carType]);
   useEffect(() => {
     window.scrollTo(0, 0);

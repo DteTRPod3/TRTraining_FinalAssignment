@@ -1,1 +1,1 @@
-export const carTypeList = ["sedan", "SUV", "hatchback", ""];
+export const carTypeList = ["sedan", "SUV", "hatchback"];
