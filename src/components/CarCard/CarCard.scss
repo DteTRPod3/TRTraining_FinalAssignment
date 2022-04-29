@@ -1,12 +1,38 @@
-.cardContainer {
+@import "../../themes/colors.scss";
+@import "../../themes/theme.scss";
+
+.card-container {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: $black;
+  font-family: $font-family-roboto;
+  font-style: normal;
+  font-weight: 500;
   width: 18rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 1rem 1rem 1rem grey;
+
   p {
     display: flex;
     justify-content: space-between;
-    font-size: small;
-    font-weight: 600;
+    img,
+    svg {
+      color: $black;
+    }
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.card-container:hover {
+  text-decoration: none;
+  color: $black;
+  box-shadow: 1rem 1rem 1rem grey;
+  p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(0, 0, 0, 0.6);
   }
 }

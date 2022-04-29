@@ -17,8 +17,6 @@ const Mockapp = () => {
 
 test("renders logo link", () => {
   render(<Mockapp />);
-
   const linkElement = screen.getByText(/XTREME CARS/i);
-
   expect(linkElement).toBeInTheDocument();
 });

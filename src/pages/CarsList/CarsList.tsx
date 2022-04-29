@@ -8,6 +8,7 @@ import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
 import { getCars } from "../../redux/store/cars/actions";
 import "./CarsList.scss";
+
 function CarsList() {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -34,6 +35,7 @@ function CarsList() {
         break;
     }
   }, []);
+
   useEffect(() => {
     if (carType == 3) {
       navigate("/cars");
@@ -43,6 +45,7 @@ function CarsList() {
       dispatch(getCars(carTypeList[carType]));
     }
   }, [dispatch, carType]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
