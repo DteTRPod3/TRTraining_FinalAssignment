@@ -22,11 +22,7 @@
   padding: 0.25rem;
   width: 40%;
   background-color: $lightGrey;
-  button:focus {
-    background-color: $black;
-    color: $white;
-    box-shadow: none;
-  }
+ 
   button:hover {
     background-color: $black;
     color: $white;
@@ -38,5 +34,14 @@
    
     border: none;
     border-radius: 0;
+  }
+
+  .active-tab{
+    
+      background-color: $black;
+      color: $white;
+      box-shadow: none;
+    
+    
   }
 }
