@@ -46,12 +46,12 @@ function TestDrive() {
                   placeholder="Enter name..."
                   {...register("name", { required: "Name is required" })}
                 />
-                {errors.name && <p className="text-danger">{errors.name.message}</p>}
+                {errors.name && <p className="text-danger" data-testid="name-error">{errors.name.message}</p>}
               </Form.Group>
               <Form.Group className="mb-3 form-group-container" controlId="formGroupContact">
                 <Form.Label>Mobile Number</Form.Label>
                 <Form.Control
-                  type="number"
+                  type="tel"
                   placeholder="Enter contact..."
                   {...register("contact", {
                     required: "Mobile Number is required",
@@ -65,7 +65,7 @@ function TestDrive() {
                     },
                   })}
                 />
-                {errors.contact && <p className="text-danger">{errors.contact.message}</p>}
+                {errors.contact && <p className="text-danger" data-testid="contact-error">{errors.contact.message}</p>}
               </Form.Group>
               <Form.Group className="mb-3 form-group-container" controlId="formGroupAddress">
                 <Form.Label>Address</Form.Label>
@@ -74,7 +74,7 @@ function TestDrive() {
                   placeholder="Enter address..."
                   {...register("address", { required: "Address is required" })}
                 />
-                {errors.address && <p className="text-danger">{errors.address.message}</p>}
+                {errors.address && <p className="text-danger" data-testid="address-error">{errors.address.message}</p>}
               </Form.Group>
               <Form.Group className="mb-3 form-group-container" controlId="formGroupEmail">
                 <Form.Label>Email</Form.Label>
@@ -89,7 +89,7 @@ function TestDrive() {
                     },
                   })}
                 />
-                {errors.email && <p className="text-danger">{errors.email.message}</p>}
+                {errors.email && <p className="text-danger" data-testid="email-error">{errors.email.message}</p>}
               </Form.Group>
               <FormGroup className="form-group-container">
               <Button variant="danger" type="submit">
