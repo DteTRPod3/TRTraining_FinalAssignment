@@ -26,7 +26,7 @@ function CarCard(car: any) {
         />
         <Card.Body>
           <Card.Title data-testid="cardetail">{carDetails.name}</Card.Title>
-          <Card.Text className="font-styles " data-testid="cardprice">
+          <Card.Text data-testid="cardprice">
             {carDetails.price}akh onwards
             <Link to={detailsPageLink}>
               <img src={Arrow} alt="rightArrow" />
