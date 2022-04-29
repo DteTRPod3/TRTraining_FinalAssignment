@@ -3,6 +3,8 @@ import { Button, ButtonGroup, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CarCard from "../../components/CarCard/CarCard";
+import { useQuery } from "../../hooks/useQuery";
+import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
 import { getCars } from "../../redux/store/cars/actions";
 import "./CarsList.scss";
@@ -10,12 +12,12 @@ function CarsList() {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const queryParams = new URLSearchParams(window.location.search);
+  const query = useQuery();
   const [carType, setCarType] = useState<number>(3);
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
-    if (queryParams.get("car-type") === null) navigate("*");
-    let params = queryParams?.get("car-type");
+    if (query.get("car-type") === null) navigate("*");
+    let params = query?.get("car-type");
     switch (params) {
       case "sedan":
         setCarType(0);
@@ -52,7 +54,7 @@ function CarsList() {
       </ButtonGroup>
       <Container className="carsContainer">
         {cars?.length === 0 && <div id="nocars">No Cars Available</div>}
-        {cars?.map((car: any) => (
+        {cars?.map((car: CarDetails) => (
           <CarCard key={car.id} car={car} />
         ))}
       </Container>
