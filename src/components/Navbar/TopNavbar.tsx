@@ -9,7 +9,7 @@ function TopNavbar() {
     <div className="layout--header--main--container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark layout--header">
         <Link to={"/"} className="navbar-brand layout--header--logo">
-          <img src={Logo} alt="Logo" />
+          <img src={Logo} alt="Xtreme cars logo" />
           XTREME CARS
         </Link>
         <div className="collapse navbar-collapse layout--header--container">

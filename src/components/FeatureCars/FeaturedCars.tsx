@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./FeaturedCars.scss";
-import { CarDetails } from "../../models/CarDetails";
 import CarCard from "../CarCard/CarCard";
-import { Pagination } from "react-bootstrap";
+import { Button, Pagination } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCars } from "../../redux/store/cars/actions";
+import { Link } from "react-router-dom";
 import { carTypeList } from "../../models/CarType";
+import { getCars } from "../../redux/store/cars/actions";
+import "./FeaturedCars.scss";
+import Arrow from "../../assets/Arrow Icon.svg";
+import CrossArrow from "../../assets/Arrow.svg";
 
 function FeatureCars(props: any) {
   const { carTypeIndex } = props;
@@ -62,7 +64,7 @@ function FeatureCars(props: any) {
   useEffect(() => {
     const timeout = setInterval(() => {
       handlePageChange("Increment");
-    }, 3000);
+    }, 5000);
     return () => {
       clearInterval(timeout);
     };
@@ -74,7 +76,7 @@ function FeatureCars(props: any) {
       <div>
         <Link to="/cars" className="viewLink">
           View All{"  "}
-          <ArrowRight />
+          <img src={CrossArrow} alt="cross arrow" />
         </Link>
       </div>
       <div className="cardslist" data-testid="carlist">
@@ -88,14 +90,20 @@ function FeatureCars(props: any) {
           ))}
       </div>
       <Pagination className="pagination_div">
-        <Pagination.Prev
+        <button
+          className="arrow-btn"
           data-testid="prev"
           onClick={() => handlePageChange("Decrement")}
-        />
-        <Pagination.Next
+        >
+          <img src={Arrow} className="prev-arrow" alt="Arrow icon" />
+        </button>
+        <button
+          className="arrow-btn"
           data-testid="next"
           onClick={() => handlePageChange("Increment")}
-        />
+        >
+          <img src={Arrow} className="next-arrow" alt="Arrow icon" />
+        </button>
       </Pagination>
     </div>
   );
