@@ -1,3 +1,5 @@
+@import"../../themes/colors.scss";
+
 .carsContainer {
   display: flex;
   justify-content: space-around;
@@ -13,12 +15,33 @@
     color: blueviolet;
   }
 }
-
 .mb-2.btn-group {
-  display: block;
+  display: flex;
   margin-top: 2%;
   margin-left: 2%;
-  button:focus {
-    background-color: black;
+  padding: 0.25rem;
+  width: 40%;
+  background-color: $lightGrey;
+ 
+  button:hover {
+    background-color: $black;
+    color: $white;
+    box-shadow: none;
+  }
+  button {
+    background-color: $lightGrey;
+    color:  $black;
+   
+    border: none;
+    border-radius: 0;
+  }
+
+  .active-tab{
+    
+      background-color: $black;
+      color: $white;
+      box-shadow: none;
+    
+    
   }
 }
