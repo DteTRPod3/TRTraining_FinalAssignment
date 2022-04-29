@@ -91,6 +91,18 @@ function CarsList() {
           Hatchback
         </Button>
       </ButtonGroup>
+      {carType === 4 && (
+        <p className="result-count" data-testid="resultcount">
+          {
+            cars?.filter((car: CarDetails) =>
+              car.name
+                .toLowerCase()
+                .includes(carNameToBeSearched?.toLowerCase())
+            )?.length
+          }{" "}
+          total results
+        </p>
+      )}
       <Container className="carsContainer">
         {cars?.length === 0 && <div id="nocars">No Cars Available</div>}
         {carType === 4 &&
@@ -102,6 +114,7 @@ function CarsList() {
               <img src={sademoji} alt="coming soon..." width={200}></img>
             </div>
           )}
+
         {carType === 4 &&
           cars
             ?.filter((car: CarDetails) =>

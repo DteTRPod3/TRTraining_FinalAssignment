@@ -22,7 +22,11 @@ function Searchbar() {
             onChange={handleTextChange}
           />
           <Link to="/cars" state={{ searchtext: searchWord }}>
-            <button className="btn-search" type="submit">
+            <button
+              className="btn-search"
+              type="submit"
+              data-testid="search-btn"
+            >
               SEARCH
             </button>
           </Link>

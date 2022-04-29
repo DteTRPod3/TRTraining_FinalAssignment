@@ -44,6 +44,16 @@
   }
 }
 
+.result-count {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  font-family: $font-family-roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $black;
+}
+
 .sorry-message {
   margin: 5%;
   text-align: center;
