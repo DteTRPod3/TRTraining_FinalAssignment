@@ -1,10 +1,16 @@
 import { Button, Container, Form, Card, Modal, FormGroup } from "react-bootstrap";
-import React from "react";
+import React, { useEffect } from "react";
 import "./TestDrive.scss";
 import { contactpattern, emailpattern } from "../../constants";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 function TestDrive() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  
   const {
     register,
     handleSubmit,
