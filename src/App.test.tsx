@@ -2,17 +2,21 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import store from "./redux/configureStore";
+import { Provider } from "react-redux";
 
 const Mockapp = () => {
   return (
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   );
 };
 
-xtest("renders learn react link", () => {
+test("renders logo link", () => {
   render(<Mockapp />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).not.toBeInTheDocument();
+  const linkElement = screen.getByText(/XTREME CARS/i);
+  expect(linkElement).toBeInTheDocument();
 });
