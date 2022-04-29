@@ -18,7 +18,7 @@ function CarsList() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
+
   const [carType, SetCarType] = useState<string>(
     ["sedan", "SUV", "hatchback", "coupe"].includes(
       JSON.parse(JSON.stringify(searchtext)).searchtext as string
