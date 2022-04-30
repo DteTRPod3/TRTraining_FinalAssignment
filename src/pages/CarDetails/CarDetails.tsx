@@ -6,6 +6,9 @@ import { RootState } from "../../redux/configureStore";
 import { getCarDetails } from "../../redux/store/carDetails/actions";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Bar2 from "../../assets/Bar2.svg";
+import Bar3 from "../../assets/Bar3.svg";
+import Bar1 from "../../assets/Bar1.svg";
 import "./CarDetails.scss";
 
 function CarDetails() {
@@ -25,112 +28,270 @@ function CarDetails() {
   }, [dispatch, carid]);
 
   return (
-    <div className="totaldiv">
-      <h5>{car?.specifications.name}</h5>
-      <Container className="detailsContainer">
-        <Row>
-          <Col>
-            <Image src={car?.specifications.image} alt="No Image Available" />
-          </Col>
-          <Col className="col2">
-            <h6>Car Specifications</h6>
-            <p>
-              <span>Fuel type</span>
-              <br />
-              {car?.specifications.fuel_type}
-            </p>
-            <p>
-              <span>Engine</span>
-              <br />
-              {car?.specifications.engine_cc}
-            </p>
-            <p>
-              <span>Torque</span>
-              <br />
-              {car?.specifications.torque}
-            </p>
-            <p>
-              <span>Acceleration</span>
-              <br />
-              {car?.specifications.acceleration}
-            </p>
-            <p>
-              <span>Top Speed</span>
-              <br />
-              {car?.specifications.top_speed}
-            </p>
-            <p>
-              <span>Variants</span>
-              <br />
-              {car?.specifications.variant.map((v) => (
-                <li key={++key}>{v}, </li>
-              ))}
-            </p>
-          </Col>
-        </Row>
-        <hr />
-        <Row>
-          <Col>
-            <Image src={car?.exterior.image} alt="No Image Available" />
-          </Col>
-          <Col className="col2">
-            <h6>Exteriors</h6>
-            <span>color</span>
-            <div
-              style={{
-                height: "3rem",
-                width: "10rem",
-                backgroundColor: car?.exterior.color,
-                margin: "0.5rem",
-                border: "0.1rem solid black",
-              }}
-            />
-            <p>
-              <span>Dimension</span>
-              <br />
-              This car measures {car?.exterior.length} <br />
-              in length and has a {car?.exterior.width} wheelbase .
-            </p>
-          </Col>
-        </Row>
-        <hr />
-        <Row>
-          <Col>
-            <Image src={car?.interior.image1} alt="No Image Available" />
-            <br />
-            <Image src={car?.interior.image2} alt="No Image Available" />{" "}
-          </Col>
-          <Col className="col2">
-            <h6>Interior finishes</h6>
-            <span>color</span>
-            <div
-              style={{
-                height: "3rem",
-                width: "10rem",
-                backgroundColor: car?.interior.color,
-                margin: "0.5rem",
-                border: "0.1rem solid black",
-              }}
-            />
+    <>
+      <Container id="top"></Container>
+      <Container fluid className="totaldiv">
+        <div className="black-box-left"></div>
+        <Container className="detailsContainer">
+          <Row>
+            <Col md lg xl xxl={8}>
+              <h5 className="condensed-semibold">{car?.specifications.name}</h5>
+              <div className="image-box">
+                <div className="left-image-box">
+                  <Image fluid className="bar1" src={Bar1}></Image>
+                  <div className="mark01">
+                    <span className="first-mark">01</span>
+                  </div>
+                </div>
+                <div className="right-image-box">
+                  <Image
+                    fluid
+                    className="front-image"
+                    src={car?.specifications.image}
+                    alt="No Image Available"
+                  />
+                </div>
+              </div>
+            </Col>
+            <Col>
+              <div className="content">
+                <span className="mixed-font"> Car</span>
+                <h5 className="extra-bold">Specifications</h5>
 
-            <ul>
-              {car?.interior.text.map((c) => (
-                <li key={++key}>{<p>{c} </p>}</li>
-              ))}
-            </ul>
+                <div className="specification-details">
+                  <p>
+                    <span>Fuel type</span>
+                    <br />
+                    {car?.specifications.fuel_type}
+                  </p>
+                  <p>
+                    <span>Engine</span>
+                    <br />
+                    {car?.specifications.engine_cc}
+                  </p>
+                  <p>
+                    <span>Torque</span>
+                    <br />
+                    {car?.specifications.torque}
+                  </p>
+                  <p>
+                    <span>Acceleration</span>
+                    <br />
+                    {car?.specifications.acceleration}
+                  </p>
+                  <p>
+                    <span>Top Speed</span>
+                    <br />
+                    {car?.specifications.top_speed}
+                  </p>
+                  <p>
+                    <span>Variants</span>
+                    <br />
+                    {car?.specifications.variant.map((v) => (
+                      <li key={++key}>{v}, </li>
+                    ))}
+                  </p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          {/* <hr />  1st row complete*/}
 
-            <h6>Cost {car?.cost}</h6>
-          </Col>
-        </Row>
-        <Row className="justify-content-end">
-          <Button id="btn_booknow" variant="info">
-            <Link to={bookingLink} state={{ car: car }}>
-              Book Now
-            </Link>
-          </Button>
-        </Row>
+          <br />
+          <br />
+          <Row>
+            <Col md lg xl xxl={8}>
+              <div className="image-box">
+                <div className="left-image-box">
+                  <Image fluid className="bar1" src={Bar1}></Image>
+                  <div className="mark02">
+                    <span className="first-mark">02</span>
+                  </div>
+                </div>
+                <div className="right-image-box">
+                  <Image
+                    className="front-image"
+                    fluid
+                    src={car?.exterior.image}
+                    alt="No Image Available"
+                  />
+                </div>
+              </div>
+            </Col>
+            <Col>
+              <div className="content">
+                <h5 className="extra-bold">Exteriors</h5>
+                <div
+                  style={{
+                    height: "5rem",
+                    width: "10rem",
+                    backgroundColor: car?.exterior.color,
+                    margin: "0.5rem",
+                    marginTop: "2rem",
+                    border: "0.1rem solid black",
+                  }}
+                />
+                <div className="specification-details">
+                  <br />
+                  <p>
+                    This car measures {car?.exterior.length} <br />
+                    in length and has a {car?.exterior.width} wheelbase .
+                  </p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          {/* <hr />  2nd  row complete*/}
+
+          {/* <hr />  3rd  row starts*/}
+
+          <Row>
+            <Col md lg xl xxl={8}>
+              <div className="image-box">
+                <div className="left-image-box">
+                  <Image fluid className="bar1 bar3" src={Bar1}></Image>
+                  <div className="mark03">
+                    <span className="first-mark">03</span>
+                  </div>
+                </div>
+                <div
+                  className="interior-flex"
+                  style={{ display: "flex", flexDirection: "column" }}
+                >
+                  <div className="right-image-box">
+                    <Image
+                      className="front-image"
+                      fluid
+                      src={car?.interior.image1}
+                      alt="No Image Available"
+                    />
+                  </div>
+                  <div className="right-image-box">
+                    <Image
+                      className="front-image"
+                      fluid
+                      src={car?.interior.image2}
+                      alt="No Image Available"
+                    />
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col>
+              <div className="content">
+                <h5 className="extra-bold">Interior finishes</h5>
+                <div
+                  style={{
+                    height: "5rem",
+                    width: "10rem",
+                    backgroundColor: car?.interior.color,
+                    margin: "0.5rem",
+                    marginTop: "2rem",
+                    border: "0.1rem solid black",
+                  }}
+                />
+                <div className="specification-details">
+                  <div className="interior-content">
+                    <ul>
+                      {car?.interior.text.map((interior) => (
+                        <li key={++key}>{<p>{interior} </p>}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <Row>
+                  <Col md="3" className="cost">
+                    Cost
+                  </Col>
+                  <Col md="3" className="cost">
+                    {car?.cost}
+                  </Col>
+                </Row>
+              </div>
+
+              <Row className="justify-content-md-center">
+                <Button id="btn_booknow">
+                  <Link to={bookingLink} state={{ car: car }}>
+                    Book Now
+                  </Link>
+                </Button>
+              </Row>
+            </Col>
+          </Row>
+
+          {/* next row  original row2
+          <Row>
+            <Col>
+              <Image
+                className="front-image"
+                fluid
+                src={car?.exterior.image}
+                alt="No Image Available"
+              />
+            </Col>
+            <Col xs lg="2" className="col2">
+              <h6>Exteriors</h6>
+              <span>color</span>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "10rem",
+                  backgroundColor: car?.exterior.color,
+                  margin: "0.5rem",
+                  border: "0.1rem solid black",
+                }}
+              />
+              <p>
+                <span>Dimension</span>
+                <br />
+                This car measures {car?.exterior.length} <br />
+                in length and has a {car?.exterior.width} wheelbase .
+              </p>
+            </Col>
+
+            {/* next row  original row3*/}
+          {/* </Row> */}
+
+          {/* <Row>
+            <Col>
+              <Image
+                fluid
+                src={car?.interior.image1}
+                alt="No Image Available"
+              />
+              <br />
+              <Image
+                fluid
+                src={car?.interior.image2}
+                alt="No Image Available"
+              />{" "}
+            </Col>
+            <Col xs lg="2" className="col2">
+              <h6>Interior finishes</h6>
+              <span>color</span>
+              <div
+                style={{
+                  height: "3rem",
+                  width: "10rem",
+                  backgroundColor: car?.interior.color,
+                  margin: "0.5rem",
+                  border: "0.1rem solid black",
+                }}
+              />
+
+              <ul>
+                {car?.interior.text.map((c) => (
+                  <li key={++key}>{<p>{c} </p>}</li>
+                ))}
+              </ul>
+
+              <h6>Cost {car?.cost}</h6>
+            </Col>
+          </Row>  */}
+        </Container>
+        <div className="blackbox-right"></div>
       </Container>
-    </div>
+    </>
   );
 }
 
