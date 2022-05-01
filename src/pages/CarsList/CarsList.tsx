@@ -6,7 +6,8 @@ import CarCard from "../../components/CarCard/CarCard";
 import { useQuery } from "../../hooks/useQuery";
 import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
-import { getCars } from "../../redux/store/cars/actions";
+import { getCars, getMoreCars } from "../../redux/store/cars/actions";
+import InfiniteScroll from "react-infinite-scroll-component";
 import sademoji from "../../assets/sad-emoji.svg";
 import "./CarsList.scss";
 
@@ -54,6 +55,12 @@ function CarsList() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+
+  let fetchMoreData = () => {
+    console.log("HERERE");
+    if (carType == 3) dispatch(getMoreCars(""));
+    else dispatch(getMoreCars(carTypeList[carType]));
+  }
 
   return (
     <>
@@ -104,7 +111,7 @@ function CarsList() {
         </p>
       )}
       <Container className="carsContainer">
-        {cars?.length === 0 && <div id="nocars">No Cars Available</div>}
+        {(cars === undefined || cars?.length === 0) && <div id="nocars">No Cars Available</div>}
         {carType === 4 &&
           cars?.filter((car: CarDetails) =>
             car.name.toLowerCase().includes(carNameToBeSearched?.toLowerCase())
@@ -124,7 +131,25 @@ function CarsList() {
             )
             ?.map((car: CarDetails) => <CarCard key={car.id} car={car} />)}
         {carType !== 4 &&
-          cars?.map((car: CarDetails) => <CarCard key={car.id} car={car} />)}
+          <InfiniteScroll
+
+            dataLength={(cars === undefined) ? 0 : cars?.length}
+            next={fetchMoreData}
+            hasMore={cars?.length < 101}
+            loader={<div>Loading...</div>}
+            endMessage={
+              <div>
+                <img src={sademoji} alt="coming soon..." width={200}></img>
+                <span>You have seen it all</span>
+              </div>
+            }
+          >
+            <div className="carsContainer">
+              {cars?.map((car: CarDetails, index: number) => (
+                <CarCard id={car?.id} car={car} />
+              ))}
+            </div>
+          </InfiniteScroll>}
       </Container>
     </>
   );
