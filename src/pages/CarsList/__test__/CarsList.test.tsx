@@ -39,7 +39,7 @@ describe("Cars List test cases", () => {
   it("Check if All the buttons should be inactive if navigated with searchtext", () => {
     render(<MockCarsListFromSearchbar />);
     const btnGroup = screen.getAllByRole("button");
-    btnGroup.forEach((element: JSX.Element) => {
+    btnGroup.forEach((element: any) => {
       expect(element).not.toHaveClass("active-tab");
     });
   });

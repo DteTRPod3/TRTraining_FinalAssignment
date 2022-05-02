@@ -150,8 +150,8 @@ function CarsList() {
             dataLength={(cars === undefined) ? 1 : cars?.length}
             next={fetchMoreData}
             hasMore={cars?.length < 101}
-            loader={<Loader/>}
-            endMessage={<EndMessage/>}
+            loader={<Loader />}
+            endMessage={<EndMessage />}
           >
             <div className="carsContainer">
               {cars?.map((car: CarDetails, index: number) => (
