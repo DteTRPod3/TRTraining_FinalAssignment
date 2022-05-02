@@ -10,7 +10,7 @@ function CarCard(car: any) {
   const detailsPageLink = "/car_details/" + id;
   return (
     <Link to={detailsPageLink} className="card-container">
-      <Card>
+      <Card data-testid="card">
         <Card.Img
           variant="top"
           data-testid="carimg"

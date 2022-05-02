@@ -22,7 +22,6 @@ function CarsList() {
 
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
-
     // if (query.get("car-type") === null) navigate("/");
     let params = query?.get("car-type");
     switch (params) {
@@ -36,10 +35,16 @@ function CarsList() {
         setCarType(2);
         break;
       default:
-        setCarType(searchtext == null || undefined ? 3 : 4);
+        setCarType(carNameToBeSearched === "" || undefined ? 3 : 4);
         break;
     }
   }, []);
+
+  useEffect(() => {
+    if (searchtext == null) {
+      setCarType(3);
+    }
+  }, [searchtext]);
 
   useEffect(() => {
     if (carType === 3) {
