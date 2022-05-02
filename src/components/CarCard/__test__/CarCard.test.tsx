@@ -56,6 +56,6 @@ describe("CarCard", () => {
         </Provider>
       );
     });
-    expect(screen.getByText(/Car Specifications/i)).toBeInTheDocument();
+    expect(screen.getByText(/Specifications/i)).toBeInTheDocument();
   });
 });

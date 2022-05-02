@@ -1,17 +1,22 @@
-.searchbar {
+@import "../../themes/theme.scss";
+@import "../../themes/colors.scss";
+
+.search-bar {
+  box-sizing: border-box;
   position: absolute;
   top: 20%;
   left: 35%;
-  width: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 18rem;
-  width: 30%;
+  width: 38%;
   h1 {
-    color: white;
+    color: $white;
     text-align: center;
-    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    font-family: $font-family-roboto;
+    font-weight: 700;
   }
 }
 
@@ -20,3 +25,42 @@
   width: 100%;
 }
 
+.form-group-div.container {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  padding-left: 0%;
+  input {
+    outline: none;
+    border: none;
+    margin: 0%;
+  }
+  input::placeholder {
+    font-family: $font-family-roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: $placeholder-text-color;
+  }
+}
+
+form .form-control:focus {
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
+.btn-search {
+  margin: 5%;
+  width: 7rem;
+  width: 82px;
+  height: 28px;
+  font-family: $font-family-roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  text-transform: uppercase;
+  background: $btn-color;
+  color: $white;
+}

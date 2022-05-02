@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Image, Button } from "react-bootstrap";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import { CarDetails } from "../../models/CarDetails";
 import { CarFullDetails } from "../../models/CarFullDetails";
 import "./Booking.scss";
 
@@ -86,7 +87,7 @@ function Booking() {
               <option value="3">New Dehli</option>
               <option value="4">Hydrabad</option>
             </Form.Select>
-            <Form.Group className="mb-3" controlId="formGroupName"/>
+            <Form.Group className="mb-3" controlId="formGroupName" />
             <Form.Check
               required
               type="checkbox"

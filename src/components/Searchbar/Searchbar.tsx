@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 import "./Searchbar.scss";
 import { Link } from "react-router-dom";
 
@@ -10,21 +10,29 @@ function Searchbar() {
   };
 
   return (
-    <div className="searchbar">
-      <h1>FIND YOUR DREAM CAR</h1>
-      <div className="textbox-div">
-        <Form.Control
-          id="searchTextBox"
-          type="text"
-          placeholder="Enter car name"
-          onChange={handleTextChange}
-        />
-        <Link to="/cars" state={{ searchtext: searchWord }}>
-          <Button type="submit" variant="warning">
-            Search
-          </Button>
-        </Link>
-      </div>
+    <div className="search-bar">
+      <h1 className="header">FIND YOUR DREAM CAR</h1>
+
+      <Form className="textbox-div">
+        <Container className="form-group-div">
+          <Form.Control
+            data-testid="searchTextBox"
+            type="text"
+            placeholder="Enter car name..."
+            className="search-input"
+            onChange={handleTextChange}
+          />
+          <Link to={`/cars?search-text=${searchWord}`}>
+            <button
+              className="btn-search"
+              type="submit"
+              data-testid="search-btn"
+            >
+              SEARCH
+            </button>
+          </Link>
+        </Container>
+      </Form>
     </div>
   );
 }

@@ -18,6 +18,9 @@ function TestDrive() {
   } = useForm({
     mode: "onSubmit",
   });
+  useEffect(() => {
+    document.title = "Xtreme Cars | Test Drive";
+  }, []);
 
   const [show, setShow] = useState(false);
 
