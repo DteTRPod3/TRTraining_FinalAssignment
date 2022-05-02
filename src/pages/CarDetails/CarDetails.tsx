@@ -98,7 +98,6 @@ function CarDetails() {
               </div>
             </Col>
           </Row>
-          {/* <hr />  1st row complete*/}
 
           <br />
           <br />
@@ -144,9 +143,6 @@ function CarDetails() {
               </div>
             </Col>
           </Row>
-          {/* <hr />  2nd  row complete*/}
-
-          {/* <hr />  3rd  row starts*/}
 
           <Row>
             <Col md lg xl xxl={8}>
@@ -206,7 +202,7 @@ function CarDetails() {
                   <Col md="3" className="cost">
                     Cost
                   </Col>
-                  <Col md="3" className="cost">
+                  <Col md="4" className="cost">
                     {car?.cost}
                   </Col>
                 </Row>
@@ -221,76 +217,6 @@ function CarDetails() {
               </Row>
             </Col>
           </Row>
-
-          {/* next row  original row2
-          <Row>
-            <Col>
-              <Image
-                className="front-image"
-                fluid
-                src={car?.exterior.image}
-                alt="No Image Available"
-              />
-            </Col>
-            <Col xs lg="2" className="col2">
-              <h6>Exteriors</h6>
-              <span>color</span>
-              <div
-                style={{
-                  height: "3rem",
-                  width: "10rem",
-                  backgroundColor: car?.exterior.color,
-                  margin: "0.5rem",
-                  border: "0.1rem solid black",
-                }}
-              />
-              <p>
-                <span>Dimension</span>
-                <br />
-                This car measures {car?.exterior.length} <br />
-                in length and has a {car?.exterior.width} wheelbase .
-              </p>
-            </Col>
-
-            {/* next row  original row3*/}
-          {/* </Row> */}
-
-          {/* <Row>
-            <Col>
-              <Image
-                fluid
-                src={car?.interior.image1}
-                alt="No Image Available"
-              />
-              <br />
-              <Image
-                fluid
-                src={car?.interior.image2}
-                alt="No Image Available"
-              />{" "}
-            </Col>
-            <Col xs lg="2" className="col2">
-              <h6>Interior finishes</h6>
-              <span>color</span>
-              <div
-                style={{
-                  height: "3rem",
-                  width: "10rem",
-                  backgroundColor: car?.interior.color,
-                  margin: "0.5rem",
-                  border: "0.1rem solid black",
-                }}
-              />
-
-              <ul>
-                {car?.interior.text.map((c) => (
-                  <li key={++key}>{<p>{c} </p>}</li>
-                ))}
-              </ul>
-
-              <h6>Cost {car?.cost}</h6>
-            </Col>
-          </Row>  */}
         </Container>
         <div className="blackbox-right"></div>
       </Container>
