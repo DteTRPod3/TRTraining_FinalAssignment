@@ -1,12 +1,11 @@
 import React from "react";
 import "./Footer.scss";
-import { Facebook, Instagram, Twitter } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <>
-       <footer className="bg-dark text-white footer--layout">
+       <footer className="bg-dark text-white footer-layout">
         <div className="container p-4">
           <section className="">
             <div className="row">
@@ -57,19 +56,19 @@ function Footer() {
                 <h5>Connect With Us</h5>
                 <ul className="list-unstyled mb-0">
                   <li>
-                    <Link to="#!" className="text-white link-styling">
-                    <div className="instagram--icon"></div>
-                    </Link>
+                    <a rel= "noopener noreferrer" href="https://www.facebook.com/CarDekho/" className="text-white link-styling">
+                    <div className="facebook-icon"></div>
+                    </a>
                   </li>
                   <li>
-                    <Link to="#!" className="text-white link-styling">
-                      <div className="twitter--icon"></div>
-                    </Link>
+                    <a rel= "noopener noreferrer" href="https://www.instagram.com/cardekhoindia/?hl=en" className="text-white link-styling">
+                      <div className="instagram-icon"></div>
+                    </a>
                   </li>
                   <li>
-                    <Link to="#!" className="text-white link-styling">
-                      <div className="facebook--icon"></div>
-                    </Link>
+                    <a rel= "noopener noreferrer" href="https://twitter.com/CarDekho?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" className="text-white link-styling">
+                      <div className="twitter-icon"></div>
+                    </a>
                   </li>
                 </ul>
               </div>

@@ -22,6 +22,10 @@ function HomePage() {
     setCarTypeIndex(carTypeIndex);
   };
 
+  useEffect(() => {
+    document.title = "Xtreme Cars | Home Page";
+  }, []);
+
   return (
     <>
       <CarTypeBar

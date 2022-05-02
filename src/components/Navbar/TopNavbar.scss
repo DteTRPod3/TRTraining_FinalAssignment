@@ -1,50 +1,33 @@
-.nav-container {
+@import "../../themes/theme.scss";
+@import "../../themes/colors.scss";
+
+.layout--header--main--container .layout--header {
   display: flex;
+  padding: 0.5rem 5rem;
+  font-family: $font-family-roboto;
+}
+.layout--header--main--container .layout--header .layout--header--container {
   justify-content: flex-end;
 }
-
-.logo {
-  display: flex;
-  align-items: baseline;
-  margin-left: 2%;
-  margin-right: auto;
-  h5 {
-    background-color: darkcyan;
-    padding: 5%;
-    border: 0.1rem solid white;
-    border-radius: 10%;
-    font-family: cursive;
-    font-weight: 700;
-    font-style: italic;
-  }
-  p {
-    align-items: baseline;
-    font-size: large;
-    font-weight: 600;
-    font-family: "Courier New", Courier, monospace;
-  }
+a.navbar-brand.layout--header--logo {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: $font-family-roboto;
 }
 
-.nav-container > .container2 {
-  flex: 1;
+a:hover {
+  transform: scale(1.05);
+  font-weight: $nav-font-weight;
+  color: $white;
+  text-decoration: underline;
 }
 
-.container2 {
-  display: flex;
-  justify-content: center;
-  margin-left: 30%;
-  #profile {
-    margin-left: auto;
-    margin-right: 5%;
-  }
-  a {
-    font-size: smaller;
-    color: white;
-    font-weight: 600;
-    margin-left: 4%;
-  }
+.collapse.navbar-collapse.layout--header--container {
+  display: block;
 }
 
-a.logo.navbar-brand {
-  padding: 0%;
+.nav-item {
+  .nav-link:hover {
+    color: white !important;
+    transform: scale(1.05);
+  }
 }
