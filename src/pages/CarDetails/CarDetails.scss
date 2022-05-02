@@ -1,6 +1,12 @@
 @import "./common-fontstyles.scss";
 @import "../../themes/colors.scss";
 
+.btn {
+  a:hover {
+    transform: scale(2);
+  }
+}
+
 .total-div {
   margin-top: 6rem;
   padding-top: 1rem;
@@ -25,6 +31,7 @@
     margin-top: 5%;
     background-color: $btn-color;
     width: 50%;
+    margin-left: 25%;
 
     border-color: 1px solid #790e22;
     a {
@@ -33,6 +40,11 @@
       text-decoration: none;
     }
   }
+}
+
+button#btn-booknow :hover {
+  transform: scale(2);
+  color: white;
 }
 
 .condensed-semibold {
@@ -153,6 +165,9 @@ div#top {
     margin: 0.5rem;
     margin-top: 2rem;
     border: 0.1rem solid black;
+  }
+  #interiors {
+    margin-top: 30px !important;
   }
 }
 
