@@ -23,6 +23,7 @@ function TopNavbar() {
                 to="/cars"
                 className="nav-link layout--header--link"
                 data-testid="AllcarsLink"
+                state={{ from: "all-cars" }}
               >
                 ALL CARS
               </Link>
