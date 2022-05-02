@@ -9,6 +9,11 @@ import { Link } from "react-router-dom";
 import Bar1 from "../../assets/01bar.svg";
 import Bar2 from "../../assets/02Bar.svg";
 import Bar3 from "../../assets/03Bar.svg";
+import BMW1 from "../../assets/BMW1.svg";
+import BMW2 from "../../assets/BMW2.svg";
+import interior1 from "../../assets/Interior1.svg";
+import interior2 from "../../assets/Interior2.svg";
+
 import "./CarDetails.scss";
 
 function CarDetails() {
@@ -19,11 +24,28 @@ function CarDetails() {
     (state) => JSON.parse(JSON.stringify(state.carDetails)).cardetails
   ) as CarFullDetails;
 
+  const carimage1: string =
+    car?.specifications.image === ""
+      ? BMW1
+      : car?.specifications.image.toString();
+
+  const exteriorimage: string =
+    car?.exterior.image === "" ? BMW2 : car?.exterior.image;
+
+  const interiorimage1: string =
+    car?.interior.image1 === "" ? interior1 : car?.interior.image1;
+
+  const interiorimage2: string =
+    car?.interior.image2 === "" ? interior2 : car?.interior.image2;
+
+  console.warn(car);
+
   const [carid] = useState(id!);
   const bookingLink = "/booking/" + carid;
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "Xtreme Cars | Car Details";
     dispatch(getCarDetails(carid));
   }, [dispatch, carid]);
@@ -46,7 +68,7 @@ function CarDetails() {
                   <Image
                     fluid
                     className="front-image"
-                    src={car?.specifications.image}
+                    src={carimage1}
                     alt="No Image Available"
                   />
                 </div>
@@ -107,7 +129,7 @@ function CarDetails() {
                   <Image
                     className="front-image"
                     fluid
-                    src={car?.exterior.image}
+                    src={exteriorimage}
                     alt="No Image Available"
                   />
                 </div>
@@ -144,7 +166,7 @@ function CarDetails() {
                     <Image
                       className="front-image"
                       fluid
-                      src={car?.interior.image1}
+                      src={interiorimage1}
                       alt="No Image Available"
                     />
                   </div>
@@ -152,7 +174,7 @@ function CarDetails() {
                     <Image
                       className="front-image"
                       fluid
-                      src={car?.interior.image2}
+                      src={interiorimage2}
                       alt="No Image Available"
                     />
                   </div>
@@ -161,7 +183,9 @@ function CarDetails() {
             </Col>
             <Col>
               <div className="content">
-                <h5 className="extra-bold">Interior finishes</h5>
+                <h5 className="extra-bold" id="interiors">
+                  Interior finishes
+                </h5>
                 <div
                   className="interior-color-box"
                   style={{
@@ -188,11 +212,9 @@ function CarDetails() {
               </div>
 
               <Row className="justify-content-md-center">
-                <Button id="btn-booknow">
-                  <Link to={bookingLink} state={{ car: car }}>
-                    Book Now
-                  </Link>
-                </Button>
+                <Link to={bookingLink} state={{ car: car }}>
+                  <Button id="btn-booknow">Book Now</Button>
+                </Link>
               </Row>
             </Col>
           </Row>
