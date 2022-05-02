@@ -32,7 +32,7 @@ function TopNavbar() {
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
-              <Link to="" className="nav-link layout--header--link">
+              <Link to="#" className="nav-link layout--header--link">
                 MY PROFILE
               </Link>
             </li>
