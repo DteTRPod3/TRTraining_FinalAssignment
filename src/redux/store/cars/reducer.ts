@@ -1,7 +1,7 @@
 import { CarDetails } from "../../../models/CarDetails";
-import { SET_CARS, SET_MORE_CARS } from "./actionType";
+import { RESET_CARS, SET_CARS, SET_MORE_CARS } from "./actionType";
 
-const initialState: CarDetails[] = [];
+const initialState: {cars: CarDetails[]} = {cars: []};
 
 const CarsReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -10,8 +10,9 @@ const CarsReducer = (state = initialState, action: any) => {
       return { ...state, cars };
     case SET_MORE_CARS:
       const nextCars = action.cars;
-      console.log([...state, ...nextCars]);
-      return { ...state, cars: [...state, ...nextCars]};
+      return { ...state, cars: [...state.cars, ...nextCars]};
+    case RESET_CARS: 
+      return {...state, cars: []};
     default:
       return state;
   }

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, ButtonGroup, Container } from "react-bootstrap";
+import { Button, ButtonGroup, Container, Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CarCard from "../../components/CarCard/CarCard";
 import { useQuery } from "../../hooks/useQuery";
 import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
-import { getCars, getMoreCars } from "../../redux/store/cars/actions";
+import { getCars, getMoreCars, resetCars } from "../../redux/store/cars/actions";
 import InfiniteScroll from "react-infinite-scroll-component";
 import sademoji from "../../assets/sad-emoji.svg";
 import "./CarsList.scss";
@@ -18,15 +18,13 @@ function CarsList() {
   const query = useQuery();
   const [carType, setCarType] = useState<number>(3);
   const cars: any = useSelector((state: any) => state.cars.cars);
-  const searchtext = query.get("search-text");
-  const [carNameToBeSearched] = useState(searchtext == null ? "" : searchtext);
+  const [carNameToBeSearched, setCarNameToBeSearched] = useState("");
 
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
-
-    // if (query.get("car-type") === null) navigate("/");
-    let params = query?.get("car-type");
-    switch (params) {
+    let typeParam = query?.get("car-type");
+    let searchParam = query?.get("search-text");
+    switch (typeParam) {
       case "sedan":
         setCarType(0);
         break;
@@ -37,19 +35,28 @@ function CarsList() {
         setCarType(2);
         break;
       default:
-        setCarType(searchtext == null || undefined ? 3 : 4);
+        setCarType(3);
         break;
+    }
+    if (searchParam !== null) {
+      setCarType(4);
+      setCarNameToBeSearched(searchParam);
     }
   }, []);
 
   useEffect(() => {
-    if (carType === 3) {
-      // navigate("/cars");
+    if (carType === 4) {
+      navigate(`/cars?search-text=${carNameToBeSearched}`);
       dispatch(getCars(""));
-    } else if (carType === 4) {
+    }
+    else if (carType === 3) {
+      navigate("/cars");
+      dispatch(resetCars());
       dispatch(getCars(""));
-    } else {
-      navigate("/cars?car-type=" + carTypeList[carType]);
+    }
+    else {
+      navigate(`/cars?car-type=${carTypeList[carType]}`);
+      dispatch(resetCars());
       dispatch(getCars(carTypeList[carType]));
     }
   }, [dispatch, carType, navigate]);
@@ -59,9 +66,10 @@ function CarsList() {
   }, [location]);
 
   let fetchMoreData = () => {
-    console.log("HERERE");
-    if (carType == 3) dispatch(getMoreCars(""));
-    else dispatch(getMoreCars(carTypeList[carType]));
+    setTimeout(() => {
+      if (carType == 3) dispatch(getMoreCars(""));
+      else dispatch(getMoreCars(carTypeList[carType]));
+    }, 2000);
   }
 
   return (
@@ -71,6 +79,7 @@ function CarsList() {
           className={`${carType === 3 ? "active-tab" : ""}`}
           onClick={() => {
             setCarType(3);
+            setCarNameToBeSearched("");
           }}
         >
           View All
@@ -79,6 +88,7 @@ function CarsList() {
           className={`${carType === 0 ? "active-tab" : ""}`}
           onClick={() => {
             setCarType(0);
+            setCarNameToBeSearched("");
           }}
         >
           Sedan
@@ -87,6 +97,7 @@ function CarsList() {
           className={`${carType === 1 ? "active-tab" : ""}`}
           onClick={() => {
             setCarType(1);
+            setCarNameToBeSearched("");
           }}
         >
           SUV
@@ -95,12 +106,13 @@ function CarsList() {
           className={`${carType === 2 ? "active-tab" : ""}`}
           onClick={() => {
             setCarType(2);
+            setCarNameToBeSearched("");
           }}
         >
           Hatchback
         </Button>
       </ButtonGroup>
-      {carType === 4 && (
+      {(
         <p className="result-count" data-testid="resultcount">
           {
             cars?.filter((car: CarDetails) =>
@@ -133,21 +145,21 @@ function CarsList() {
             ?.map((car: CarDetails) => <CarCard key={car.id} car={car} />)}
         {carType !== 4 &&
           <InfiniteScroll
-
-            dataLength={(cars === undefined) ? 0 : cars?.length}
+            dataLength={(cars === undefined) ? 1 : cars?.length}
             next={fetchMoreData}
             hasMore={cars?.length < 101}
-            loader={<div>Loading...</div>}
-            endMessage={
-              <div>
-                <img src={sademoji} alt="coming soon..." width={200}></img>
-                <span>You have seen it all</span>
-              </div>
-            }
+            loader={<div className="loader">
+              <Spinner animation="grow" />
+              <span>Loading...</span>
+            </div>}
+            endMessage={<div className="end-msg">
+              <img src={sademoji} alt="Sad Smiley Face" width={200} />
+              <p>There are no more cars</p>
+            </div>}
           >
             <div className="carsContainer">
               {cars?.map((car: CarDetails, index: number) => (
-                <CarCard id={car?.id} car={car} />
+                <CarCard key={index} id={car?.id} car={car} />
               ))}
             </div>
           </InfiniteScroll>}
