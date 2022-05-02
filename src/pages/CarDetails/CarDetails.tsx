@@ -6,8 +6,6 @@ import { RootState } from "../../redux/configureStore";
 import { getCarDetails } from "../../redux/store/carDetails/actions";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Bar2 from "../../assets/Bar2.svg";
-import Bar3 from "../../assets/Bar3.svg";
 import Bar1 from "../../assets/Bar1.svg";
 import "./CarDetails.scss";
 
@@ -32,7 +30,7 @@ function CarDetails() {
     <>
       <Container fluid className="total-div">
         <div className="black-box-left"></div>
-        <Container className="detailsContainer">
+        <Container className="details-container">
           <Row>
             <Col md lg xl xxl={8}>
               <h5 className="condensed-semibold" data-testid="CarName">
@@ -123,13 +121,9 @@ function CarDetails() {
               <div className="content">
                 <h5 className="extra-bold">Exteriors</h5>
                 <div
+                  className="exterior-color-box"
                   style={{
-                    height: "5rem",
-                    width: "10rem",
                     backgroundColor: car?.exterior.color,
-                    margin: "0.5rem",
-                    marginTop: "2rem",
-                    border: "0.1rem solid black",
                   }}
                 />
                 <div className="specification-details">
@@ -152,10 +146,7 @@ function CarDetails() {
                     <span className="first-mark">03</span>
                   </div>
                 </div>
-                <div
-                  className="interior-flex"
-                  style={{ display: "flex", flexDirection: "column" }}
-                >
+                <div className="interior-flex">
                   <div className="right-image-box">
                     <Image
                       className="front-image"
@@ -179,13 +170,9 @@ function CarDetails() {
               <div className="content">
                 <h5 className="extra-bold">Interior finishes</h5>
                 <div
+                  className="interior-color-box"
                   style={{
-                    height: "5rem",
-                    width: "10rem",
                     backgroundColor: car?.interior.color,
-                    margin: "0.5rem",
-                    marginTop: "2rem",
-                    border: "0.1rem solid black",
                   }}
                 />
                 <div className="specification-details">
@@ -208,7 +195,7 @@ function CarDetails() {
               </div>
 
               <Row className="justify-content-md-center">
-                <Button id="btn_booknow">
+                <Button id="btn-booknow">
                   <Link to={bookingLink} state={{ car: car }}>
                     Book Now
                   </Link>

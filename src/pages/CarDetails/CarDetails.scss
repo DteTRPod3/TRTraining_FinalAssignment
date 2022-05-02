@@ -10,7 +10,7 @@
     margin: 0;
   }
 }
-.detailsContainer {
+.details-container {
   p {
     font-weight: bold;
 
@@ -21,7 +21,7 @@
   h6 {
     font-weight: bold;
   }
-  #btn_booknow {
+  #btn-booknow {
     margin-top: 5%;
     background-color: $btn-color;
     width: 50%;
@@ -146,6 +146,14 @@ div#top {
 .content {
   margin-left: 2rem;
   margin-right: 1rem;
+
+  .interior-color-box {
+    height: 5rem;
+    width: 10rem;
+    margin: 0.5rem;
+    margin-top: 2rem;
+    border: 0.1rem solid black;
+  }
 }
 
 .specification-details {
@@ -193,4 +201,12 @@ div#top {
   line-height: 2.75rem;
   margin-left: 18%;
   font-weight: 700;
+}
+
+.exterior-color-box {
+  height: 5rem;
+  width: 10rem;
+  margin: 0.5rem;
+  margin-top: 2rem;
+  border: 0.1rem solid black;
 }

@@ -38,7 +38,13 @@ describe("CarDetails", () => {
     await fireEvent.click(BtnElement);
     // eslint-disable-next-line testing-library/no-unnecessary-act
     act(() => {
-      render(<Booking />);
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <Booking />
+          </MemoryRouter>
+        </Provider>
+      );
     });
     expect(screen.getByText(/Booking Details/i)).toBeInTheDocument();
   });
