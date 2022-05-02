@@ -1,11 +1,11 @@
-import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import CarCard from "../CarCard";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import CarDetails from "../../../pages/CarDetails/CarDetails";
+import React from "react";
 import { act } from "react-dom/test-utils";
 import { Provider } from "react-redux";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import CarDetails from "../../../pages/CarDetails/CarDetails";
 import store from "../../../redux/configureStore";
+import CarCard from "../CarCard";
 
 const MockCard = () => {
   const cardetail = {

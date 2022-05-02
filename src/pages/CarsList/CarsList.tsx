@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Button, ButtonGroup, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import sademoji from "../../assets/sad-emoji.svg";
 import CarCard from "../../components/CarCard/CarCard";
 import { useQuery } from "../../hooks/useQuery";
 import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
 import { getCars } from "../../redux/store/cars/actions";
-import sademoji from "../../assets/sad-emoji.svg";
 import "./CarsList.scss";
 
 function CarsList() {
@@ -23,6 +23,7 @@ function CarsList() {
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
 
+    if (query.get("car-type") === null) navigate("*");
     let params = query?.get("car-type");
     switch (params) {
       case "sedan":
