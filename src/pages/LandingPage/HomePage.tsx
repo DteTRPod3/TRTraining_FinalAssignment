@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import crossIcon from "../../assets/crossIcon.svg";
 import BackgroundCarousel from "../../components/Carousel/BackgroundCarousel";
 import CarTypeBar from "../../components/CarTypeBar/CarTypeBar";
@@ -8,6 +9,14 @@ import "./HomePage.scss";
 
 function HomePage() {
   const [carTypeIndex, setCarTypeIndex] = useState(0);
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  useEffect(() => {
+    document.title = "Xtreme Cars";
+  }, []);
 
   const dispatchCarsByType = (carTypeIndex: number) => {
     setCarTypeIndex(carTypeIndex);

@@ -1,5 +1,5 @@
 import { Button, Container, Form, Card, Modal, FormGroup } from "react-bootstrap";
-import React from "react";
+import React, { useEffect } from "react";
 import "./TestDrive.scss";
 import { contactpattern, emailpattern } from "../../constants";
 import { useForm } from "react-hook-form";
@@ -12,6 +12,9 @@ function TestDrive() {
   } = useForm({
     mode: "onSubmit",
   });
+  useEffect(() => {
+    document.title = "Xtreme Cars | Test Drive";
+  }, []);
 
   const [show, setShow] = useState(false);
 
