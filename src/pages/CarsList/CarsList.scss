@@ -78,24 +78,3 @@
     font-weight: 500;
   }
 }
-
-.end-msg {
-  margin:auto;
-  display:flex;
-  align-items: end;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 1rem;
-  img {
-    height: 3rem;
-    width: 3rem;   
-  }
-}
-
-.loader {
-  display:flex; 
-  justify-content: center;
-  gap: 1rem; 
-  align-items: center;
-  margin-top: 1rem;
-}

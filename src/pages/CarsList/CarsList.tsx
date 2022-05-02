@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, ButtonGroup, Container, Spinner } from "react-bootstrap";
+import { Button, ButtonGroup, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CarCard from "../../components/CarCard/CarCard";
@@ -10,6 +10,8 @@ import { getCars, getMoreCars, resetCars } from "../../redux/store/cars/actions"
 import InfiniteScroll from "react-infinite-scroll-component";
 import sademoji from "../../assets/sad-emoji.svg";
 import "./CarsList.scss";
+import Loader from "../../components/Loader/Loader";
+import EndMessage from "../../components/EndMessage/EndMessage";
 
 function CarsList() {
   const dispatch = useDispatch();
@@ -148,14 +150,8 @@ function CarsList() {
             dataLength={(cars === undefined) ? 1 : cars?.length}
             next={fetchMoreData}
             hasMore={cars?.length < 101}
-            loader={<div className="loader">
-              <Spinner animation="grow" />
-              <span>Loading...</span>
-            </div>}
-            endMessage={<div className="end-msg">
-              <img src={sademoji} alt="Sad Smiley Face" width={200} />
-              <p>There are no more cars</p>
-            </div>}
+            loader={<Loader/>}
+            endMessage={<EndMessage/>}
           >
             <div className="carsContainer">
               {cars?.map((car: CarDetails, index: number) => (
