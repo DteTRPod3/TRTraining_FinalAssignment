@@ -8,6 +8,9 @@ function Contact() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  useEffect(() => {
+    document.title = "Xtreme Cars | Contact Us";
+  }, []);
   return (
     <>
       <div className="container">

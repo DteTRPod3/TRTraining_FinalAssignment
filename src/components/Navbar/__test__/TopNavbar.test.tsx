@@ -1,12 +1,12 @@
-import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import TopNavbar from "../TopNavbar";
+import React from "react";
+import { act } from "react-dom/test-utils";
+import { Provider } from "react-redux";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import CarsList from "../../../pages/CarsList/CarsList";
-import { act } from "react-dom/test-utils";
-import store from "../../../redux/configureStore";
-import { Provider } from "react-redux";
 import HomePage from "../../../pages/LandingPage/HomePage";
+import store from "../../../redux/configureStore";
+import TopNavbar from "../TopNavbar";
 
 const MockNavbar = () => {
   return (

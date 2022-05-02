@@ -1,5 +1,5 @@
-import React, { FormEventHandler } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Booking from "../../pages/Booking/Booking";
 import Confirmation from "../../pages/BookingConfirmation/Confirmation";
 import CarDetails from "../../pages/CarDetails/CarDetails";
