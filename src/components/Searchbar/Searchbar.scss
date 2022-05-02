@@ -31,6 +31,7 @@
   background-color: white;
   padding-left: 0%;
   input {
+    outline: none;
     border: none;
     margin: 0%;
   }
@@ -40,9 +41,13 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 19px;
-
     color: $placeholder-text-color;
   }
+}
+
+form .form-control:focus {
+  border-color: #ced4da;
+  box-shadow: none;
 }
 
 .btn-search {
@@ -52,7 +57,7 @@
   height: 28px;
   font-family: $font-family-roboto;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   line-height: 18px;
   text-transform: uppercase;
