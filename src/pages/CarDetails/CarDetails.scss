@@ -27,7 +27,8 @@
   #btn_booknow {
     margin-top: 5%;
     background-color: $btn-color;
-    width: fit-content;
+    width: 50%;
+
     border-color: 1px solid #790e22;
     a {
       color: white;
@@ -36,9 +37,6 @@
     }
   }
 }
-// .col2 {
-//   margin-left: 10.93rem;
-// }
 
 .condensed-semibold {
   font-size: 2rem;
