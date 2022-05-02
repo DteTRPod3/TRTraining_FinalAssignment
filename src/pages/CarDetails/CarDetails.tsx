@@ -30,8 +30,7 @@ function CarDetails() {
 
   return (
     <>
-      <Container id="top"></Container>
-      <Container fluid className="totaldiv">
+      <Container fluid className="total-div">
         <div className="black-box-left"></div>
         <Container className="detailsContainer">
           <Row>
