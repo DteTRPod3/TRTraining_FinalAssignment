@@ -6,7 +6,9 @@ import { RootState } from "../../redux/configureStore";
 import { getCarDetails } from "../../redux/store/carDetails/actions";
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Bar1 from "../../assets/Bar1.svg";
+import Bar1 from "../../assets/01bar.svg";
+import Bar2 from "../../assets/02Bar.svg";
+import Bar3 from "../../assets/03Bar.svg";
 import "./CarDetails.scss";
 
 function CarDetails() {
@@ -39,9 +41,6 @@ function CarDetails() {
               <div className="image-box">
                 <div className="left-image-box">
                   <Image fluid className="bar1" src={Bar1}></Image>
-                  <div className="mark01">
-                    <span className="first-mark">01</span>
-                  </div>
                 </div>
                 <div className="right-image-box">
                   <Image
@@ -102,10 +101,7 @@ function CarDetails() {
             <Col md lg xl xxl={8}>
               <div className="image-box">
                 <div className="left-image-box">
-                  <Image fluid className="bar1" src={Bar1}></Image>
-                  <div className="mark02">
-                    <span className="first-mark">02</span>
-                  </div>
+                  <Image fluid className="bar1" src={Bar2}></Image>
                 </div>
                 <div className="right-image-box">
                   <Image
@@ -141,10 +137,7 @@ function CarDetails() {
             <Col md lg xl xxl={8}>
               <div className="image-box">
                 <div className="left-image-box">
-                  <Image fluid className="bar1 bar3" src={Bar1}></Image>
-                  <div className="mark03">
-                    <span className="first-mark">03</span>
-                  </div>
+                  <Image fluid className="bar1 bar3" src={Bar3}></Image>
                 </div>
                 <div className="interior-flex">
                   <div className="right-image-box">
@@ -204,7 +197,6 @@ function CarDetails() {
             </Col>
           </Row>
         </Container>
-        <div className="blackbox-right"></div>
       </Container>
     </>
   );
