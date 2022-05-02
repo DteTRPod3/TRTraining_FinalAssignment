@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import "./Searchbar.scss";
 import { Link } from "react-router-dom";
+import { isDisabled } from "@testing-library/user-event/dist/utils";
 
 function Searchbar() {
   const [searchWord, setText] = useState("");
@@ -23,7 +24,7 @@ function Searchbar() {
             onChange={handleTextChange}
           />
           <Link to={`/cars?search-text=${searchWord}`}>
-            <button
+            <button disabled={searchWord.length === 0}
               className="btn-search"
               type="submit"
               data-testid="search-btn"

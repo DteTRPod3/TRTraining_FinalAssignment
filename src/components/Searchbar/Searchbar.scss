@@ -64,3 +64,10 @@ form .form-control:focus {
   background: $btn-color;
   color: $white;
 }
+
+.btn-search:disabled {
+  background-color: $lightGrey;
+  color: $black;
+  border: none;
+  cursor: default;
+}
