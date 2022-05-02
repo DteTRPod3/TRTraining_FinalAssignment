@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
-import "./PolicyPage.scss"
+import { Link, useLocation } from "react-router-dom";
+import "./PolicyPage.scss";
 
 function PolicyPage() {
   const location = useLocation();
@@ -10,8 +10,8 @@ function PolicyPage() {
   }, [location]);
 
   useEffect(() => {
-    document.title = "Xtreme Cars | Policy Page"
- }, []);
+    document.title = "Xtreme Cars | Policy Page";
+  }, []);
   return (
     <>
       <Container>
@@ -84,14 +84,16 @@ function PolicyPage() {
             </section>
             <section>
               <h6>Do we use &apos;cookies&apos;?</h6>
-              <p>We do not use cookies for tracking purposes
-                You can choose to have your computer warn you each time a cookie
-                is being sent, or you can choose to turn off all cookies. You do
-                this through your browser settings.
-                </p>
               <p>
-                Since browser is a little different, look at your browser’s Help
-                Menu to learn the correct way to modify your cookies.
+                We do not use cookies for tracking purposes You can choose to
+                have your computer warn you each time a cookie is being sent, or
+                you can choose to turn off all cookies. You do this through your
+                browser settings.
+              </p>
+              <p>
+                Since browser is a little different, look at your
+                browser&aspos;s Help Menu to learn the correct way to modify
+                your cookies.
               </p>
               <p>
                 If you turn cookies off, Some of the features that make your
@@ -120,18 +122,18 @@ function PolicyPage() {
                 Google&apos;s advertising requirements can be summed up by
                 Google&apos;s Advertising Principles. They are put in place to
                 provide a positive experience for users.
-                <a href="https://support.google.com/adwordspolicy/answer/1316548?hl=en">
+                <a rel="noopener noreferrer" href="https://support.google.com/adwordspolicy/answer/1316548?hl=en">
                   https://support.google.com/adwordspolicy/answer/1316548?hl=en
                 </a>
               </p>
               <p>We use Google AdSense Advertising on our website.</p>
               <p>
                 Google, as a third-party vendor, uses cookies to serve ads on
-                our site. Google’s use of the DART cookie enables it to serve
-                ads to our users based on previous visits to our site and other
-                sites on the Internet. Users may opt-out of the use of the DART
-                cookie by visiting the Google Ad and Content Network privacy
-                policy.
+                our site. Google&aspos;s use of the DART cookie enables it to
+                serve ads to our users based on previous visits to our site and
+                other sites on the Internet. Users may opt-out of the use of the
+                DART cookie by visiting the Google Ad and Content Network
+                privacy policy.
               </p>
               <ul>
                 <b>We have implemented the following:</b>
@@ -153,7 +155,7 @@ function PolicyPage() {
                 companies with whom it is being shared.{" "}
                 <span>
                   – See more at:{" "}
-                  <a href="http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf">
+                  <a rel="noopener noreferrer" href="http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf">
                     http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
                   </a>
                 </span>
@@ -181,37 +183,72 @@ function PolicyPage() {
               </ul>
             </section>
             <section>
-                <h6>COPPA (Children Online Privacy Protection Act)</h6>
-                <p>When it comes to the collection of personal information from children under the age of 13 years old, the Children&apos;s Online Privacy Protection Act (COPPA) puts parents in control. The Federal Trade Commission, United States&apos; consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children&apos;s privacy and safety online.</p>
+              <h6>COPPA (Children Online Privacy Protection Act)</h6>
+              <p>
+                When it comes to the collection of personal information from
+                children under the age of 13 years old, the Children&apos;s
+                Online Privacy Protection Act (COPPA) puts parents in control.
+                The Federal Trade Commission, United States&apos; consumer
+                protection agency, enforces the COPPA Rule, which spells out
+                what operators of websites and online services must do to
+                protect children&apos;s privacy and safety online.
+              </p>
             </section>
             <section>
-                <h6>CAN SPAM Act</h6>
-                <p>The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.</p>
-                <ul>
-                    <li>Send information, respond to inquiries, and/or other requests or questions</li>
-                    <li>Process orders and to send information and updates pertaining to orders.</li>
-                </ul>
-                <ul>
-                    <li>Not use false or misleading subjects or email addresses.</li>
-                    <li>Identify the message as an advertisement in some reasonable way.</li>
-                    <li>Include the physical address of our business or site headquarters.</li>
-                    <li>Monitor third-party email marketing services for compliance, if one is used.</li>
-                    <li> Honor opt-out/unsubscribe requests quickly.</li>
-                    <li>Allow users to unsubscribe by using the link at the bottom of each email.</li>
-                </ul>
+              <h6>CAN SPAM Act</h6>
+              <p>
+                The CAN-SPAM Act is a law that sets the rules for commercial
+                email, establishes requirements for commercial messages, gives
+                recipients the right to have emails stopped from being sent to
+                them, and spells out tough penalties for violations.
+              </p>
+              <ul>
+                <li>
+                  Send information, respond to inquiries, and/or other requests
+                  or questions
+                </li>
+                <li>
+                  Process orders and to send information and updates pertaining
+                  to orders.
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  Not use false or misleading subjects or email addresses.
+                </li>
+                <li>
+                  Identify the message as an advertisement in some reasonable
+                  way.
+                </li>
+                <li>
+                  Include the physical address of our business or site
+                  headquarters.
+                </li>
+                <li>
+                  Monitor third-party email marketing services for compliance,
+                  if one is used.
+                </li>
+                <li> Honor opt-out/unsubscribe requests quickly.</li>
+                <li>
+                  Allow users to unsubscribe by using the link at the bottom of
+                  each email.
+                </li>
+              </ul>
             </section>
             <section>
-                <h6>Contacting Us</h6>
-                <p>If there are any questions regarding this privacy policy, you may contact us using the information below.</p>
-                <a href="https://globalmusicinstitute.in/">https://globalmusicinstitute.in/</a>
-                <address>
-                7A, Knowledge Park 3
-Greater Noida, Uttar Pradesh 201310
-
-India
-                </address>
-                <p>admissions.gmi@gmail.com</p>
-                <p><cite>Last edited on :</cite> 2017-12-20</p>
+              <h6>Contacting Us</h6>
+              <p>
+                If there are any questions regarding this privacy policy, you
+                may contact us using the information below.
+              </p>
+              <Link to="/">https://xtremecars.in/</Link>
+              <address>
+                7A, Knowledge Park 3 Greater Noida, Uttar Pradesh 201310 India
+              </address>
+              <p>admissions.gmi@gmail.com</p>
+              <p>
+                <i>Last edited on :</i> 2017-12-20
+              </p>
             </section>
           </article>
           <hr></hr>
