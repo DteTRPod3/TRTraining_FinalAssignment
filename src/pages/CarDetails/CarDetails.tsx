@@ -38,8 +38,6 @@ function CarDetails() {
   const interiorimage2: string =
     car?.interior.image2 === "" ? interior2 : car?.interior.image2;
 
-  console.warn(car);
-
   const [carid] = useState(id!);
   const bookingLink = "/booking/" + carid;
   const dispatch = useDispatch();
