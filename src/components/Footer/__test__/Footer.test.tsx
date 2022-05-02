@@ -107,4 +107,34 @@ describe("Footer Link Redirection", () => {
     
     expect(screen.getByText(/test drive form/i)).toBeInTheDocument()
   });
+  it("checks if the policy link exists", () => {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>
+    );
+    const policyLink = screen.getByText(/policy page/i);
+    expect(policyLink).toBeInTheDocument();
+  });
+
+  it("renders to Policy Page", async () =>  {
+    render(
+      <MemoryRouter>
+        <Footer />
+      </MemoryRouter>
+    );
+    const policyLink = screen.getByText(/policy page/i);
+    expect(policyLink).toBeInTheDocument();
+    await fireEvent.click(policyLink)
+
+    act(()=>{
+        render(
+          <MemoryRouter>
+            <Contact/>
+          </MemoryRouter>
+        )
+    })
+    
+    expect(screen.getByText(/policy page/i)).toBeInTheDocument()
+  });
 });
