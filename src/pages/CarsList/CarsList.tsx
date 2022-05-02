@@ -20,13 +20,14 @@ function CarsList() {
   const query = useQuery();
   const [carType, setCarType] = useState<number>(3);
   const cars: any = useSelector((state: any) => state.cars.cars);
-  const [carNameToBeSearched, setCarNameToBeSearched] = useState("");
-
+  const searchtext = query.get("search-text");
+  const [carNameToBeSearched, setCarNameToBeSearched] = useState(searchtext === null ? "" : searchtext);
+  const { from }: any = location.state == null ? "" : (location.state as any);
+  
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
-    let typeParam = query?.get("car-type");
-    let searchParam = query?.get("search-text");
-    switch (typeParam) {
+    let params = query?.get("car-type");
+    switch (params) {
       case "sedan":
         setCarType(0);
         break;
@@ -37,14 +38,22 @@ function CarsList() {
         setCarType(2);
         break;
       default:
-        setCarType(3);
+        setCarType(carNameToBeSearched === "" || undefined ? 3 : 4);
         break;
     }
-    if (searchParam !== null) {
-      setCarType(4);
-      setCarNameToBeSearched(searchParam);
-    }
   }, []);
+
+  useEffect(() => {
+    if (from === "all-cars") {
+      setCarType(3);
+    }
+  }, [from]);
+
+  useEffect(() => {
+    if (searchtext == null) {
+      setCarType(3);
+    }
+  }, [searchtext, navigate]);
 
   useEffect(() => {
     if (carType === 4) {
@@ -52,7 +61,6 @@ function CarsList() {
       dispatch(getCars(""));
     }
     else if (carType === 3) {
-      navigate("/cars");
       dispatch(resetCars());
       dispatch(getCars(""));
     }
@@ -114,7 +122,7 @@ function CarsList() {
           Hatchback
         </Button>
       </ButtonGroup>
-      {(
+      {(carType === 4 &&
         <p className="result-count" data-testid="resultcount">
           {
             cars?.filter((car: CarDetails) =>
@@ -124,6 +132,11 @@ function CarsList() {
             )?.length
           }{" "}
           total results
+        </p>
+      )}
+      {carType !== 4 && (
+        <p className="result-count" data-testid="resultcount">
+          {cars?.length} total results
         </p>
       )}
       <Container className="carsContainer">
