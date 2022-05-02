@@ -8,6 +8,9 @@ function Careers() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
+  useEffect(() => {
+    document.title = "Xtreme Cars | Careers";
+  }, []);
   return (
     <>
       <Container>
