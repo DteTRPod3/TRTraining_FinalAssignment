@@ -1,4 +1,4 @@
-.footer--layout {
+.footer-layout {
   margin-top: 3rem;
   a.text-white.link-styling {
     text-decoration: none;
@@ -6,4 +6,28 @@
       text-decoration: underline;
     }
   }
+}
+.footer-layout a.text-white.link-styling .facebook-icon{
+  background: url("../../assets/facebook_icon.svg");
+  width: 2rem;
+  height: 2rem;
+  background-size: cover;
+  margin-bottom: 0.7rem;
+  background-repeat: no-repeat;
+}
+.footer-layout a.text-white.link-styling .twitter-icon{
+  background: url("../../assets/twitter_icon.svg");
+  width: 2.5rem;
+  height: 2rem;
+  margin-bottom: 0.7rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.footer-layout a.text-white.link-styling .instagram-icon{
+  background: url("../../assets/instagram_icon.svg");
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.7rem;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
