@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import crossIcon from "../../assets/crossIcon.svg";
 import BackgroundCarousel from "../../components/Carousel/BackgroundCarousel";
 import CarTypeBar from "../../components/CarTypeBar/CarTypeBar";
@@ -12,6 +12,10 @@ function HomePage() {
   const dispatchCarsByType = (carTypeIndex: number) => {
     setCarTypeIndex(carTypeIndex);
   };
+
+  useEffect(() => {
+    document.title = "Xtreme Cars | Home Page";
+  }, []);
 
   return (
     <>

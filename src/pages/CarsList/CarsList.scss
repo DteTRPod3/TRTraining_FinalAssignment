@@ -1,5 +1,5 @@
-@import"../../themes/colors.scss";
-@import"../../themes/theme.scss";
+@import "../../themes/colors.scss";
+@import "../../themes/theme.scss";
 
 .carsContainer {
   display: flex;
@@ -23,7 +23,7 @@
   padding: 0.25rem;
   width: 40%;
   background-color: $lightGrey;
- 
+
   button:hover {
     background-color: $black;
     color: $white;
@@ -55,5 +55,26 @@
 @media(min-width:$breakpoint-mobile-screen) {
   .mb-2.btn-group{
     width: 84%;
+  }
+}
+
+.result-count {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  font-family: $font-family-roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $black;
+}
+
+.sorry-message {
+  margin: 5%;
+  text-align: center;
+  p {
+    font-family: $font-family-roboto;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 500;
   }
 }
