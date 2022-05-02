@@ -56,17 +56,17 @@ function Footer() {
                 <h5>Connect With Us</h5>
                 <ul className="list-unstyled mb-0">
                   <li>
-                    <a href="https://www.facebook.com/CarDekho/" className="text-white link-styling">
+                    <a rel= "noopener noreferrer" href="https://www.facebook.com/CarDekho/" className="text-white link-styling">
                     <div className="facebook-icon"></div>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/cardekhoindia/?hl=en" className="text-white link-styling">
+                    <a rel= "noopener noreferrer" href="https://www.instagram.com/cardekhoindia/?hl=en" className="text-white link-styling">
                       <div className="instagram-icon"></div>
                     </a>
                   </li>
                   <li>
-                    <a href="https://twitter.com/CarDekho?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" className="text-white link-styling">
+                    <a rel= "noopener noreferrer" href="https://twitter.com/CarDekho?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" className="text-white link-styling">
                       <div className="twitter-icon"></div>
                     </a>
                   </li>
