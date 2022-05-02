@@ -46,18 +46,8 @@ function Footer() {
                 <h5>Legal</h5>
                 <ul className="list-unstyled mb-0">
                   <li>
-                    <Link to="#!" className="text-white link-styling">
-                      Legal Disclaimer/Imprint
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#!" className="text-white link-styling">
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="#!" className="text-white link-styling">
-                      Cookie Policy
+                    <Link to="/policy_page" className="text-white link-styling">
+                      Policy Page
                     </Link>
                   </li>
                 </ul>
