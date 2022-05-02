@@ -22,7 +22,6 @@ function CarsList() {
 
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
-    // if (query.get("car-type") === null) navigate("/");
     let params = query?.get("car-type");
     switch (params) {
       case "sedan":
@@ -48,7 +47,6 @@ function CarsList() {
 
   useEffect(() => {
     if (carType === 3) {
-      // navigate("/cars");
       dispatch(getCars(""));
     } else if (carType === 4) {
       dispatch(getCars(""));
