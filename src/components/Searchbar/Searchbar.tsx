@@ -12,7 +12,6 @@ function Searchbar() {
   };
 
   const handleSubmit = () => {
-    console.log(searchWord);
     navigate(`/cars?search-text=${searchWord}`);
   };
 
