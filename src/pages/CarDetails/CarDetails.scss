@@ -124,9 +124,9 @@
 }
 
 .extra-bold {
-  font-size: 2rem;
+  font-size: 1.5em;
   font-family: inherit;
-  line-height: 2.375rem;
+  line-height: 1.25em;
 
   font-weight: 800;
   display: inline;
@@ -166,17 +166,16 @@ div#top {
     font-family: "'Roboto Condensed', sans-serif;";
     font-size: 20px;
     line-height: $medium-line-height;
-    margin-left: 4px;
+    // margin-left: 4px;
     list-style: none;
-  }
+    span {
+      font-weight: 300;
+      font-family: "'Roboto Condensed', sans-serif;";
+      font-size: 16px;
+      line-height: $light-line-height;
 
-  span {
-    font-weight: lighter;
-    font-family: "'Roboto Condensed', sans-serif;";
-    font-size: 16px;
-    line-height: $light-line-height;
-
-    color: black;
+      color: black;
+    }
   }
 
   .interior-content {
@@ -184,7 +183,6 @@ div#top {
       padding: 0;
     }
     li {
-      list-style: none;
       word-wrap: normal;
       font-size: 20px;
       font-family: "roboto";
@@ -200,11 +198,11 @@ div#top {
 }
 
 .cost {
-  font-size: 20px;
+  font-size: 24px;
   font-family: "roboto";
-  line-height: 2.375rem;
+  line-height: 2.75rem;
   margin-left: 18%;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .bar3 {

@@ -24,6 +24,7 @@ function CarDetails() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    document.title = "Xtreme Cars | Car Details";
     dispatch(getCarDetails(carid));
   }, [dispatch, carid]);
 
@@ -35,7 +36,9 @@ function CarDetails() {
         <Container className="detailsContainer">
           <Row>
             <Col md lg xl xxl={8}>
-              <h5 className="condensed-semibold">{car?.specifications.name}</h5>
+              <h5 className="condensed-semibold" data-testid="CarName">
+                {car?.specifications.name}
+              </h5>
               <div className="image-box">
                 <div className="left-image-box">
                   <Image fluid className="bar1" src={Bar1}></Image>
@@ -62,27 +65,27 @@ function CarDetails() {
                   <p>
                     <span>Fuel type</span>
                     <br />
-                    {car?.specifications.fuel_type}
+                    <p>{car?.specifications.fuel_type}</p>
                   </p>
                   <p>
                     <span>Engine</span>
                     <br />
-                    {car?.specifications.engine_cc}
+                    <p>{car?.specifications.engine_cc}</p>
                   </p>
                   <p>
                     <span>Torque</span>
                     <br />
-                    {car?.specifications.torque}
+                    <p>{car?.specifications.torque}</p>
                   </p>
                   <p>
                     <span>Acceleration</span>
                     <br />
-                    {car?.specifications.acceleration}
+                    <p> {car?.specifications.acceleration}</p>
                   </p>
                   <p>
                     <span>Top Speed</span>
                     <br />
-                    {car?.specifications.top_speed}
+                    <p> {car?.specifications.top_speed}</p>
                   </p>
                   <p>
                     <span>Variants</span>
