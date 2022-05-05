@@ -1,0 +1,23 @@
+@import"../../themes/colors.scss";
+
+.toast-signup{
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    align-items: center;
+    cursor: pointer;
+    color: $dark-green;
+}
+
+.close-icon{
+    cursor: pointer;
+}
+
+.toast-main{
+    margin: 0;
+    padding: 0;
+    width: 35rem;
+    background-color: $light-green;
+    padding: 0.8rem 1rem;
+    border: 1px solid $dark-green;
+}

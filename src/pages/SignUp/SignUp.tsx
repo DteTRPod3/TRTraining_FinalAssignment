@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Container, Form, FormGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import CustomToaster from "../../components/CustomToaster/CustomToaster";
 import { emailpattern } from "../../constants";
+import { postSignUpDetails } from "../../redux/store/User/UserSignUp/action";
 import "./SignUp.scss";
 function SignUp() {
   const location = useLocation();
@@ -13,6 +15,7 @@ function SignUp() {
 
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -25,24 +28,13 @@ function SignUp() {
   useEffect(() => {
     document.title = "Xtreme Cars | Sign Up";
   }, []);
-
+  const childRef = useRef();
   const onSubmit = (formData: any) => {
-    console.log(formData);
-    toast((t) => (
-      <div
-        // style={{ transition: "all 2.5s ease-out", opacity: t.visible ? 1 : 0 }}
-        className="toast-signup"
-      >
-        <span>Profile Created Successfully</span>
-        <div className="close-icon" onClick={() => toast.dismiss(t.id)}>
-          x
-        </div>
-      </div>
-    ));
-
+    (childRef!.current! as any).toasterC();
     setTimeout(() => {
       navigate("/home");
     }, 3000);
+    dispatch(postSignUpDetails(formData));
   };
 
   return (
@@ -204,13 +196,7 @@ function SignUp() {
           </Form>
         </Card>
       </Container>
-      <Toaster
-        toastOptions={{
-          duration: 2000,
-          position: "bottom-center",
-          className: "toast-main",
-        }}
-      />
+      <CustomToaster ref={childRef} message="Profile Created Successfully" />
     </>
   );
 }
