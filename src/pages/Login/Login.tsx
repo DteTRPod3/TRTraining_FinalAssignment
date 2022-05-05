@@ -13,6 +13,7 @@ function Login() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     mode: "onSubmit",
@@ -43,7 +44,7 @@ function Login() {
       <h5 className="login-heading">Login To Xtreme Cars </h5>
       <br />
       <Form className="login-form" onSubmit={handleSubmit(onFormSubmit)}>
-        <p>Login with - </p>
+        <p>Login with </p>
         <Nav
           variant="tabs"
           defaultActiveKey="with-email"
@@ -63,7 +64,7 @@ function Login() {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>{userMainField}</Form.Label>
               <Form.Control
-                type="email"
+                type="text"
                 placeholder="Enter email"
                 {...register("email", {
                   required: "Email is required",
@@ -134,7 +135,17 @@ function Login() {
           <Button variant="info" type="submit">
             Login
           </Button>
-          <Button variant="light" type="button">
+          <Button
+            variant="light"
+            type="button"
+            onClick={() => {
+              reset({
+                email: "",
+                password: "",
+                mobile: "",
+              });
+            }}
+          >
             Reset
           </Button>
         </Form.Group>
