@@ -59,7 +59,7 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
               <Link
-                to="#"
+                to="/new_cars"
                 className="nav-link layout--header--link"
                 data-testid="AllcarsLink"
                 state={{ from: "new-cars" }}
@@ -73,7 +73,7 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
               <Link
-                to="#"
+                to="/used_cars"
                 className="nav-link layout--header--link"
                 data-testid="AllcarsLink"
                 state={{ from: "used-cars" }}
