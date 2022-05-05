@@ -7,9 +7,11 @@ import Careers from "../../pages/Careers/Careers";
 import CarsList from "../../pages/CarsList/CarsList";
 import Contact from "../../pages/Contact/Contact";
 import HomePage from "../../pages/LandingPage/HomePage";
+import NewCarsList from "../../pages/NewCarsList/NewCarsList";
 import NotFound from "../../pages/NotFound/NotFound";
 import PolicyPage from "../../pages/PolicyPage/PolicyPage";
 import TestDrive from "../../pages/TestDrive/TestDrive";
+import UsedCarsList from "../../pages/UsedCarsList/UsedCarsList";
 
 function RouterComponent() {
   return (
@@ -18,6 +20,8 @@ function RouterComponent() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/cars" element={<CarsList />} />
+        <Route path="/used_cars" element={<UsedCarsList />} />
+        <Route path="/new_cars" element={<NewCarsList />} />
         <Route path="/car_details/:id" element={<CarDetails />} />
         <Route path="/booking/:id" element={<Booking />} />
         <Route path="/booking_confirmation" element={<Confirmation />} />
