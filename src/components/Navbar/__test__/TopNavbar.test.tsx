@@ -16,15 +16,27 @@ const MockNavbar = () => {
   );
 };
 describe("Navbar", () => {
-  it("should render all cars text in the Navbar", () => {
+  it("should render all cars tab in the Navbar", () => {
     render(<MockNavbar />);
     const textElement = screen.getByText(/ALL CARS/i);
     expect(textElement).toBeInTheDocument();
   });
 
+  it("should render new cars tab in the Navbar", () => {
+    render(<MockNavbar />);
+    const textElement = screen.getByText(/NEW CARS/i);
+    expect(textElement).toBeInTheDocument();
+  });
+
+  it("should render used cars tab in the Navbar", () => {
+    render(<MockNavbar />);
+    const textElement = screen.getByText(/USED CARS/i);
+    expect(textElement).toBeInTheDocument();
+  });
+
   it('Logo must have src = "/logo.svg" and alt = "xtremecar Logo"', () => {
     render(<MockNavbar />);
-    const logo = screen.getByRole("img");
+    const logo = screen.getByAltText("Xtreme cars logo");
     expect(logo).toHaveAttribute("src", "logo.svg");
     expect(logo).toHaveAttribute("alt", "Xtreme cars logo");
   });
@@ -49,9 +61,20 @@ describe("Navbar", () => {
     expect(screen.getByText(/View All/i)).toBeInTheDocument();
   });
 
-  it("should render profile in the Navbar", () => {
+  it("should render profile icon if loggedin r", () => {
     render(<MockNavbar />);
-    const ProfileElement = screen.getByText(/Profile/i);
+    const isloggedin = localStorage.getItem("isloggedin");
+    const ProfileElement = screen.getByTestId("profileImage");
+    if (isloggedin === "true") {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(ProfileElement).toBeInTheDocument();
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(ProfileElement).toHaveAttribute("src", "man.png");
+    } else {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(ProfileElement).toHaveAttribute("src", "profile.svg");
+    }
+
     expect(ProfileElement).toBeInTheDocument();
   });
 
