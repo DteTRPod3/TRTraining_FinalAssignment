@@ -71,7 +71,7 @@ function Login() {
 
   return (
     <div className="login-div">
-      <h5 className="login-heading">Login To Xtreme Cars</h5>
+      <h5 className="login-heading">Login to Xtreme Cars</h5>
       <br />
       <Form className="login-form" onSubmit={handleSubmit(onFormSubmit)}>
         <p>Login with </p>
@@ -167,7 +167,7 @@ function Login() {
         <Form.Group>
           {displayMsg && (
             <p className="text-danger">
-              Login Failed due to incorrect credetials
+              Login failed due to incorrect credetials
             </p>
           )}
         </Form.Group>
