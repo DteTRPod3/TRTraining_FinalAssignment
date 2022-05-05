@@ -40,9 +40,10 @@ function Login() {
 
   return (
     <div className="login-div">
-      <h5>Login To Xtreame Cars</h5>
+      <h5 className="login-heading">Login To Xtreme Cars </h5>
       <br />
       <Form className="login-form" onSubmit={handleSubmit(onFormSubmit)}>
+        <p>Login with - </p>
         <Nav
           variant="tabs"
           defaultActiveKey="with-email"
@@ -50,14 +51,13 @@ function Login() {
           onSelect={handleTabSwitch}
         >
           <Nav.Item>
-            <Nav.Link eventKey="with-email">Login with Emial</Nav.Link>
+            <Nav.Link eventKey="with-email">Email</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="with-mobile">Login with Mobile Number</Nav.Link>
+            <Nav.Link eventKey="with-mobile">Mobile Number</Nav.Link>
           </Nav.Item>
         </Nav>
         <br />
-
         <Form.Group>
           {tabState === "with-email" && (
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -124,7 +124,6 @@ function Login() {
             )}
           </Form.Group>
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="linkToSignup">
           <Link to="/" className="register-link">
             New User? Register now
