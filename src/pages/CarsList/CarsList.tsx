@@ -23,7 +23,6 @@ function CarsList() {
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
 
-    // if (query.get("car-type") === null) navigate("*");
     let params = query?.get("car-type");
     switch (params) {
       case "sedan":
