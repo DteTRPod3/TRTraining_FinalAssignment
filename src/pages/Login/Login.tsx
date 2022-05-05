@@ -156,7 +156,7 @@ function Login() {
           </Form.Group>
         </Form.Group>
         <Form.Group className="mb-3" controlId="linkToSignup">
-          <Link to="/" className="register-link">
+          <Link to="/signup" className="register-link">
             New User? Register now
           </Link>
         </Form.Group>
