@@ -4,15 +4,17 @@ import "./SignUp.scss";
 import { capitalLetterPattern, contactpattern, emailpattern, lowerLetterPattern, numbersPattern, specialCharacterPattern} from "../../constants";
 import { useForm, useFormState } from "react-hook-form";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getValue } from "@testing-library/user-event/dist/utils";
+import toast, { Toaster } from "react-hot-toast";
 function SignUp() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
-  const[password,setPassword] = useState("")
+
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -34,9 +36,24 @@ function SignUp() {
   }, []);
 
   const onSubmit = (formData: any) => {
+    console.log(formData);
+    toast((t) => (
+      <div
+        // style={{ transition: "all 2.5s ease-out", opacity: t.visible ? 1 : 0 }}
+        className="toast-signup"
+      >
+        <span>Profile Created Successfully</span>
+        <div className="close-icon" onClick={() => toast.dismiss(t.id)}>
+          x
+        </div>
+      </div>
+    ));
 
+    setTimeout(() => {
+      navigate("/home");
+    }, 3000);
   };
-  console.log(errors?.password?.types)
+
   return (
     <>
       <Container>
@@ -153,10 +170,17 @@ function SignUp() {
               <Button variant="danger" type="submit">
                 Submit
               </Button>
-              </FormGroup>
-            </Form>
+            </FormGroup>
+          </Form>
         </Card>
       </Container>
+      <Toaster
+        toastOptions={{
+          duration: 2000,
+          position: "bottom-center",
+          className: "toast-main",
+        }}
+      />
     </>
   );
 }
