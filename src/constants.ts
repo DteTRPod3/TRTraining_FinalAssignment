@@ -14,6 +14,9 @@ const cities= [
     ];
 const contactpattern="[6-9]{1}[0-9]{9}";
 const emailpattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-const passwordpattern=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&/*-]).{8,}$/
+const capitalLetterPattern=/[A-Z]/
+const lowerLetterPattern=/[a-z]/
+const numbersPattern=/[0-9]/
+const specialCharacterPattern=/[!@#$%&?/:;"'.,]/
 
-export {API_URL,cities,contactpattern,emailpattern,passwordpattern}
+export {API_URL,cities,contactpattern,emailpattern,capitalLetterPattern,lowerLetterPattern,numbersPattern,specialCharacterPattern}

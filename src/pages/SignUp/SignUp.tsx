@@ -1,8 +1,8 @@
 import { Button, Container, Form, Card, Modal, FormGroup } from "react-bootstrap";
 import React, { useEffect } from "react";
 import "./SignUp.scss";
-import { contactpattern, emailpattern, passwordpattern } from "../../constants";
-import { useForm } from "react-hook-form";
+import { capitalLetterPattern, contactpattern, emailpattern, lowerLetterPattern, numbersPattern, specialCharacterPattern} from "../../constants";
+import { useForm, useFormState } from "react-hook-form";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getValue } from "@testing-library/user-event/dist/utils";
@@ -16,20 +16,27 @@ function SignUp() {
   const {
     register,
     handleSubmit,
+    control,
     getValues,
     formState: { errors },
   } = useForm({
     mode: "onChange",
     reValidateMode: 'onChange',
+    criteriaMode: "all"
   });
+
+  const {dirtyFields} = useFormState({
+    control
+  })
+
   useEffect(() => {
     document.title = "Xtreme Cars | Sign Up";
   }, []);
 
   const onSubmit = (formData: any) => {
-      
+
   };
-  console.log(getValues)
+  console.log(errors?.password?.types)
   return (
     <>
       <Container>
@@ -111,15 +118,23 @@ function SignUp() {
                 <Form.Control
                   type="password"
                   placeholder="Enter password..."
-                  {...register("password", { 
-                    required: "Password is required",
-                    pattern:{
-                      value:passwordpattern,
-                      message:"The password field must be 8 characters long with at least one capital letter, one lower case letter, one number and one special character"
-                    } 
+                  {...register("password", {
+                    validate:{
+                      lowercase:value=>lowerLetterPattern.test(value) || "The password must contain one lower case letter",
+                      uppercase:value=>capitalLetterPattern.test(value) || "The password must contain one upper case letter",
+                      minlength:value=>value.length>=8 || "The password length must be atleast 8",
+                      specialCharacter:value=>specialCharacterPattern.test(value) || `The password must contain a special character (! @ # $ % & ? / : ; . , " ')`,
+                      numbers:value=>numbersPattern.test(value) || "The password must contain a number",
+
+                    }
                   })}
                 />
-                {errors.password && <p className="text-danger" data-testid="address-error">{errors.password.message}</p>}
+                {errors?.password?.types["lowercase"] && <p className="text-danger" data-testid="address-error">{errors?.password?.types["lowercase"]}</p>}
+                {errors?.password?.types["lowercase"] && <p className="text-success" data-testid="address-error">{errors?.password?.types["lowercase"]}</p>}
+                {errors?.password?.types["uppercase"] && <p className="text-danger" data-testid="address-error">{errors?.password?.types["uppercase"]}</p>}
+                {errors?.password?.types["minlength"] && <p className="text-danger" data-testid="address-error">{errors?.password?.types["minlength"]}</p>}
+                {errors?.password?.types["numbers"] && <p className="text-danger" data-testid="address-error">{errors?.password?.types["numbers"]}</p>}
+                {errors?.password?.types["specialCharacter"] && <p className="text-danger" data-testid="address-error">{errors?.password?.types["specialCharacter"]}</p>}
               </Form.Group>
               <Form.Group className="mb-3 form-group-container" controlId="formGroupConfirmPassword">
                 <Form.Label>Re-enter Password</Form.Label>
@@ -128,13 +143,11 @@ function SignUp() {
                   placeholder="Re-enter the password"
                   {...register("confirmpassword", { 
                     required: "Please re-enter the password",
-                    pattern:{
-                      value:getValues("password"),
-                      message:"Password does not match"
-                    } 
+                    validate:  value=>value===getValues("password") || "Password does not match" 
                   })}
                 />
                 {errors.confirmpassword && <p className="text-danger" data-testid="address-error">{errors.confirmpassword.message}</p>}
+                {!errors.confirmpassword && dirtyFields["password"] && dirtyFields["confirmpassword"] && <p className="text-success">Tick</p>}
               </Form.Group>
               <FormGroup className="form-group-container">
               <Button variant="danger" type="submit">
