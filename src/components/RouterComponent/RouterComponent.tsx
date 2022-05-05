@@ -26,8 +26,6 @@ function RouterComponent() {
         <Route path="/test_drive" element={<TestDrive />} />
         <Route path="/policy_page" element={<PolicyPage />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/used_cars" element={<UsedCarsList />} />
-        <Route path="/new_cars" element={<NewCarsList />} />
         DefaultRoute
       </Routes>
     </div>
