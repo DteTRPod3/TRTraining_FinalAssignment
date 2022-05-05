@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import "./Searchbar.scss";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Searchbar() {
   const [searchWord, setText] = useState("");
+  const navigate = useNavigate();
+
   const handleTextChange = (event: any) => {
     setText(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    navigate(`/cars?search-text=${searchWord}`);
   };
 
   return (
     <div className="search-bar">
       <h1 className="header">FIND YOUR DREAM CAR</h1>
 
-      <Form className="textbox-div">
+      <Form className="textbox-div" onSubmit={handleSubmit}>
         <Container className="form-group-div">
           <Form.Control
             data-testid="searchTextBox"
@@ -22,15 +28,14 @@ function Searchbar() {
             className="search-input"
             onChange={handleTextChange}
           />
-          <Link to={`/cars?search-text=${searchWord}`}>
-            <button
-              className="btn-search"
-              type="submit"
-              data-testid="search-btn"
-            >
-              SEARCH
-            </button>
-          </Link>
+          <button
+            className="btn-search"
+            type="submit"
+            data-testid="search-btn"
+            disabled={searchWord === ""}
+          >
+            SEARCH
+          </button>
         </Container>
       </Form>
     </div>

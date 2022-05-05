@@ -29,7 +29,7 @@
   display: flex;
   width: 100%;
   background-color: white;
-  padding-left: 0%;
+  padding: 0%;
   input {
     outline: none;
     border: none;
@@ -51,7 +51,7 @@ form .form-control:focus {
 }
 
 .btn-search {
-  margin: 5%;
+  margin: 1%;
   width: 7rem;
   width: 82px;
   height: 28px;
@@ -63,4 +63,11 @@ form .form-control:focus {
   text-transform: uppercase;
   background: $btn-color;
   color: $white;
+}
+
+.btn-search:disabled {
+  background-color: $lightGrey;
+  color: $black;
+  border: none;
+  cursor: default;
 }
