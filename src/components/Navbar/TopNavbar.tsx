@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./TopNavbar.scss";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
@@ -31,55 +31,65 @@ function TopNavbar() {
     <div className="layout--header--main--container">
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark layout--header">
         <div className="nav-link">
-          <Link
+          <NavLink
             to={"/"}
             data-testid="XtremecarsLink"
-            className="navbar-brand layout--header--logo"
+            className={(navData) =>
+              navData.isActive ? "active" : "navbar-brand layout--header--logo"
+            }
           >
             <img src={Logo} alt="Xtreme cars logo" />
             XTREME CARS
-          </Link>
+          </NavLink>
         </div>
 
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto layout--header--lists">
             <li className="nav-item layout--header--list active">
-              <Link
+              <NavLink
+                className={(navData) =>
+                  navData.isActive
+                    ? "active"
+                    : "nav-link layout--header--link all-cars "
+                }
                 to="/cars"
-                className="nav-link layout--header--link all-cars"
                 data-testid="AllcarsLink"
                 state={{ from: "all-cars" }}
               >
                 ALL CARS
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
-              <Link
+              <NavLink
                 to="/new_cars"
-                className="nav-link layout--header--link"
+                className={(navData) =>
+                  navData.isActive ? "active" : "nav-link layout--header--link"
+                }
                 data-testid="AllcarsLink"
                 state={{ from: "new-cars" }}
               >
                 NEW CARS
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
-              <Link
+              <NavLink
                 to="/used_cars"
-                className="nav-link layout--header--link"
+                className={(navData) =>
+                  navData.isActive ? "active" : "nav-link layout--header--link"
+                }
                 data-testid="AllcarsLink"
                 state={{ from: "used-cars" }}
               >
                 USED CARS
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
