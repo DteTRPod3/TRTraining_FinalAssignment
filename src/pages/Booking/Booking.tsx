@@ -9,7 +9,7 @@ function Booking() {
   const { car } = useLocation().state as any;
   const [cardetails] = useState<CarFullDetails>(car);
   const { id } = useParams();
-  const detailsLink = "/cardetails/" + id;
+  const detailsLink = "/car_details/" + id;
   let navigate = useNavigate();
   const [mobileValid, setMobileValid] = useState(false);
   // var pattern = new RegExp(/^[0-9\b]+$/);
@@ -50,7 +50,9 @@ function Booking() {
         <text>Engine</text>
         <p>{cardetails.specifications.engine_cc}</p>
         <br />
-        <Link to={detailsLink}>View Details</Link>
+        <Link to={detailsLink} state={{ car: car }}>
+          View Details
+        </Link>
       </div>
       <div className="formDiv">
         <h5>Booking Details</h5>
