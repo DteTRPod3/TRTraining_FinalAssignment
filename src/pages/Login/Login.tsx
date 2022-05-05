@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./Login.scss";
 import { Button, Form, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { contactpattern, emailpattern } from "../../constants";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../redux/store/Authentication/actions";
+import { LoginStatus } from "../../models/LoginStatus";
 
 function Login() {
   const [tabState, SetTabState] = useState("with-email");
   const [userMainField, setuserMainField] = useState("Email address");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector(
+    (state: any) => state.authentiaction.authenticated
+  );
+  const [displayMsg, setDisplayMsg] = useState(false);
 
   const {
     register,
@@ -25,6 +33,7 @@ function Login() {
 
   const handleTabSwitch = (selectedKey: any) => {
     SetTabState(`${selectedKey}`);
+    setDisplayMsg(false);
   };
 
   useEffect(() => {
@@ -35,9 +44,30 @@ function Login() {
     }
   }, [tabState]);
 
-  const onFormSubmit = () => {
-    navigate("/home");
+  const onFormSubmit = (data: any, e: any) => {
+    const loginCredentials = {
+      userid: tabState === "with-email" ? data.email : data.mobile,
+      password: data.password,
+    };
+    dispatch(login(loginCredentials));
+    ShowHideMessage();
   };
+
+  const ShowHideMessage = useCallback(() => {
+    if (isAuthenticated === LoginStatus.LoginFailed) {
+      setDisplayMsg(true);
+    } else {
+      setDisplayMsg(false);
+    }
+  }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (isAuthenticated === LoginStatus.LoginSuccess) {
+      navigate("/home");
+    } else if (isAuthenticated === LoginStatus.LoginFailed) {
+      setDisplayMsg(true);
+    }
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="login-div">
@@ -131,6 +161,13 @@ function Login() {
           </Link>
         </Form.Group>
         <br />
+        <Form.Group>
+          {displayMsg && (
+            <p className="text-danger">
+              Login Failed due to incorrect credetials
+            </p>
+          )}
+        </Form.Group>
         <Form.Group className="mb-3" controlId="buttonGrp">
           <Button variant="info" type="submit">
             Login
@@ -144,6 +181,7 @@ function Login() {
                 password: "",
                 mobile: "",
               });
+              setDisplayMsg(false);
             }}
           >
             Reset
