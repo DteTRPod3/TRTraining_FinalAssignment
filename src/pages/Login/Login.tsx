@@ -71,7 +71,7 @@ function Login() {
 
   return (
     <div className="login-div">
-      <h5 className="login-heading">Login To Xtreme Cars </h5>
+      <h5 className="login-heading">Login To Xtreme Cars</h5>
       <br />
       <Form className="login-form" onSubmit={handleSubmit(onFormSubmit)}>
         <p>Login with </p>
@@ -85,7 +85,9 @@ function Login() {
             <Nav.Link eventKey="with-email">Email</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="with-mobile">Mobile Number</Nav.Link>
+            <Nav.Link data-testid="with-mobile" eventKey="with-mobile">
+              Mobile Number
+            </Nav.Link>
           </Nav.Item>
         </Nav>
         <br />
@@ -105,7 +107,7 @@ function Login() {
                 })}
               />
               {errors.email && (
-                <p className="text-danger" data-testid="name-error">
+                <p className="text-danger" data-testid="email-error">
                   {errors.email.message}
                 </p>
               )}
@@ -135,7 +137,7 @@ function Login() {
                 })}
               />
               {errors.mobile && (
-                <p className="text-danger" data-testid="name-error">
+                <p className="text-danger" data-testid="mobile-error">
                   {errors.mobile.message}
                 </p>
               )}
@@ -144,12 +146,13 @@ function Login() {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              data-testid="password"
               type="password"
-              placeholder="Password"
-              {...register("password", { required: "Password is rquired" })}
+              placeholder="Enter password"
+              {...register("password", { required: "Password is required" })}
             />
             {errors.password && (
-              <p className="text-danger" data-testid="name-error">
+              <p className="text-danger" data-testid="password-error">
                 {errors.password.message}
               </p>
             )}
@@ -169,10 +172,11 @@ function Login() {
           )}
         </Form.Group>
         <Form.Group className="mb-3" controlId="buttonGrp">
-          <Button variant="info" type="submit">
+          <Button variant="info" type="submit" data-testid="submit-button">
             Login
           </Button>
           <Button
+            data-testid="reset-button"
             variant="light"
             type="button"
             onClick={() => {
