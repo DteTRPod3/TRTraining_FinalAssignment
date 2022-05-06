@@ -24,6 +24,11 @@ function CarDetails() {
     (state) => JSON.parse(JSON.stringify(state.carDetails)).cardetails
   ) as CarFullDetails;
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(-1, -1);
+    }, 100);
+  });
   const carimage1: string =
     car?.specifications.image === ""
       ? BMW1

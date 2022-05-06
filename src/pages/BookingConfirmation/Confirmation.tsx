@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Image, Form } from "react-bootstrap";
 import bmw1 from "../../assets/bmwontop.jpg";
 import bmw2 from "../../assets/BMW.jpg";
@@ -9,6 +9,11 @@ function Confirmation() {
   const { car } = useLocation().state as any;
   const { formData } = useLocation().state as any;
 
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(-1, -1);
+    }, 100);
+  });
   return (
     <Container>
       <div className="top-div">
@@ -17,8 +22,8 @@ function Confirmation() {
         <p>
           {" "}
           The booking is confirmed. Our customer executive will be in touch with
-          you shortly. In case of any queries please reach out to the 1800 200
-          3000
+          you shortly. In case of any queries please reach out to{" "}
+          <b>18002003000</b>
         </p>
         <div className="confirmation-details-container">
           <div className="left-box">
