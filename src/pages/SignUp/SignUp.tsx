@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Card, Container, Form, FormGroup } from "react-bootstrap";
 import { useForm, useFormState } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,6 +12,9 @@ import {
   numbersPattern,
   specialCharacterPattern,
 } from "../../constants";
+import { LoginStatus } from "../../models/LoginStatus";
+import { login } from "../../redux/store/Authentication/actions";
+import { postSignUpDetails } from "../../redux/store/UserSignUp/action";
 import "./SignUp.scss";
 
 function SignUp() {
@@ -18,8 +22,11 @@ function SignUp() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector(
+    (state: any) => state.authentiaction.authenticated
+  );
   const {
     register,
     handleSubmit,
@@ -40,9 +47,21 @@ function SignUp() {
   useEffect(() => {
     document.title = "Xtreme Cars | Sign Up";
   }, []);
-  const onSubmit = (formData: any) => {
+
+  useEffect(() => {
+    if (isAuthenticated === LoginStatus.LoginSuccess) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
+  const onSubmit = async (formData: any) => {
+    const loginCredentials = {
+      userid: formData?.email,
+      password: "L#(qc{f}TaJu4%4k",
+    };
+    await dispatch(postSignUpDetails(formData));
+
+    await dispatch(login(loginCredentials));
     toast.success("Profile Created Successfully");
-    navigate("/home");
   };
 
   return (
