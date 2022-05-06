@@ -8,26 +8,29 @@ import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
 import { getCars, getMoreCars, resetCars } from "../../redux/store/cars/actions";
 import InfiniteScroll from "react-infinite-scroll-component";
-import sademoji from "../../assets/sad-emoji.svg";
+import sadEmoji from "../../assets/sad-emoji.svg";
 import "./CarsList.scss";
 import Loader from "../../components/Loader/Loader";
 import EndMessage from "../../components/EndMessage/EndMessage";
 
 function CarsList() {
+
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
   const query = useQuery();
   const [carType, setCarType] = useState<number>(3);
   const cars: any = useSelector((state: any) => state.cars.cars);
-  const searchtext = query.get("search-text");
-  const [carNameToBeSearched, setCarNameToBeSearched] = useState(searchtext === null ? "" : searchtext);
+  const [carNameToBeSearched, setCarNameToBeSearched] = useState("");
+  const [isUsed, setIsUsed] = useState<boolean | undefined>(undefined); 
   const { from }: any = location.state == null ? "" : (location.state as any);
   
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
-    let params = query?.get("car-type");
-    switch (params) {
+    const typeParam = query?.get("car-type");
+    const searchParam = query?.get("search-text");
+    const usedParam = query?.get("used");
+    switch (typeParam) {
       case "sedan":
         setCarType(0);
         break;
@@ -38,22 +41,35 @@ function CarsList() {
         setCarType(2);
         break;
       default:
-        setCarType(carNameToBeSearched === "" || undefined ? 3 : 4);
+        setCarType(3);
         break;
+    }
+    switch(usedParam) {
+      case "true":
+        setIsUsed(true);
+        break;
+      case "false":
+        setIsUsed(false);
+        break;
+      default:
+        setIsUsed(undefined);
+        break;
+    }
+    if(searchParam !== null && searchParam !== "") {
+      setCarType(4);
+      setCarNameToBeSearched(searchParam);
     }
   }, []);
 
   useEffect(() => {
-    if (from === "all-cars") {
+    if (from !== undefined) {
       setCarType(3);
+      setCarNameToBeSearched("");
+      if(from === "new_cars") setIsUsed(false);
+      else if(from === "used_cars") setIsUsed(true);
+      else setIsUsed(undefined);
     }
   }, [from]);
-
-  useEffect(() => {
-    if (searchtext == null) {
-      setCarType(3);
-    }
-  }, [searchtext, navigate]);
 
   useEffect(() => {
     if (carType === 4) {
@@ -61,15 +77,26 @@ function CarsList() {
       dispatch(getCars(""));
     }
     else if (carType === 3) {
+      if(isUsed === undefined) {
+        navigate(`/cars?`);
+      }
+      else {
+        navigate(`/cars?used=${isUsed}`);
+      }
       dispatch(resetCars());
-      dispatch(getCars(""));
+      dispatch(getCars("", isUsed));
     }
     else {
-      navigate(`/cars?car-type=${carTypeList[carType]}`);
+      if(isUsed === undefined) {
+        navigate(`/cars?car-type=${carTypeList[carType]}`);
+      }
+      else {
+        navigate(`/cars?car-type=${carTypeList[carType]}&used=${isUsed}`);
+      }
       dispatch(resetCars());
-      dispatch(getCars(carTypeList[carType]));
+      dispatch(getCars(carTypeList[carType], isUsed));
     }
-  }, [dispatch, carType, navigate]);
+  }, [dispatch, carType, isUsed, navigate]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -77,8 +104,8 @@ function CarsList() {
 
   let fetchMoreData = () => {
     setTimeout(() => {
-      if (carType == 3) dispatch(getMoreCars(""));
-      else dispatch(getMoreCars(carTypeList[carType]));
+      if (carType == 3) dispatch(getMoreCars("", isUsed));
+      else dispatch(getMoreCars(carTypeList[carType], isUsed));
     }, 2000);
   }
 
@@ -122,8 +149,7 @@ function CarsList() {
           Hatchback
         </Button>
       </ButtonGroup>
-      {(carType === 4 &&
-        <p className="result-count" data-testid="resultcount">
+      {(<p className="result-count" data-testid="resultcount">
           {
             cars?.filter((car: CarDetails) =>
               car.name
@@ -134,20 +160,15 @@ function CarsList() {
           total results
         </p>
       )}
-      {carType !== 4 && (
-        <p className="result-count" data-testid="resultcount">
-          {cars?.length} total results
-        </p>
-      )}
       <Container className="carsContainer">
-        {(cars === undefined || cars?.length === 0) && <div id="no-cars">No Cars Available</div>}
+        {carType !== 4 && (cars === undefined || cars?.length === 0) && <div id="no-cars">No Cars Available</div>}
         {carType === 4 &&
           cars?.filter((car: CarDetails) =>
             car.name.toLowerCase().includes(carNameToBeSearched?.toLowerCase())
           )?.length === 0 && (
             <div className="sorry-message">
               <p>Sorry, the car you have searched is not available</p>
-              <img src={sademoji} alt="Sad smiley face" width={200}></img>
+              <img src={sadEmoji} alt="Sad smiley face" width={200}></img>
             </div>
           )}
         {carType === 4 &&
@@ -158,7 +179,7 @@ function CarsList() {
                 .includes(carNameToBeSearched?.toLowerCase())
             )
             ?.map((car: CarDetails) => <CarCard key={car.id} car={car} />)}
-        {carType !== 4 &&
+        {carType !== 4 && cars?.length !== 0 &&
           <InfiniteScroll
             dataLength={(cars === undefined) ? 1 : cars?.length}
             next={fetchMoreData}
