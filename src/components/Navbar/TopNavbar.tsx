@@ -12,7 +12,7 @@ import { logout } from "../../redux/store/Authentication/actions";
 
 function TopNavbar() {
   const navigate = useNavigate();
-  const [isLoggedin] = useSelector(
+  const isLoggedin = useSelector(
     (state: any) => state.authentiaction.authenticated
   );
   // const [isLoggedin, setIsLoggedin] = useState(() => {
@@ -22,9 +22,12 @@ function TopNavbar() {
   let profilepicture;
 
   const isloginHandler = () => {
+    console.warn("clicked", isLoggedin);
     if (isLoggedin === LoginStatus.LoginSuccess) {
       dispatch(logout());
+      console.warn("after dispatch", isLoggedin);
     } else {
+      console.warn("else", isLoggedin);
       navigate("/login");
     }
   };
@@ -93,11 +96,11 @@ function TopNavbar() {
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
-              <Link to="#" className="nav-link layout--header--link">
-                <Button variant="light" onClick={() => isloginHandler()}>
-                  {isLoggedin ? "Logout" : " Login/Signup"}
-                </Button>
-              </Link>
+              <Button variant="light" onClick={() => isloginHandler()}>
+                {isLoggedin === LoginStatus.LoginSuccess
+                  ? "Logout"
+                  : " Login/Signup"}
+              </Button>
             </li>
           </ul>
 

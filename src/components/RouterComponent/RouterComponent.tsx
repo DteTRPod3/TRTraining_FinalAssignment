@@ -26,13 +26,9 @@ function RouterComponent() {
         <Route path="/careers" element={<Careers />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/test_drive" element={<TestDrive />} />
-<<<<<<< HEAD
-        <Route path="/policy_page" element={<PolicyPage />} />
-=======
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/policy_page" element={<PolicyPage />}/>
+        <Route path="/policy_page" element={<PolicyPage />} />
         <Route path="/login" element={<Login />} />
->>>>>>> f511795ab2366aed3b6e1b8739cb4aed56deda77
         <Route path="*" element={<NotFound />} />
         DefaultRoute
       </Routes>
