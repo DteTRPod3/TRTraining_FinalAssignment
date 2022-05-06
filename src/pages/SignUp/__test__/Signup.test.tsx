@@ -353,4 +353,47 @@ describe("Sign Up Form", () => {
 
     expect(await screen.findAllByTestId("email-error")).toHaveLength(1);
   });
+
+  it("checks for error message when password is not added", async () => {
+    render(
+      <MemoryRouter>
+        <SignUp></SignUp>
+      </MemoryRouter>
+    );
+    fireEvent.input(screen.getByRole("textbox", { name: /name/i }), {
+      target: {
+        value: "Manas",
+      },
+    });
+
+    fireEvent.input(screen.getByRole("textbox", { name: /mobile number/i }), {
+      target: {
+        value: 9345678998,
+      },
+    });
+
+    fireEvent.input(screen.getByRole("textbox", { name: /address/i }), {
+      target: {
+        value: "address",
+      },
+    });
+    fireEvent.input(screen.getByRole("password", { name: /password/i }), {
+      target: {
+        value: "Asdfg1234/@",
+      },
+    });
+    fireEvent.input(screen.getByRole("password", { name: /address/i }), {
+      target: {
+        value: "Adres",
+      },
+    });
+
+    fireEvent.submit(
+      screen.getByRole("button", {
+        name: /submit/i,
+      })
+    );
+
+    expect(await screen.findAllByTestId("confirm-error")).toHaveLength(1);
+  });
 });

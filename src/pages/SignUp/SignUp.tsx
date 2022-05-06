@@ -214,7 +214,7 @@ function SignUp() {
                   </p>
                 )}
               {errors?.password?.types["numbers"] && (
-                <p className="text-danger" data-testid="address-error">
+                <p className="text-danger" data-testid="number-error">
                   {errors?.password?.types["numbers"]}
                 </p>
               )}
@@ -224,7 +224,7 @@ function SignUp() {
                 </p>
               )}
               {errors?.password?.types["specialCharacter"] && (
-                <p className="text-danger" data-testid="address-error">
+                <p className="text-danger" data-testid="character-error">
                   {errors?.password?.types["specialCharacter"]}
                 </p>
               )}
@@ -251,7 +251,7 @@ function SignUp() {
                 })}
               />
               {errors.confirmpassword && (
-                <p className="text-danger" data-testid="address-error">
+                <p className="text-danger" data-testid="confirm-error">
                   {errors.confirmpassword.message}
                 </p>
               )}
