@@ -3,15 +3,15 @@
 
 .layout--header--main--container .layout--header {
   display: flex;
-  padding: 0.5rem 5rem;
+  padding: 0.5rem 3rem;
   font-family: $font-family-roboto;
 }
 .layout--header--main--container .layout--header .layout--header--container {
   justify-content: flex-end;
 }
-a.navbar-brand.layout--header--logo {
-  color: rgba(255, 255, 255, 0.55);
-  font-family: $font-family-roboto;
+
+.layout--header--main--container .layout--header {
+  justify-content: center;
 }
 
 a:hover {
@@ -25,9 +25,41 @@ a:hover {
   display: block;
 }
 
-.nav-item {
-  .nav-link:hover {
-    color: white !important;
-    transform: scale(1.05);
-  }
+.nav-link:hover {
+  color: white !important;
+  transform: scale(1.05);
+}
+
+.profile {
+  width: 2rem;
+}
+
+.all-cars {
+  margin-left: auto;
+}
+
+nav > .middle {
+  flex: 1;
+}
+
+.middle {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.active {
+  transform: scale(1.05);
+  font-weight: $nav-font-weight;
+  color: $white;
+}
+
+a.active {
+  color: white !important;
+  text-decoration: underline;
+}
+
+.layout--header--link all-cars {
+  text-decoration: none;
 }
