@@ -18,5 +18,6 @@ const capitalLetterPattern=/[A-Z]/
 const lowerLetterPattern=/[a-z]/
 const numbersPattern=/[0-9]/
 const specialCharacterPattern=/[!@#$%&?/:;"'.,]/
+const mobilePattern = /^[6-9]\d{9}$/;
 
-export {API_URL,cities,contactpattern,emailpattern,capitalLetterPattern,lowerLetterPattern,numbersPattern,specialCharacterPattern}
+export {API_URL,cities,contactpattern,emailpattern,capitalLetterPattern,lowerLetterPattern,numbersPattern,specialCharacterPattern,mobilePattern}

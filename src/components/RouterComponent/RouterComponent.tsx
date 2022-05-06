@@ -7,6 +7,7 @@ import Careers from "../../pages/Careers/Careers";
 import CarsList from "../../pages/CarsList/CarsList";
 import Contact from "../../pages/Contact/Contact";
 import HomePage from "../../pages/LandingPage/HomePage";
+import Login from "../../pages/Login/Login";
 import NotFound from "../../pages/NotFound/NotFound";
 import PolicyPage from "../../pages/PolicyPage/PolicyPage";
 import SignUp from "../../pages/SignUp/SignUp";
@@ -27,6 +28,7 @@ function RouterComponent() {
         <Route path="/test_drive" element={<TestDrive />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/policy_page" element={<PolicyPage />}/>
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
         DefaultRoute
       </Routes>
