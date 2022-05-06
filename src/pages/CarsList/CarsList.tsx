@@ -6,7 +6,11 @@ import CarCard from "../../components/CarCard/CarCard";
 import { useQuery } from "../../hooks/useQuery";
 import { CarDetails } from "../../models/CarDetails";
 import { carTypeList } from "../../models/CarType";
-import { getCars, getMoreCars, resetCars } from "../../redux/store/cars/actions";
+import {
+  getCars,
+  getMoreCars,
+  resetCars,
+} from "../../redux/store/cars/actions";
 import InfiniteScroll from "react-infinite-scroll-component";
 import sadEmoji from "../../assets/sad-emoji.svg";
 import "./CarsList.scss";
@@ -24,7 +28,7 @@ function CarsList() {
   const [carNameToBeSearched, setCarNameToBeSearched] = useState("");
   const [isUsed, setIsUsed] = useState<boolean | undefined>(undefined); 
   const { from }: any = location.state == null ? "" : (location.state as any);
-  
+
   useEffect(() => {
     document.title = "Xtreme Cars | All Cars";
     const typeParam = query?.get("car-type");
@@ -107,7 +111,7 @@ function CarsList() {
       if (carType == 3) dispatch(getMoreCars("", isUsed));
       else dispatch(getMoreCars(carTypeList[carType], isUsed));
     }, 2000);
-  }
+  };
 
   return (
     <>
@@ -181,7 +185,7 @@ function CarsList() {
             ?.map((car: CarDetails) => <CarCard key={car.id} car={car} />)}
         {carType !== 4 && cars?.length !== 0 &&
           <InfiniteScroll
-            dataLength={(cars === undefined) ? 1 : cars?.length}
+            dataLength={cars === undefined ? 1 : cars?.length}
             next={fetchMoreData}
             hasMore={cars?.length < 101}
             loader={<Loader />}
@@ -192,7 +196,8 @@ function CarsList() {
                 <CarCard key={index} id={car?.id} car={car} />
               ))}
             </div>
-          </InfiniteScroll>}
+          </InfiniteScroll>
+        }
       </Container>
     </>
   );

@@ -1,0 +1,31 @@
+@import"../../themes/colors.scss";
+.form-content.card {
+    padding: 0 1rem 1rem 1rem;
+}
+.form-content.card .form-group-container{
+    margin-top: 1rem;
+}
+
+.toast-signup{
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    align-items: center;
+    cursor: pointer;
+    color: $dark-green;
+}
+
+.close-icon{
+    cursor: pointer;
+}
+
+.toast-main{
+    margin: 0;
+    padding: 0;
+    width: 35rem;
+    background-color: $light-green;
+    padding: 0.8rem 1rem;
+    border: 1px solid $dark-green;
+}
+
+
