@@ -5,22 +5,29 @@ import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import HomePage from "../../LandingPage/HomePage";
+import { Provider } from "react-redux";
+import store from "../../../redux/configureStore";
 
-describe("Sign Up Form", () => {
-  it("should have the signup page title",async ()=>{
-    render(
-        <MemoryRouter>
-            <SignUp />
-        </MemoryRouter>
-    )
-    await act(() => expect(document.title).toEqual("Xtreme Cars | Sign Up"));
-})
-
-  it("checks for all the input fields present or not", () => {
-    render(
+const MockSignUp = () => {
+  return (
+    <Provider store={store}>
       <MemoryRouter>
         <SignUp></SignUp>
       </MemoryRouter>
+    </Provider>
+  );
+};
+describe("Sign Up Form", () => {
+  it("should have the signup page title", async () => {
+    render(
+      <MockSignUp />
+    );
+    await act(() => expect(document.title).toEqual("Xtreme Cars | Sign Up"));
+  });
+
+  it("checks for all the input fields present or not", () => {
+    render(
+      <MockSignUp />
     );
 
     const inputName = screen.getByRole("textbox", {
@@ -54,11 +61,7 @@ describe("Sign Up Form", () => {
   });
 
   it("checks for valid value in name input field", () => {
-    render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
-    );
+    render(<MockSignUp />);
 
     const inputName = screen.getByRole("textbox", {
       name: /name/i,
@@ -76,9 +79,7 @@ describe("Sign Up Form", () => {
 
   it("checks for valid value in contact input field", () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     const inputContact = screen.getByRole("textbox", {
@@ -97,9 +98,7 @@ describe("Sign Up Form", () => {
 
   it("checks for valid value in address input field", () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     const inputAddress = screen.getByRole("textbox", {
@@ -118,9 +117,7 @@ describe("Sign Up Form", () => {
 
   it("checks for valid value in pincode input field", () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     const inputPincode = screen.getByRole("textbox", {
@@ -131,7 +128,7 @@ describe("Sign Up Form", () => {
     });
 
     expect(
-      screen.getByRole("spinbutton", {
+      screen.getByRole("textbox", {
         name: /pincode/i,
       })
     ).toHaveValue("123456");
@@ -139,9 +136,7 @@ describe("Sign Up Form", () => {
 
   it("checks for valid value in email input field", () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     const inputEmail = screen.getByRole("textbox", {
@@ -161,9 +156,7 @@ describe("Sign Up Form", () => {
 
   it("checks for valid value in password input field", () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     const inputPassword = screen.getByPlaceholderText(/enter password\.\.\./i);
@@ -179,9 +172,7 @@ describe("Sign Up Form", () => {
 
   it("checks for valid value in confirm password input field", () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     const inputConfirmPassword = screen.getByPlaceholderText(
@@ -199,9 +190,7 @@ describe("Sign Up Form", () => {
 
   it("checks for error message when name is not added", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
     fireEvent.input(screen.getByRole("textbox", { name: /mobile number/i }), {
       target: {
@@ -232,9 +221,7 @@ describe("Sign Up Form", () => {
 
   it("checks for error message when contact is not added", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     fireEvent.input(screen.getByRole("textbox", { name: /name/i }), {
@@ -266,9 +253,7 @@ describe("Sign Up Form", () => {
 
   it("checks for error message when pincode is not added", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
 
     fireEvent.input(screen.getByRole("textbox", { name: /name/i }), {
@@ -300,9 +285,7 @@ describe("Sign Up Form", () => {
 
   it("checks for error message when email is not added", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
     fireEvent.input(screen.getByRole("textbox", { name: /name/i }), {
       target: {
@@ -333,9 +316,7 @@ describe("Sign Up Form", () => {
 
   it("checks for error message when password is not added", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
     fireEvent.input(screen.getByRole("textbox", { name: /name/i }), {
       target: {
@@ -366,9 +347,7 @@ describe("Sign Up Form", () => {
 
   it("checks for error message when confirm password does not match", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
     fireEvent.input(screen.getByRole("textbox", { name: /name/i }), {
       target: {
@@ -409,9 +388,7 @@ describe("Sign Up Form", () => {
 
   it("checks for all five validations in password field", async () => {
     render(
-      <MemoryRouter>
-        <SignUp></SignUp>
-      </MemoryRouter>
+      <MockSignUp />
     );
     fireEvent.input(screen.getByPlaceholderText(/enter password\.\.\./i), {
       target: {
