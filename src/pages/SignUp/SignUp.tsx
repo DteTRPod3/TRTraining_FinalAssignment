@@ -10,6 +10,7 @@ import {
   emailpattern,
   lowerLetterPattern,
   numbersPattern,
+  pincodePattern,
   specialCharacterPattern,
 } from "../../constants";
 import { LoginStatus } from "../../models/LoginStatus";
@@ -63,6 +64,7 @@ function SignUp() {
     await dispatch(login(loginCredentials));
     toast.success("Profile Created Successfully");
   };
+  console.log(errors)
 
   return (
     <>
@@ -129,18 +131,14 @@ function SignUp() {
             >
               <Form.Label>PinCode</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 placeholder="Enter pincode..."
                 {...register("pincode", {
                   required: "Pincode is required",
-                  minLength: {
-                    value: 6,
-                    message: "pin code cannot be less than 6 digits",
-                  },
-                  maxLength: {
-                    value: 6,
-                    message: "pin code cannot be more than 6 digits",
-                  },
+                  pattern:{
+                    value:pincodePattern,
+                    message:"Pin code is invalid"
+                  }
                 })}
               />
               {errors.pincode && (
@@ -180,6 +178,7 @@ function SignUp() {
                 type="password"
                 placeholder="Enter password..."
                 {...register("password", {
+                  required:"Password is required",
                   validate: {
                     lowercase: (value) =>
                       lowerLetterPattern.test(value) ||
@@ -199,7 +198,13 @@ function SignUp() {
                   },
                 })}
               />
-              {errors?.password?.types["lowercase"] && (
+              {errors?.password?.types["required"] && (
+                <p className="text-danger" data-testid="required-error">
+                  {errors?.password?.types["required"]}
+                </p>
+              )}
+              {errors?.password?.types["lowercase"] &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="lowercase-error">
                   {errors?.password?.types["lowercase"]}
                 </p>
@@ -210,7 +215,8 @@ function SignUp() {
                     The password must contain one lower case letter
                   </p>
                 )}
-              {errors?.password?.types["uppercase"] && (
+              {errors?.password?.types["uppercase"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="uppercase-error">
                   {errors?.password?.types["uppercase"]}
                 </p>
@@ -221,7 +227,8 @@ function SignUp() {
                     The password must contain one upper case letter
                   </p>
                 )}
-              {errors?.password?.types["minlength"] && (
+              {errors?.password?.types["minlength"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="address-error">
                   {errors?.password?.types["minlength"]}
                 </p>
@@ -232,7 +239,8 @@ function SignUp() {
                     The password length must be atleast 8
                   </p>
                 )}
-              {errors?.password?.types["numbers"] && (
+              {errors?.password?.types["numbers"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="number-error">
                   {errors?.password?.types["numbers"]}
                 </p>
@@ -242,7 +250,8 @@ function SignUp() {
                   The password must contain a number
                 </p>
               )}
-              {errors?.password?.types["specialCharacter"] && (
+              {errors?.password?.types["specialCharacter"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="character-error">
                   {errors?.password?.types["specialCharacter"]}
                 </p>
