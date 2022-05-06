@@ -1,8 +1,10 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { act } from "react-dom/test-utils";
+import { useSelector } from "react-redux";
 import { Provider } from "react-redux";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { LoginStatus } from "../../../models/LoginStatus";
 import CarsList from "../../../pages/CarsList/CarsList";
 import HomePage from "../../../pages/LandingPage/HomePage";
 import store from "../../../redux/configureStore";
@@ -10,9 +12,11 @@ import TopNavbar from "../TopNavbar";
 
 const MockNavbar = () => {
   return (
-    <BrowserRouter>
-      <TopNavbar />
-    </BrowserRouter>
+    <MemoryRouter>
+      <Provider store={store}>
+        <TopNavbar />
+      </Provider>
+    </MemoryRouter>
   );
 };
 describe("Navbar", () => {
@@ -61,21 +65,20 @@ describe("Navbar", () => {
     expect(screen.getByText(/View All/i)).toBeInTheDocument();
   });
 
-  it("should render profile icon if loggedin r", () => {
+  it("should render profile icon if loggedin", () => {
     render(<MockNavbar />);
-    const isloggedin = localStorage.getItem("isloggedin");
+
     const ProfileElement = screen.getByTestId("profileImage");
-    if (isloggedin === "true") {
+
+    const ButtonElement = screen.getByRole("button", {
+      name: /Login\/Signup/i,
+    });
+    if (ButtonElement.innerHTML === "Logout") {
       // eslint-disable-next-line jest/no-conditional-expect
       expect(ProfileElement).toBeInTheDocument();
       // eslint-disable-next-line jest/no-conditional-expect
       expect(ProfileElement).toHaveAttribute("src", "man.png");
-    } else {
-      // eslint-disable-next-line jest/no-conditional-expect
-      expect(ProfileElement).toHaveAttribute("src", "profile.svg");
     }
-
-    expect(ProfileElement).toBeInTheDocument();
   });
 
   it("should render logotext in the Navbar", () => {
@@ -102,5 +105,17 @@ describe("Navbar", () => {
       );
     });
     expect(screen.getByText(/FIND YOUR DREAM CAR/i)).toBeInTheDocument();
+  });
+
+  it("should not render user profile icon if not loggedin", () => {
+    render(<MockNavbar />);
+    const ProfileElement = screen.getByTestId("profileImage");
+    const ButtonElement = screen.getByRole("button", {
+      name: /Login\/Signup/i,
+    });
+    if (ButtonElement.innerHTML === "Login/Signup") {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(ProfileElement).toHaveAttribute("src", "profile.svg");
+    }
   });
 });

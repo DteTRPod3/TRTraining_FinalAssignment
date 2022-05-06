@@ -42,17 +42,10 @@ nav > .middle {
   text-align: center;
 }
 
-.active {
-  transform: scale(1.05);
-  font-weight: $nav-font-weight;
-  color: $white;
-}
-
-a.active {
-  color: white !important;
-  text-decoration: underline;
-}
-
 .layout--header--link all-cars {
   text-decoration: none;
+}
+
+.login-btn {
+  box-shadow: none;
 }
