@@ -21,6 +21,8 @@
 .nav-link:hover {
   color: white !important;
   transform: scale(1.05);
+  text-decoration: underline;
+  font-weight: $nav-font-weight;
 }
 
 .profile {
@@ -48,4 +50,11 @@ nav > .middle {
 
 .login-btn {
   box-shadow: none;
+}
+
+.login-btn:hover {
+  box-shadow: none;
+  font-family: $font-family-roboto;
+  font-weight: $nav-font-weight;
+  text-decoration: underline;  
 }
