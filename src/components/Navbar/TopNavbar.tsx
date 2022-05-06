@@ -22,12 +22,9 @@ function TopNavbar() {
   let profilepicture;
 
   const isloginHandler = () => {
-    console.warn("clicked", isLoggedin);
     if (isLoggedin === LoginStatus.LoginSuccess) {
       dispatch(logout());
-      console.warn("after dispatch", isLoggedin);
     } else {
-      console.warn("else", isLoggedin);
       navigate("/login");
     }
   };
