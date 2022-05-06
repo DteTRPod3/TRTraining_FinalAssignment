@@ -34,9 +34,7 @@ function TopNavbar() {
           <NavLink
             to={"/"}
             data-testid="XtremecarsLink"
-            className={(navData) =>
-              navData.isActive ? "active" : "navbar-brand layout--header--logo"
-            }
+            className="navbar-brand layout--header--logo"
           >
             <img src={Logo} alt="Xtreme cars logo" />
             XTREME CARS
@@ -47,14 +45,10 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto layout--header--lists">
             <li className="nav-item layout--header--list active">
               <NavLink
-                className={(navData) =>
-                  navData.isActive
-                    ? "active"
-                    : "nav-link layout--header--link all-cars "
-                }
+                className="nav-link layout--header--link all-cars "
                 to="/cars"
                 data-testid="AllcarsLink"
-                state={{ from: "all-cars" }}
+                state={{ from: "cars" }}
               >
                 ALL CARS
               </NavLink>
@@ -66,11 +60,9 @@ function TopNavbar() {
             <li className="nav-item layout--header--list">
               <NavLink
                 to="/new_cars"
-                className={(navData) =>
-                  navData.isActive ? "active" : "nav-link layout--header--link"
-                }
+                className="nav-link layout--header--link"
                 data-testid="NewcarsLink"
-                state={{ from: "new-cars" }}
+                state={{ from: "new_cars" }}
               >
                 NEW CARS
               </NavLink>
@@ -82,11 +74,9 @@ function TopNavbar() {
             <li className="nav-item layout--header--list">
               <NavLink
                 to="/used_cars"
-                className={(navData) =>
-                  navData.isActive ? "active" : "nav-link layout--header--link"
-                }
+                className="nav-link layout--header--link"
                 data-testid="UsedcarsLink"
-                state={{ from: "used-cars" }}
+                state={{ from: "used_cars" }}
               >
                 USED CARS
               </NavLink>
