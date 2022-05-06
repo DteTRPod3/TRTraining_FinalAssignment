@@ -9,9 +9,6 @@ function Confirmation() {
   const { car } = useLocation().state as any;
   const { formData } = useLocation().state as any;
 
-  console.warn("car", car);
-  console.warn("formdata", formData);
-
   return (
     <Container>
       <div className="topdiv">
@@ -36,15 +33,6 @@ function Confirmation() {
                   style={{ backgroundColor: car.exterior.color }}
                 ></div>
               </li>
-
-              {/* <div
-                style={{
-                  width: "8rem",
-                  display: "flex",
-                  height: "3rem",
-                  backgroundColor: car.exterior.color,
-                }}
-              ></div> */}
             </ul>
 
             <br />
