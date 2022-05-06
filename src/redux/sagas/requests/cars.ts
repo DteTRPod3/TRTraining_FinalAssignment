@@ -1,10 +1,11 @@
 import axios from "axios";
 import { API_URL } from "../../../constants";
 
-export function requestGetCars(carType: string) {
+export function requestGetCars(carType: string, used: boolean|null) {
+  const url = (used === null) ? API_URL + "/" + carType : API_URL + "/" + carType + "?used=" + used; 
   return axios.request({
     method: "get",
-    url: API_URL + "/" + carType,
+    url: url,
     auth: {
       username: "Hasher",
       password: "L#(qc{f}TaJu4%4k",
