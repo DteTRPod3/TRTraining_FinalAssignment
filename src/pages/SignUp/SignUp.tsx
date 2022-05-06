@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Container, Form, FormGroup } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CustomToaster from "../../components/CustomToaster/CustomToaster";
 import { emailpattern } from "../../constants";
+import { LoginStatus } from "../../models/LoginStatus";
+import { login } from "../../redux/store/Authentication/actions";
 import { postSignUpDetails } from "../../redux/store/User/UserSignUp/action";
 import "./SignUp.scss";
 function SignUp() {
@@ -16,6 +18,12 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector(
+    (state: any) => state.authentiaction.authenticated
+  );
+  const userDetails = useSelector(
+    (state: any) => state.userSignUpDetails.userSignUpDetails
+  );
   const {
     register,
     handleSubmit,
@@ -28,13 +36,27 @@ function SignUp() {
   useEffect(() => {
     document.title = "Xtreme Cars | Sign Up";
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated === LoginStatus.LoginSuccess) {
+      (childRef!.current! as any).toasterC();
+      setTimeout(() => {
+        navigate("/home");
+      }, 3000);
+    }
+  }, [isAuthenticated, navigate]);
+
   const childRef = useRef();
-  const onSubmit = (formData: any) => {
-    (childRef!.current! as any).toasterC();
-    setTimeout(() => {
-      navigate("/home");
-    }, 3000);
-    dispatch(postSignUpDetails(formData));
+  const onSubmit = async (formData: any) => {
+    const loginCredentials = {
+      userid: formData?.email,
+      password: formData?.password,
+    };
+    console.log(loginCredentials);
+    await dispatch(postSignUpDetails(formData));
+    await dispatch(login(loginCredentials));
+    console.log(userDetails);
+    console.log(isAuthenticated);
   };
 
   return (

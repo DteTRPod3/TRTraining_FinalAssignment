@@ -1,0 +1,52 @@
+@import "../../themes/colors.scss";
+@import "../../themes/theme.scss";
+
+.login-div {
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family-roboto;
+  p {
+    font-size: small;
+    color: grey;
+  }
+  .login-heading {
+    color: darkslateblue;
+    text-decoration: underline;
+  }
+  a.nav-link {
+    color: $black;
+    text-decoration: none;
+  }
+  form {
+    border: 1px groove;
+    border-radius: 0.5rem;
+    min-width: 50%;
+    max-width: 80%;
+    padding: 3%;
+    .register-link {
+      text-decoration: none;
+    }
+    .register-link:hover {
+      text-decoration: underline;
+    }
+    button {
+      min-width: 20%;
+      margin: 2%;
+    }
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
