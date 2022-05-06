@@ -1,15 +1,29 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
-import RouterComponent from "./components/RouterComponent/RouterComponent";
 import Footer from "./components/Footer/Footer";
 import TopNavbar from "./components/Navbar/TopNavbar";
+import RouterComponent from "./components/RouterComponent/RouterComponent";
 
 function App() {
   return (
     <>
-      <TopNavbar/>
+      <TopNavbar />
+      <ToastContainer
+        className="custom-toast"
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="colored"
+        pauseOnHover
+      />
       <RouterComponent />
-      <Footer/>
+      <Footer />
     </>
   );
 }
