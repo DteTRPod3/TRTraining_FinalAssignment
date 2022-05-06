@@ -4,8 +4,18 @@ import SignUp from "../SignUp";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
+import HomePage from "../../LandingPage/HomePage";
 
 describe("Sign Up Form", () => {
+  it("should have the signup page title",async ()=>{
+    render(
+        <MemoryRouter>
+            <SignUp />
+        </MemoryRouter>
+    )
+    await act(() => expect(document.title).toEqual("Xtreme Cars | Sign Up"));
+})
+
   it("checks for all the input fields present or not", () => {
     render(
       <MemoryRouter>
@@ -354,7 +364,7 @@ describe("Sign Up Form", () => {
     expect(await screen.findAllByTestId("email-error")).toHaveLength(1);
   });
 
-  it("checks for error message when password is not added", async () => {
+  it("checks for error message when confirm password does not match", async () => {
     render(
       <MemoryRouter>
         <SignUp></SignUp>
@@ -377,12 +387,12 @@ describe("Sign Up Form", () => {
         value: "address",
       },
     });
-    fireEvent.input(screen.getByRole("password", { name: /password/i }), {
+    fireEvent.input(screen.getByPlaceholderText(/enter password\.\.\./i), {
       target: {
         value: "Asdfg1234/@",
       },
     });
-    fireEvent.input(screen.getByRole("password", { name: /address/i }), {
+    fireEvent.input(screen.getByPlaceholderText(/re\-enter the password/i), {
       target: {
         value: "Adres",
       },
@@ -395,5 +405,20 @@ describe("Sign Up Form", () => {
     );
 
     expect(await screen.findAllByTestId("confirm-error")).toHaveLength(1);
+  });
+
+  it("checks for all five validations in password field", async () => {
+    render(
+      <MemoryRouter>
+        <SignUp></SignUp>
+      </MemoryRouter>
+    );
+    fireEvent.input(screen.getByPlaceholderText(/enter password\.\.\./i), {
+      target: {
+        value: "Asdfg1234/@",
+      },
+    });
+
+    expect(await screen.findAllByTestId("password-success")).toHaveLength(5);
   });
 });
