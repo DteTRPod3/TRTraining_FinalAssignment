@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./Login.scss";
 import { Button, Form, Nav } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { mobilePattern, emailpattern } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,8 +15,9 @@ function Login() {
   const isAuthenticated = useSelector(
     (state: any) => state.authentiaction.authenticated
   );
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -26,13 +27,14 @@ function Login() {
     mode: "onSubmit",
   });
 
-  useEffect(() => {
-    document.title = "Xtreme Cars | Login Page";
-  }, []);
-
   const handleTabSwitch = (selectedKey: any) => {
     setTabState(`${selectedKey}`);
     setShowErrorMessage(false);
+    reset({
+      email: "",
+      password: "",
+      mobile: "",
+    });
   };
 
   const onFormSubmit = (data: any, e: any) => {
@@ -60,8 +62,21 @@ function Login() {
     }
   }, [isAuthenticated, navigate]);
 
+  useEffect(() => {
+    document.title = "Xtreme Cars | Login Page";
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(-1, -1);
+    setShowErrorMessage(false);
+  }, [location]);
+
+  useEffect(() => {
+    setShowErrorMessage(false);
+  }, [errors.email, errors.password, errors.mobile]);
+
   return (
-    <div className="login-div">
+    <div className="login-div" id="loginDiv">
       <h5 className="login-heading">Login to Xtreme Cars</h5>
       <br />
       <Form className="login-form" onSubmit={handleSubmit(onFormSubmit)}>
@@ -106,7 +121,7 @@ function Login() {
           )}
           {tabState === "with-mobile" && (
             <Form.Group className="mb-3" controlId="formBasicMobile">
-              <Form.Label>Mobile Numbar</Form.Label>
+              <Form.Label>Mobile Number</Form.Label>
               <Form.Control
                 type="number"
                 placeholder="Enter mobile number"

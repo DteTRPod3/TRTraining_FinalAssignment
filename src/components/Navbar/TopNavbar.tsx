@@ -96,7 +96,11 @@ function TopNavbar() {
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
-              <Button variant="light" onClick={() => isloginHandler()}>
+              <Button
+                className="login-btn"
+                variant="light"
+                onClick={() => isloginHandler()}
+              >
                 {isLoggedin === LoginStatus.LoginSuccess
                   ? "Logout"
                   : " Login/Signup"}

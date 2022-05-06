@@ -14,16 +14,6 @@
   justify-content: center;
 }
 
-a:hover {
-  transform: scale(1.05);
-  font-weight: $nav-font-weight;
-  color: $white;
-  text-decoration: underline;
-}
-button.btn.btn-light {
-  box-shadow: none;
-}
-
 .collapse.navbar-collapse.layout--header--container {
   display: block;
 }
@@ -54,4 +44,8 @@ nav > .middle {
 
 .layout--header--link all-cars {
   text-decoration: none;
+}
+
+.login-btn {
+  box-shadow: none;
 }

@@ -3,9 +3,12 @@ import { Container, Image } from "react-bootstrap";
 import bmw1 from "../../assets/bmwontop.jpg";
 import bmw2 from "../../assets/BMW.jpg";
 import "./Confirmation.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Confirmation() {
+  const { car } = useLocation().state as any;
+  const { formData } = useLocation().state as any;
+
   return (
     <Container>
       <div className="topdiv">

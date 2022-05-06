@@ -1,49 +1,74 @@
-import React, { useState } from "react";
-import { Container, Form, Image, Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
-import { CarDetails } from "../../models/CarDetails";
 import { CarFullDetails } from "../../models/CarFullDetails";
+import Arrow from "../../assets/Arrow.svg";
 import "./Booking.scss";
+import { cities } from "../../constants";
+import BMW1 from "../../assets/BMW1.svg";
+
+import {
+  Button,
+  Container,
+  Form,
+  Card,
+  FormGroup,
+  Image,
+} from "react-bootstrap";
+import { useForm } from "react-hook-form";
 
 function Booking() {
+  const options = cities.map((item, i) => {
+    return (
+      <option key={i} value={item}>
+        {item}
+      </option>
+    );
+  });
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "onSubmit",
+  });
+  useEffect(() => {
+    document.title = "Xtreme Cars | Booking";
+  }, []);
+  const onSubmit = (formData: any) => {
+    console.warn("printing formdata from booking page", formData);
+    navigate("/booking_confirmation", { state: { car, formData } });
+  };
+
   const { car } = useLocation().state as any;
   const [cardetails] = useState<CarFullDetails>(car);
+
+  const defaultImage =
+    cardetails?.specifications.image === ""
+      ? BMW1
+      : cardetails?.specifications.image;
   const { id } = useParams();
   const detailsLink = "/car_details/" + id;
   let navigate = useNavigate();
-  const [mobileValid, setMobileValid] = useState(false);
-  // var pattern = new RegExp(/^[0-9\b]+$/);
-  var pattern = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-  const [validated, setValidated] = useState(false);
-
-  const handleSubmit = (event: any) => {
-    const form = event.currentTarget;
-    event.preventDefault();
-    event.stopPropagation();
-    if (form.checkValidity() === true) {
-      navigate("/booking_confirmation");
-    }
-    setValidated(true);
-  };
-
-  const handleChange = (event: any) => {
-    const phone = event.target.value;
-
-    if (!(!phone || pattern.test(phone) === false)) {
-      setMobileValid(true);
-    }
-  };
 
   return (
-    <Container className="bookingContainer">
+    <Container fluid className="booking-Container">
       <div>
-        <h6>Car Details</h6>
+        <span className="mixed-font">Car</span>
+        <h5 className="extra-bold">Details</h5>
+        <br />
         <Image
-          src={cardetails?.specifications.image}
+          fluid
+          className="car-img"
+          src={defaultImage}
           alt="No Image Available"
         />
         <br /> <br />
-        <h4>{cardetails?.specifications.name}</h4>
+        <h5 className="extra-bold">{cardetails?.specifications.name}</h5>
         <br />
         <text>Fuel Type</text>
         <p>{cardetails.specifications.fuel_type}</p>
@@ -51,66 +76,104 @@ function Booking() {
         <p>{cardetails.specifications.engine_cc}</p>
         <br />
         <Link to={detailsLink} state={{ car: car }}>
-          View Details
+          View Details{" "}
+          <img className="arrow-image" src={Arrow} alt="arrow icon"></img>
         </Link>
       </div>
       <div className="formDiv">
-        <h5>Booking Details</h5>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formGroupName">
-            <Form.Label>Name</Form.Label>
-            <Form.Control type="text" placeholder="Enter name" required />
-            <Form.Control.Feedback type="valid">
-              Looks good!
-            </Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Name Required
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formGroupName">
-            <Form.Label>Mobile Number</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="contact number should be 10 digit only"
-              required
-              pattern="[6-9]{1}[0-9]{9}"
-              onChange={handleChange}
-            />
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid">
-              Invalid phone number
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formGroupName">
-            <Form.Label>City</Form.Label>
-            <Form.Select required>
-              <option value="1">Bangalore</option>
-              <option value="2">Mysore</option>
-              <option value="3">New Dehli</option>
-              <option value="4">Hydrabad</option>
-            </Form.Select>
-            <Form.Group className="mb-3" controlId="formGroupName" />
-            <Form.Check
-              required
-              type="checkbox"
-              label="Agree to terms and conditions"
-              feedback="You must agree before submitting."
-              feedbackType="invalid"
-            />
-            <h6>Terms and conditions:</h6>
-            <text>
-              *Terms and conditions apply. All offers are from dealers. Please
-              get in touch with your nearest dealer for detailed terms and
-              conditions. All taxes are additional. Offer valid till February
-              15, 2022 and is subject to change without prior notice.
-              Calculations for the following are for a specific tenure mileage
-              and finance amount.
-            </text>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+        <span className="mixed-font"> Booking</span>
+        <h5 className="extra-bold">Details</h5>
+
+        <Container>
+          <Card className="form-content">
+            <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+              <Form.Group
+                className="mb-3 form-group-container"
+                controlId="formGroupName"
+              >
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter name..."
+                  {...register("name", { required: "Name is required" })}
+                />
+                {errors.name && (
+                  <h6 className="text-danger" data-testid="name-error">
+                    {errors.name.message}
+                  </h6>
+                )}
+              </Form.Group>
+              <Form.Group
+                className="mb-3 form-group-container"
+                controlId="formGroupContact"
+              >
+                <Form.Label>Contact Number</Form.Label>
+                <Form.Control
+                  type="tel"
+                  placeholder="Enter contact..."
+                  {...register("contact", {
+                    required: "Mobile Number is required",
+                    minLength: {
+                      value: 10,
+                      message: "Mobile number cannot be less than 10 digits",
+                    },
+                    maxLength: {
+                      value: 10,
+                      message: "Mobile number cannot be more than 10 digits",
+                    },
+                  })}
+                />
+                {errors.contact && (
+                  <h6 className="text-danger" data-testid="contact-error">
+                    {errors.contact.message}
+                  </h6>
+                )}
+              </Form.Group>
+              <Form.Group
+                className="mb-3 form-group-container"
+                controlId="formGroupAddress"
+              >
+                <Form.Label>City</Form.Label>
+
+                <Form.Select
+                  aria-label="Default select example"
+                  {...register("City", { required: "City is required" })}
+                >
+                  <option value="" disabled selected>
+                    {" "}
+                    Select city
+                  </option>
+                  {options}
+                </Form.Select>
+                {errors.City && (
+                  <h6 className="text-danger" data-testid="City-error">
+                    {errors.City.message}
+                  </h6>
+                )}
+              </Form.Group>
+              <Form.Group
+                className="mb-3 form-group-container"
+                controlId="formGroupEmail"
+              >
+                <Form.Check
+                  type="checkbox"
+                  label="I agree to terms and condition"
+                  {...register("terms", {
+                    required: "You must agree to terms and condition",
+                  })}
+                />
+                {errors.terms && (
+                  <h6 className="text-danger" data-testid="terms-error">
+                    {errors.terms.message}
+                  </h6>
+                )}
+              </Form.Group>
+              <FormGroup className="form-group-container">
+                <Button type="submit">Submit</Button>
+              </FormGroup>
+            </Form>
+          </Card>
+        </Container>
       </div>
     </Container>
   );

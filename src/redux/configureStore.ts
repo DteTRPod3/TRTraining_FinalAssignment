@@ -1,9 +1,10 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { watcherSaga } from "./sagas/rootSaga";
 import AuthenticationReducer from "./store/Authentication/reducer";
 import CarDetailsReducer from "./store/carDetails/reducer";
 import CarsReducer from "./store/cars/reducer";
+import { UserSignUpReducer } from "./store/UserSignUp/reducer";
 
 declare global {
   interface Window {
@@ -18,6 +19,7 @@ const reducers = combineReducers({
   cars: CarsReducer,
   carDetails: CarDetailsReducer,
   authentiaction: AuthenticationReducer,
+  userSignUp: UserSignUpReducer,
 });
 
 // const middleware = [sagaMiddleware];

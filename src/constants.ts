@@ -19,5 +19,6 @@ const lowerLetterPattern=/[a-z]/
 const numbersPattern=/[0-9]/
 const specialCharacterPattern=/[!@#$%&?/:;"'.,]/
 const mobilePattern = /^[6-9]\d{9}$/;
+const pincodePattern = /^[1-9][0-9]{5}$/
 
-export {API_URL,cities,contactpattern,emailpattern,capitalLetterPattern,lowerLetterPattern,numbersPattern,specialCharacterPattern,mobilePattern}
+export {API_URL,cities,contactpattern,emailpattern,capitalLetterPattern,lowerLetterPattern,numbersPattern,specialCharacterPattern,mobilePattern,pincodePattern}
