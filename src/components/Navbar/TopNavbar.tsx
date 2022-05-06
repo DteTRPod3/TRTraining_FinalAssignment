@@ -63,7 +63,7 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
               <NavLink
-                to="/new_cars"
+                to="/cars?used=false"
                 className="nav-link layout--header--link"
                 data-testid="NewcarsLink"
                 state={{ from: "new_cars" }}
@@ -77,7 +77,7 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
               <NavLink
-                to="/used_cars"
+                to="/cars?used=true"
                 className="nav-link layout--header--link"
                 data-testid="UsedcarsLink"
                 state={{ from: "used_cars" }}
@@ -90,7 +90,7 @@ function TopNavbar() {
 
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item layout--header--list">
+            <li className="nav-link nav-item layout--header--list">
               <Button
                 className="login-btn"
                 variant="light"
