@@ -1,31 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TopNavbar.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { LoginStatus } from "../../models/LoginStatus";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/store/Authentication/actions";
 
 function TopNavbar() {
-  useSelector((state: any) => state.authentication);
-  const [isLoggedin, setIsLoggedin] = useState(() => {
-    return false;
-  });
-
+  const navigate = useNavigate();
+  const [isLoggedin] = useSelector(
+    (state: any) => state.authentiaction.authenticated
+  );
+  // const [isLoggedin, setIsLoggedin] = useState(() => {
+  //   return false;
+  // });
+  const dispatch = useDispatch();
   let profilepicture;
 
   const isloginHandler = () => {
-    if (isloggedin === true) {
-      setIsLoggedin(false);
-      localStorage.setItem("isLoggedin", "false");
+    if (isLoggedin === LoginStatus.LoginSuccess) {
+      dispatch(logout());
     } else {
-      localStorage.setItem("isLoggedin", "true");
-      setIsLoggedin(true);
+      navigate("/login");
     }
   };
-  const isloggedin: boolean = isLoggedin;
-  isloggedin === true
+
+  isLoggedin === LoginStatus.LoginSuccess
     ? (profilepicture = loggedProfile)
     : (profilepicture = UnknownProfile);
 

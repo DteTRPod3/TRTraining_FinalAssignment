@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { watcherSaga } from "./sagas/rootSaga";
+import AuthenticationReducer from "./store/Authentication/reducer";
 import CarDetailsReducer from "./store/carDetails/reducer";
 import CarsReducer from "./store/cars/reducer";
 
@@ -16,6 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reducers = combineReducers({
   cars: CarsReducer,
   carDetails: CarDetailsReducer,
+  authentiaction: AuthenticationReducer,
 });
 
 // const middleware = [sagaMiddleware];
