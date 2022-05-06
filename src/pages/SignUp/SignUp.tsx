@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Button, Card, Container, Form, FormGroup } from "react-bootstrap";
 import { useForm, useFormState } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,19 +12,19 @@ import {
   specialCharacterPattern,
 } from "../../constants";
 import "./SignUp.scss";
+
 function SignUp() {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
-  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     control,
-    getValues,
+    watch,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -35,11 +35,11 @@ function SignUp() {
   const { dirtyFields } = useFormState({
     control,
   });
+  const watchPassword = watch("password");
 
   useEffect(() => {
     document.title = "Xtreme Cars | Sign Up";
   }, []);
-
   const onSubmit = (formData: any) => {
     toast.success("Profile Created Successfully");
     navigate("/home");
@@ -125,7 +125,7 @@ function SignUp() {
                 })}
               />
               {errors.pincode && (
-                <p className="text-danger" data-testid="address-error">
+                <p className="text-danger" data-testid="pincode-error">
                   {errors.pincode.message}
                 </p>
               )}
@@ -181,28 +181,46 @@ function SignUp() {
                 })}
               />
               {errors?.password?.types["lowercase"] && (
-                <p className="text-danger" data-testid="address-error">
+                <p className="text-danger" data-testid="lowercase-error">
                   {errors?.password?.types["lowercase"]}
                 </p>
               )}
-              {errors?.password?.types["lowercase"] && (
-                <p className="text-success" data-testid="address-error">
-                  {errors?.password?.types["lowercase"]}
-                </p>
-              )}
+              {!errors?.password?.types["lowercase"] &&
+                dirtyFields["password"] && (
+                  <p className="text-success" data-testid="password-success">
+                    The password must contain one lower case letter
+                  </p>
+                )}
               {errors?.password?.types["uppercase"] && (
-                <p className="text-danger" data-testid="address-error">
+                <p className="text-danger" data-testid="uppercase-error">
                   {errors?.password?.types["uppercase"]}
                 </p>
               )}
+              {!errors?.password?.types["uppercase"] &&
+                dirtyFields["password"] && (
+                  <p className="text-success" data-testid="password-success">
+                    The password must contain one upper case letter
+                  </p>
+                )}
               {errors?.password?.types["minlength"] && (
                 <p className="text-danger" data-testid="address-error">
                   {errors?.password?.types["minlength"]}
                 </p>
               )}
+              {!errors?.password?.types["minlength"] &&
+                dirtyFields["password"] && (
+                  <p className="text-success" data-testid="password-success">
+                    The password length must be atleast 8
+                  </p>
+                )}
               {errors?.password?.types["numbers"] && (
                 <p className="text-danger" data-testid="address-error">
                   {errors?.password?.types["numbers"]}
+                </p>
+              )}
+              {!errors?.password?.types["numbers"] && dirtyFields["password"] && (
+                <p className="text-success" data-testid="password-success">
+                  The password must contain a number
                 </p>
               )}
               {errors?.password?.types["specialCharacter"] && (
@@ -210,6 +228,13 @@ function SignUp() {
                   {errors?.password?.types["specialCharacter"]}
                 </p>
               )}
+              {!errors?.password?.types["specialCharacter"] &&
+                dirtyFields["password"] && (
+                  <p className="text-success" data-testid="password-success">
+                    The password must contain a special character (! @ # $ % & ?
+                    / : ; . , " ')
+                  </p>
+                )}
             </Form.Group>
             <Form.Group
               className="mb-3 form-group-container"
@@ -222,8 +247,7 @@ function SignUp() {
                 {...register("confirmpassword", {
                   required: "Please re-enter the password",
                   validate: (value) =>
-                    value === getValues("password") ||
-                    "Password does not match",
+                    value === watchPassword || "Password does not match",
                 })}
               />
               {errors.confirmpassword && (
@@ -234,7 +258,7 @@ function SignUp() {
               {!errors.confirmpassword &&
                 dirtyFields["password"] &&
                 dirtyFields["confirmpassword"] && (
-                  <p className="text-success">Tick</p>
+                  <p className="text-success">Password match</p>
                 )}
             </Form.Group>
             <FormGroup className="form-group-container">
