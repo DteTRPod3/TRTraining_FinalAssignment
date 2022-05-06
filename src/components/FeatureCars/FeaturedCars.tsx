@@ -46,7 +46,7 @@ function FeatureCars(props: any) {
   );
 
   useEffect(() => {
-    dispatch(getCars(carTypeList[carTypeIndex]));
+    dispatch(getCars(carTypeList[carTypeIndex], null));
   }, [carTypeIndex, dispatch]);
 
   useEffect(() => {

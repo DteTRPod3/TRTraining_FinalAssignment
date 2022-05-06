@@ -26,7 +26,7 @@ function CarsList() {
   const [carType, setCarType] = useState<number>(3);
   const cars: any = useSelector((state: any) => state.cars.cars);
   const [carNameToBeSearched, setCarNameToBeSearched] = useState("");
-  const [isUsed, setIsUsed] = useState<boolean | undefined>(undefined); 
+  const [isUsed, setIsUsed] = useState<boolean | null>(null); 
   const { from }: any = location.state == null ? "" : (location.state as any);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function CarsList() {
         setIsUsed(false);
         break;
       default:
-        setIsUsed(undefined);
+        setIsUsed(null);
         break;
     }
     if(searchParam !== null && searchParam !== "") {
@@ -71,17 +71,17 @@ function CarsList() {
       setCarNameToBeSearched("");
       if(from === "new_cars") setIsUsed(false);
       else if(from === "used_cars") setIsUsed(true);
-      else setIsUsed(undefined);
+      else setIsUsed(null);
     }
   }, [from]);
 
   useEffect(() => {
     if (carType === 4) {
       navigate(`/cars?search-text=${carNameToBeSearched}`);
-      dispatch(getCars(""));
+      dispatch(getCars("", null));
     }
     else if (carType === 3) {
-      if(isUsed === undefined) {
+      if(isUsed === null) {
         navigate(`/cars?`);
       }
       else {
@@ -91,7 +91,7 @@ function CarsList() {
       dispatch(getCars("", isUsed));
     }
     else {
-      if(isUsed === undefined) {
+      if(isUsed === null) {
         navigate(`/cars?car-type=${carTypeList[carType]}`);
       }
       else {

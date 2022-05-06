@@ -1,8 +1,8 @@
 import axios from "axios";
 import { API_URL } from "../../../constants";
 
-export function requestGetCars(carType: string, used?: boolean) {
-  const url = (used === undefined) ? API_URL + "/" + carType : API_URL + "/" + carType + "?used=" + used; 
+export function requestGetCars(carType: string, used: boolean|null) {
+  const url = (used === null) ? API_URL + "/" + carType : API_URL + "/" + carType + "?used=" + used; 
   return axios.request({
     method: "get",
     url: url,
