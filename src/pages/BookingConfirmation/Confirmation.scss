@@ -1,6 +1,6 @@
 @import "../../themes/colors.scss";
 
-.topdiv {
+.top-div {
   display: block;
   padding: 2rem;
 
@@ -8,7 +8,7 @@
   border: 0.1rem solid black;
   margin: 2%;
 }
-.bottomdiv {
+.bottom-div {
   text-align: center;
   margin: 2%;
   img {
@@ -33,7 +33,7 @@
   text-decoration: none;
 }
 
-.details-container {
+.confirmation-details-container {
   text-align: left;
   margin-top: 3rem;
   ul {
