@@ -1,20 +1,23 @@
 const API_URL = "http://localhost:8080/cars";
-const cities = [
-  "Delhi",
-  "Mumbai",
-  "Kolkata",
-  "Bangalore",
-  "Chennai",
-  "Hyderabad",
-  "Pune",
-  "Ahmedabad",
-  "Surat",
-  "Lucknow",
-  "Jaipur",
-];
-
-const contactpattern = "[6-9]{1}[0-9]{9}";
-const emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const cities= [
+      "Delhi",
+      "Mumbai",
+      "Kolkata",
+      "Bangalore",
+      "Chennai",
+      "Hyderabad",
+      "Pune",
+      "Ahmedabad",
+      "Surat",
+      "Lucknow",
+      "Jaipur",
+    ];
+const contactpattern=/[6-9]{1}[0-9]{9}/;
+const emailpattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+const capitalLetterPattern=/[A-Z]/
+const lowerLetterPattern=/[a-z]/
+const numbersPattern=/[0-9]/
+const specialCharacterPattern=/[!@#$%&?/:;"'.,]/
 const mobilePattern = /^[6-9]\d{9}$/;
 
-export { API_URL, cities, contactpattern, emailpattern, mobilePattern };
+export {API_URL,cities,contactpattern,emailpattern,capitalLetterPattern,lowerLetterPattern,numbersPattern,specialCharacterPattern,mobilePattern}
