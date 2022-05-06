@@ -9,8 +9,8 @@ function CarCard(car: any) {
   const [id] = useState(carDetails.id);
   const detailsPageLink = "/car_details/" + id;
   return (
-    <Link to={detailsPageLink} className="card-container" data-testid="card">
-      <Card>
+    <Link to={detailsPageLink} className="card-container">
+      <Card data-testid="card">
         <Card.Img
           variant="top"
           data-testid="carimg"
