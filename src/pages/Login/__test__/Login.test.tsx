@@ -7,6 +7,7 @@ import store from "../../../redux/configureStore";
 import Login from "../Login";
 import userEvent from "@testing-library/user-event";
 import NotFound from "../../NotFound/NotFound";
+import SignUp from "../../SignUp/SignUp";
 
 const MockLoginPage = () => {
   return (
@@ -27,7 +28,7 @@ describe("Login Page test cases", () => {
   it("should render the header of the page", () => {
     render(<MockLoginPage />);
     const header = screen.getByRole("heading");
-    expect(header).toContainHTML("Login To Xtreme Cars");
+    expect(header).toContainHTML('<h5 class="login-heading">Login to Xtreme Cars</h5>');
   });
 
   it("should render the input fields of email and password in the login form by default", () => {
@@ -163,9 +164,11 @@ describe("Login Page test cases", () => {
     act(() => {
       /* The below code (NotFound) has to be changed to signup page once the branches with signup page is merged*/
       render(
+        <Provider store={store}>
         <MemoryRouter>
-          <NotFound />
+          <SignUp />
         </MemoryRouter>
+        </Provider>
       );
     });
   });
