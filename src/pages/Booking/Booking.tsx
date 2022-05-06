@@ -5,6 +5,7 @@ import { CarFullDetails } from "../../models/CarFullDetails";
 import Arrow from "../../assets/Arrow.svg";
 import "./Booking.scss";
 import { cities } from "../../constants";
+import BMW1 from "../../assets/BMW1.svg";
 
 import {
   Button,
@@ -45,7 +46,13 @@ function Booking() {
   };
 
   const { car } = useLocation().state as any;
+  console.log("printing car obj", car);
   const [cardetails] = useState<CarFullDetails>(car);
+
+  const defaultimage =
+    cardetails?.specifications.image === ""
+      ? BMW1
+      : cardetails?.specifications.image;
   const { id } = useParams();
   const detailsLink = "/car_details/" + id;
   let navigate = useNavigate();
@@ -59,7 +66,7 @@ function Booking() {
         <Image
           fluid
           className="car-img"
-          src={cardetails?.specifications.image}
+          src={defaultimage}
           alt="No Image Available"
         />
         <br /> <br />
@@ -164,9 +171,7 @@ function Booking() {
                 )}
               </Form.Group>
               <FormGroup className="form-group-container">
-                <Button variant="danger" type="submit">
-                  Submit
-                </Button>
+                <Button type="submit">Submit</Button>
               </FormGroup>
             </Form>
           </Card>

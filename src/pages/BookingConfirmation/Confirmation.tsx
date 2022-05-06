@@ -9,8 +9,6 @@ function Confirmation() {
   const { car } = useLocation().state as any;
   const { formData } = useLocation().state as any;
 
-  console.warn("print car", car);
-  console.warn("print userdata in confirmation page", formData);
   return (
     <Container>
       <div className="topdiv">
