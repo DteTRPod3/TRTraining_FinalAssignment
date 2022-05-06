@@ -20,8 +20,11 @@ import "./SignUp.scss";
 
 function SignUp() {
   const location = useLocation();
+  
   useEffect(() => {
-    window.scrollTo(-1, -1);
+    setTimeout(()=>{
+      window.scrollTo(-1, -1);
+    },100)
   }, [location]);
   
   const dispatch = useDispatch();
@@ -55,6 +58,7 @@ function SignUp() {
       navigate("/home");
     }
   }, [isAuthenticated, navigate]);
+
   const onSubmit = async (formData: any) => {
     const loginCredentials = {
       userid: formData?.email,
@@ -65,7 +69,6 @@ function SignUp() {
     await dispatch(login(loginCredentials));
     toast.success("Profile Created Successfully");
   };
-  console.log(errors)
 
   return (
     <>
