@@ -61,7 +61,7 @@ describe("Navbar", () => {
     expect(screen.getByText(/View All/i)).toBeInTheDocument();
   });
 
-  it("should render profile icon if loggedin r", () => {
+  it("should render profile icon if loggedin", () => {
     render(<MockNavbar />);
     const isloggedin = localStorage.getItem("isloggedin");
     const ProfileElement = screen.getByTestId("profileImage");
@@ -102,5 +102,17 @@ describe("Navbar", () => {
       );
     });
     expect(screen.getByText(/FIND YOUR DREAM CAR/i)).toBeInTheDocument();
+  });
+
+  it("should not render user profile icon if not loggedin", () => {
+    render(<MockNavbar />);
+    const isloggedin = localStorage.getItem("isloggedin");
+    const ProfileElement = screen.getByTestId("profileImage");
+    if (isloggedin === "false") {
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(ProfileElement).toBeInTheDocument();
+      // eslint-disable-next-line jest/no-conditional-expect
+      expect(ProfileElement).toHaveAttribute("src", "profile.svg");
+    }
   });
 });

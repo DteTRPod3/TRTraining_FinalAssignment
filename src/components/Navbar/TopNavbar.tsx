@@ -69,7 +69,7 @@ function TopNavbar() {
                 className={(navData) =>
                   navData.isActive ? "active" : "nav-link layout--header--link"
                 }
-                data-testid="AllcarsLink"
+                data-testid="NewcarsLink"
                 state={{ from: "new-cars" }}
               >
                 NEW CARS
@@ -85,7 +85,7 @@ function TopNavbar() {
                 className={(navData) =>
                   navData.isActive ? "active" : "nav-link layout--header--link"
                 }
-                data-testid="AllcarsLink"
+                data-testid="UsedcarsLink"
                 state={{ from: "used-cars" }}
               >
                 USED CARS
