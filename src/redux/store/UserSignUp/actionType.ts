@@ -1,0 +1,1 @@
+export const POST_SIGN_UP_DETAILS = "POST_SIGN_UP_DETAILS";

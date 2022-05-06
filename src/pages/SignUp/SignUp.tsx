@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Button, Card, Container, Form, FormGroup } from "react-bootstrap";
 import { useForm, useFormState } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -9,8 +10,12 @@ import {
   emailpattern,
   lowerLetterPattern,
   numbersPattern,
+  pincodePattern,
   specialCharacterPattern,
 } from "../../constants";
+import { LoginStatus } from "../../models/LoginStatus";
+import { login } from "../../redux/store/Authentication/actions";
+import { postSignUpDetails } from "../../redux/store/UserSignUp/action";
 import "./SignUp.scss";
 
 function SignUp() {
@@ -18,8 +23,11 @@ function SignUp() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isAuthenticated = useSelector(
+    (state: any) => state.authentiaction.authenticated
+  );
   const {
     register,
     handleSubmit,
@@ -40,10 +48,23 @@ function SignUp() {
   useEffect(() => {
     document.title = "Xtreme Cars | Sign Up";
   }, []);
-  const onSubmit = (formData: any) => {
+
+  useEffect(() => {
+    if (isAuthenticated === LoginStatus.LoginSuccess) {
+      navigate("/home");
+    }
+  }, [isAuthenticated, navigate]);
+  const onSubmit = async (formData: any) => {
+    const loginCredentials = {
+      userid: formData?.email,
+      password: "L#(qc{f}TaJu4%4k",
+    };
+    await dispatch(postSignUpDetails(formData));
+
+    await dispatch(login(loginCredentials));
     toast.success("Profile Created Successfully");
-    navigate("/home");
   };
+  console.log(errors)
 
   return (
     <>
@@ -110,18 +131,14 @@ function SignUp() {
             >
               <Form.Label>PinCode</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 placeholder="Enter pincode..."
                 {...register("pincode", {
                   required: "Pincode is required",
-                  minLength: {
-                    value: 6,
-                    message: "pin code cannot be less than 6 digits",
-                  },
-                  maxLength: {
-                    value: 6,
-                    message: "pin code cannot be more than 6 digits",
-                  },
+                  pattern:{
+                    value:pincodePattern,
+                    message:"Pin code is invalid"
+                  }
                 })}
               />
               {errors.pincode && (
@@ -161,6 +178,7 @@ function SignUp() {
                 type="password"
                 placeholder="Enter password..."
                 {...register("password", {
+                  required:"Password is required",
                   validate: {
                     lowercase: (value) =>
                       lowerLetterPattern.test(value) ||
@@ -180,7 +198,13 @@ function SignUp() {
                   },
                 })}
               />
-              {errors?.password?.types["lowercase"] && (
+              {errors?.password?.types["required"] && (
+                <p className="text-danger" data-testid="required-error">
+                  {errors?.password?.types["required"]}
+                </p>
+              )}
+              {errors?.password?.types["lowercase"] &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="lowercase-error">
                   {errors?.password?.types["lowercase"]}
                 </p>
@@ -191,7 +215,8 @@ function SignUp() {
                     The password must contain one lower case letter
                   </p>
                 )}
-              {errors?.password?.types["uppercase"] && (
+              {errors?.password?.types["uppercase"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="uppercase-error">
                   {errors?.password?.types["uppercase"]}
                 </p>
@@ -202,7 +227,8 @@ function SignUp() {
                     The password must contain one upper case letter
                   </p>
                 )}
-              {errors?.password?.types["minlength"] && (
+              {errors?.password?.types["minlength"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="address-error">
                   {errors?.password?.types["minlength"]}
                 </p>
@@ -213,7 +239,8 @@ function SignUp() {
                     The password length must be atleast 8
                   </p>
                 )}
-              {errors?.password?.types["numbers"] && (
+              {errors?.password?.types["numbers"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="number-error">
                   {errors?.password?.types["numbers"]}
                 </p>
@@ -223,7 +250,8 @@ function SignUp() {
                   The password must contain a number
                 </p>
               )}
-              {errors?.password?.types["specialCharacter"] && (
+              {errors?.password?.types["specialCharacter"]  &&
+                dirtyFields["password"] && (
                 <p className="text-danger" data-testid="character-error">
                   {errors?.password?.types["specialCharacter"]}
                 </p>
@@ -267,6 +295,8 @@ function SignUp() {
               </Button>
             </FormGroup>
           </Form>
+          <br></br>
+          <Link to="/login">Already a user? Click here to login</Link>
         </Card>
       </Container>
     </>

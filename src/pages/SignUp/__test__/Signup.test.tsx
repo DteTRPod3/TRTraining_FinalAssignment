@@ -32,7 +32,7 @@ describe("Sign Up Form", () => {
     const inputAddress = screen.getByRole("textbox", {
       name: /address/i,
     });
-    const inputPincode = screen.getByRole("spinbutton", {
+    const inputPincode = screen.getByRole("textbox", {
       name: /pincode/i,
     });
     const inputEmail = screen.getByRole("textbox", {
@@ -123,7 +123,7 @@ describe("Sign Up Form", () => {
       </MemoryRouter>
     );
 
-    const inputPincode = screen.getByRole("spinbutton", {
+    const inputPincode = screen.getByRole("textbox", {
       name: /pincode/i,
     });
     act(() => {
@@ -134,7 +134,7 @@ describe("Sign Up Form", () => {
       screen.getByRole("spinbutton", {
         name: /pincode/i,
       })
-    ).toHaveValue(123456);
+    ).toHaveValue("123456");
   });
 
   it("checks for valid value in email input field", () => {
