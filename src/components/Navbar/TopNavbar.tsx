@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./TopNavbar.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
 import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { LoginStatus } from "../../models/LoginStatus";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/store/Authentication/actions";
 
 function TopNavbar() {
-  const [isLoggedin, setisLoggedin] = useState(() => {
-    return false;
-  });
+  const navigate = useNavigate();
+  const isLoggedin = useSelector(
+    (state: any) => state.authentiaction.authenticated
+  );
 
+  const dispatch = useDispatch();
   let profilepicture;
 
   const isloginHandler = () => {
-    if (isloggedin === true) {
-      setisLoggedin(false);
-      localStorage.setItem("isLoggedin", "false");
+    if (isLoggedin === LoginStatus.LoginSuccess) {
+      dispatch(logout());
     } else {
-      localStorage.setItem("isLoggedin", "true");
-      setisLoggedin(true);
+      navigate("/login");
     }
   };
-  const isloggedin: boolean = isLoggedin;
-  isloggedin === true
+
+  isLoggedin === LoginStatus.LoginSuccess
     ? (profilepicture = loggedProfile)
     : (profilepicture = UnknownProfile);
 
@@ -34,9 +38,7 @@ function TopNavbar() {
           <NavLink
             to={"/"}
             data-testid="XtremecarsLink"
-            className={(navData) =>
-              navData.isActive ? "active" : "navbar-brand layout--header--logo"
-            }
+            className="navbar-brand layout--header--logo"
           >
             <img src={Logo} alt="Xtreme cars logo" />
             XTREME CARS
@@ -47,14 +49,10 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto layout--header--lists">
             <li className="nav-item layout--header--list active">
               <NavLink
-                className={(navData) =>
-                  navData.isActive
-                    ? "active"
-                    : "nav-link layout--header--link all-cars "
-                }
+                className="nav-link layout--header--link all-cars "
                 to="/cars"
                 data-testid="AllcarsLink"
-                state={{ from: "all-cars" }}
+                state={{ from: "cars" }}
               >
                 ALL CARS
               </NavLink>
@@ -65,12 +63,10 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
               <NavLink
-                to="/new_cars"
-                className={(navData) =>
-                  navData.isActive ? "active" : "nav-link layout--header--link"
-                }
-                data-testid="AllcarsLink"
-                state={{ from: "new-cars" }}
+                to="/cars?used=false"
+                className="nav-link layout--header--link"
+                data-testid="NewcarsLink"
+                state={{ from: "new_cars" }}
               >
                 NEW CARS
               </NavLink>
@@ -81,12 +77,10 @@ function TopNavbar() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item layout--header--list">
               <NavLink
-                to="/used_cars"
-                className={(navData) =>
-                  navData.isActive ? "active" : "nav-link layout--header--link"
-                }
-                data-testid="AllcarsLink"
-                state={{ from: "used-cars" }}
+                to="/cars?used=true"
+                className="nav-link layout--header--link"
+                data-testid="UsedcarsLink"
+                state={{ from: "used_cars" }}
               >
                 USED CARS
               </NavLink>
@@ -96,12 +90,16 @@ function TopNavbar() {
 
         <div className="collapse navbar-collapse layout--header--container">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item layout--header--list">
-              <Link to="#" className="nav-link layout--header--link">
-                <Button variant="light" onClick={() => isloginHandler()}>
-                  {isLoggedin ? "Logout" : " Login/Signup"}
-                </Button>
-              </Link>
+            <li className="nav-link nav-item layout--header--list">
+              <Button
+                className="login-btn"
+                variant="light"
+                onClick={() => isloginHandler()}
+              >
+                {isLoggedin === LoginStatus.LoginSuccess
+                  ? "Logout"
+                  : " Login/Signup"}
+              </Button>
             </li>
           </ul>
 

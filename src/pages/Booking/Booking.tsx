@@ -26,7 +26,9 @@ function Booking() {
   });
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scrollTo(-1, -1);
+    }, 100);
   }, [location]);
 
   const {

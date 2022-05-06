@@ -29,8 +29,17 @@ const MockCarsListFromSearchbar = () => {
   );
 };
 
-describe("Cars List test cases", () => {
+const MockCarsListForUsedCarsAndNewCars = (props: any) => {
+  return (
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[`/cars?used=${props.isUsed}`]}>
+        <CarsList />
+      </MemoryRouter>
+    </Provider>
+  );
+};
 
+describe("Cars List test cases", () => {
   const dispatch = jest.fn();
   beforeEach(() => {
     (dispatch as any).mockImplementation(() => dispatch);
@@ -99,5 +108,33 @@ describe("Cars List test cases", () => {
       "SUV"
     );
   });
+
+  it.each([["View All", "View All"], ["Sedan", "Sedan"], ["SUV", "SUV"], ["Hatchback", "Hatchback"]])(
+    `%i tab to have been clicked with isUsed query param as true`,
+    (role, result) => {
+      const { container } = render(<MockCarsListForUsedCarsAndNewCars isUsed={true} />);
+      let category = screen.getByRole("button", {
+        name: role,
+      });
+      userEvent.click(category);
+      expect(
+        container.getElementsByClassName("active-tab")[0].textContent
+      ).toBe(result);
+    }
+  );
   
+  it.each([["View All", "View All"], ["Sedan", "Sedan"], ["SUV", "SUV"], ["Hatchback", "Hatchback"]])(
+    `%i tab to have been clicked with isUsed query param as false`,
+    (role, result) => {
+      const { container } = render(<MockCarsListForUsedCarsAndNewCars isUsed={false} />);
+      let category = screen.getByRole("button", {
+        name: role,
+      });
+      userEvent.click(category);
+      expect(
+        container.getElementsByClassName("active-tab")[0].textContent
+      ).toBe(result);
+    }
+  );
+
 });
