@@ -15,9 +15,7 @@ function TopNavbar() {
   const isLoggedin = useSelector(
     (state: any) => state.authentiaction.authenticated
   );
-  // const [isLoggedin, setIsLoggedin] = useState(() => {
-  //   return false;
-  // });
+
   const dispatch = useDispatch();
   let profilepicture;
 
