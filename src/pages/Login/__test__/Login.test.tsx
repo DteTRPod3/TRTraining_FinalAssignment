@@ -161,7 +161,7 @@ describe("Login Page test cases", () => {
     const linkElement = screen.getByText("New User? Register now");
     await fireEvent.click(linkElement);
     act(() => {
-      //has to be changed to signup page once the branches with signup page is merged
+      /* The below code (NotFound) has to be changed to signup page once the branches with signup page is merged*/
       render(
         <MemoryRouter>
           <NotFound />

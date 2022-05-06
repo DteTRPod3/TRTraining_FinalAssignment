@@ -3,20 +3,19 @@ import "./Login.scss";
 import { Button, Form, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { contactpattern, emailpattern } from "../../constants";
+import { mobilePattern, emailpattern } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/store/Authentication/actions";
 import { LoginStatus } from "../../models/LoginStatus";
 
 function Login() {
-  const [tabState, SetTabState] = useState("with-email");
-  const [userMainField, setuserMainField] = useState("Email address");
+  const [tabState, setTabState] = useState("with-email");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(
     (state: any) => state.authentiaction.authenticated
   );
-  const [displayMsg, setDisplayMsg] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState(false);
 
   const {
     register,
@@ -32,17 +31,9 @@ function Login() {
   }, []);
 
   const handleTabSwitch = (selectedKey: any) => {
-    SetTabState(`${selectedKey}`);
-    setDisplayMsg(false);
+    setTabState(`${selectedKey}`);
+    setShowErrorMessage(false);
   };
-
-  useEffect(() => {
-    if (tabState === "with-email") {
-      setuserMainField("Email address");
-    } else {
-      setuserMainField("Mobile Number");
-    }
-  }, [tabState]);
 
   const onFormSubmit = (data: any, e: any) => {
     const loginCredentials = {
@@ -55,9 +46,9 @@ function Login() {
 
   const ShowHideMessage = useCallback(() => {
     if (isAuthenticated === LoginStatus.LoginFailed) {
-      setDisplayMsg(true);
+      setShowErrorMessage(true);
     } else {
-      setDisplayMsg(false);
+      setShowErrorMessage(false);
     }
   }, [isAuthenticated]);
 
@@ -65,7 +56,7 @@ function Login() {
     if (isAuthenticated === LoginStatus.LoginSuccess) {
       navigate("/home");
     } else if (isAuthenticated === LoginStatus.LoginFailed) {
-      setDisplayMsg(true);
+      setShowErrorMessage(true);
     }
   }, [isAuthenticated, navigate]);
 
@@ -94,7 +85,7 @@ function Login() {
         <Form.Group>
           {tabState === "with-email" && (
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>{userMainField}</Form.Label>
+              <Form.Label>Email Address</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter email"
@@ -119,7 +110,6 @@ function Login() {
               <Form.Control
                 type="number"
                 placeholder="Enter mobile number"
-                pattern={contactpattern}
                 {...register("mobile", {
                   required: "Mobile number is required",
                   minLength: {
@@ -131,7 +121,7 @@ function Login() {
                     message: "Mobile number cannot be more than 10 digits",
                   },
                   pattern: {
-                    value: /^[6-9]\d{9}$/,
+                    value: mobilePattern,
                     message: "Invalid Mobile number",
                   },
                 })}
@@ -165,7 +155,7 @@ function Login() {
         </Form.Group>
         <br />
         <Form.Group>
-          {displayMsg && (
+          {showErrorMessage && (
             <p className="text-danger">
               Login failed due to incorrect credetials
             </p>
@@ -185,7 +175,7 @@ function Login() {
                 password: "",
                 mobile: "",
               });
-              setDisplayMsg(false);
+              setShowErrorMessage(false);
             }}
           >
             Reset
