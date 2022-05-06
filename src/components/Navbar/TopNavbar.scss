@@ -14,13 +14,6 @@ a.navbar-brand.layout--header--logo {
   font-family: $font-family-roboto;
 }
 
-a:hover {
-  transform: scale(1.05);
-  font-weight: $nav-font-weight;
-  color: $white;
-  text-decoration: underline;
-}
-
 .collapse.navbar-collapse.layout--header--container {
   display: block;
 }
