@@ -40,9 +40,11 @@ describe("CarDetails", () => {
     // eslint-disable-next-line testing-library/no-unnecessary-act
     act(() => {
       render(
-        <BrowserRouter>
-          <Booking />
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <Booking />
+          </BrowserRouter>
+        </Provider>
       );
     });
     expect(screen.getByText(/Booking Details/i)).toBeInTheDocument();

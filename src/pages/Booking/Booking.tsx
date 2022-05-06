@@ -83,7 +83,7 @@ function Booking() {
         </Link>
       </div>
       <div className="formDiv">
-        <span className="mixed-font"> Booking</span>
+        <span className="mixed-font">Booking</span>
         <h5 className="extra-bold">Details</h5>
 
         <Container>
