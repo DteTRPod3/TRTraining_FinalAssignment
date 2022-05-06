@@ -20,6 +20,9 @@ a:hover {
   color: $white;
   text-decoration: underline;
 }
+button.btn.btn-light {
+  box-shadow: none;
+}
 
 .collapse.navbar-collapse.layout--header--container {
   display: block;

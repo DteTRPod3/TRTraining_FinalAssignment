@@ -5,9 +5,11 @@ import Logo from "../../assets/logo.svg";
 import loggedProfile from "../../assets/man.png";
 import UnknownProfile from "../../assets/profile.svg";
 import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function TopNavbar() {
-  const [isLoggedin, setisLoggedin] = useState(() => {
+  useSelector((state: any) => state.authentication);
+  const [isLoggedin, setIsLoggedin] = useState(() => {
     return false;
   });
 
@@ -15,11 +17,11 @@ function TopNavbar() {
 
   const isloginHandler = () => {
     if (isloggedin === true) {
-      setisLoggedin(false);
+      setIsLoggedin(false);
       localStorage.setItem("isLoggedin", "false");
     } else {
       localStorage.setItem("isLoggedin", "true");
-      setisLoggedin(true);
+      setIsLoggedin(true);
     }
   };
   const isloggedin: boolean = isLoggedin;
