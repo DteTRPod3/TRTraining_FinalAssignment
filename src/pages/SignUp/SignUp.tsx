@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Card, Container, Form, FormGroup } from "react-bootstrap";
 import { useForm, useFormState } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -267,6 +267,8 @@ function SignUp() {
               </Button>
             </FormGroup>
           </Form>
+          <br></br>
+          <Link to="/login">Already a user? Click here to login</Link>
         </Card>
       </Container>
     </>
