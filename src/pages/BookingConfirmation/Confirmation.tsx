@@ -11,10 +11,16 @@ function Confirmation() {
 
   return (
     <Container>
-      <div className="topdiv">
+      <div className="top-div">
         <Image src={bmw1} />
         <h3>Booking Successful</h3>
-        <div className="details-container">
+        <p>
+          {" "}
+          The booking is confirmed. Our customer executive will be in touch with
+          you shortly. In case of any queries please reach out to the 1800 200
+          3000
+        </p>
+        <div className="confirmation-details-container">
           <div className="left-box">
             <h5>Booking Details</h5>
             <ul>
@@ -25,6 +31,11 @@ function Confirmation() {
               <li>
                 <span className="text-booking-heading">Car:</span>{" "}
                 <span className="name">{car.specifications.name}</span>
+              </li>
+
+              <li>
+                <span className="text-booking-heading">Variants:</span>{" "}
+                <span className="name">{car.specifications?.variant[0]}</span>
               </li>
               <li className="color-box">
                 <span className="text-booking-heading">Color:</span>{" "}
@@ -59,7 +70,7 @@ function Confirmation() {
           <span className="download-link">download</span> the booking summary
         </Link>
       </div>
-      <div className="bottomdiv">
+      <div className="bottom-div">
         <Image fluid src={bmw2} />
       </div>
     </Container>
