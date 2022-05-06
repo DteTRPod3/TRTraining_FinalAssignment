@@ -5,7 +5,7 @@ import { setCarDetails } from "../../store/carDetails/actions";
 
 export function* handleGetCars(action: any): any {
   try {
-    const response = yield call(() => requestGetCars(action.carType));
+    const response = yield call(() => requestGetCars(action.carType, action.used));
     const { data } = response;
     yield put(setCars(data));
   } catch (error) {
@@ -25,7 +25,7 @@ export function* handleGetCarDetails(action: any): any {
 
 export function* handleGetMoreCars(action: any): any {
   try {
-    const response = yield call(() => requestGetCars(action.carType));
+    const response = yield call(() => requestGetCars(action.carType, action.used));
     const { data } = response;
     yield put(setMoreCars(data));
   } catch (error) {
