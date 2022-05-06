@@ -21,8 +21,9 @@ import "./SignUp.scss";
 function SignUp() {
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(-1, -1);
   }, [location]);
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector(
