@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
-import { CarDetails } from "../../models/CarDetails";
 import { CarFullDetails } from "../../models/CarFullDetails";
 import Arrow from "../../assets/Arrow.svg";
 import "./Booking.scss";
@@ -38,7 +37,7 @@ function Booking() {
     mode: "onSubmit",
   });
   useEffect(() => {
-    document.title = "Xtreme Cars | Test Drive";
+    document.title = "Xtreme Cars | Booking";
   }, []);
   const onSubmit = (formData: any) => {
     console.warn("printing formdata from booking page", formData);
@@ -46,10 +45,9 @@ function Booking() {
   };
 
   const { car } = useLocation().state as any;
-  console.log("printing car obj", car);
   const [cardetails] = useState<CarFullDetails>(car);
 
-  const defaultimage =
+  const defaultImage =
     cardetails?.specifications.image === ""
       ? BMW1
       : cardetails?.specifications.image;
@@ -66,7 +64,7 @@ function Booking() {
         <Image
           fluid
           className="car-img"
-          src={defaultimage}
+          src={defaultImage}
           alt="No Image Available"
         />
         <br /> <br />
